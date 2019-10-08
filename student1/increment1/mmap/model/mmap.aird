@@ -3,6 +3,7 @@
   <viewpoint:DAnalysis uid="_C2IdcOSKEemTiamdGsZmpA" selectedViews="_DjboUOSKEemTiamdGsZmpA" version="14.1.0.201810161215">
     <semanticResources>mmap.ecore</semanticResources>
     <semanticResources>mmap.genmodel</semanticResources>
+    <semanticResources>Map1.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_DjboUOSKEemTiamdGsZmpA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DoGF4OSKEemTiamdGsZmpA" name="mmap" repPath="#_DlQ0UOSKEemTiamdGsZmpA">

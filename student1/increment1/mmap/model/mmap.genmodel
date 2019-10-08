@@ -7,7 +7,8 @@
     copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>mmap.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Mmap" disposableProviderFactory="true" ecorePackage="mmap.ecore#/">
+  <genPackages prefix="Mmap" basePackage="pt.isep.edom" disposableProviderFactory="true"
+      ecorePackage="mmap.ecore#/">
     <genClasses ecoreClass="mmap.ecore#//Map">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Map/title"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mmap.ecore#//Map/topic"/>
