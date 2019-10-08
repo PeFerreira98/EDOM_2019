@@ -2,6 +2,7 @@
  */
 package pt.isep.edom.mmap;
 
+import java.util.Date;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -16,7 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link pt.isep.edom.mmap.Map#getTitle <em>Title</em>}</li>
- *   <li>{@link pt.isep.edom.mmap.Map#getTopic <em>Topic</em>}</li>
+ *   <li>{@link pt.isep.edom.mmap.Map#getElements <em>Elements</em>}</li>
+ *   <li>{@link pt.isep.edom.mmap.Map#getCreated <em>Created</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.mmap.MmapPackage#getMap()
@@ -47,15 +49,37 @@ public interface Map extends EObject {
 	void setTitle(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Topic</b></em>' containment reference list.
-	 * The list contents are of type {@link pt.isep.edom.mmap.Topic}.
+	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+	 * The list contents are of type {@link pt.isep.edom.mmap.MapElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Topic</em>' containment reference list.
-	 * @see pt.isep.edom.mmap.MmapPackage#getMap_Topic()
+	 * @return the value of the '<em>Elements</em>' containment reference list.
+	 * @see pt.isep.edom.mmap.MmapPackage#getMap_Elements()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Topic> getTopic();
+	EList<MapElement> getElements();
+
+	/**
+	 * Returns the value of the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Created</em>' attribute.
+	 * @see #setCreated(Date)
+	 * @see pt.isep.edom.mmap.MmapPackage#getMap_Created()
+	 * @model
+	 * @generated
+	 */
+	Date getCreated();
+
+	/**
+	 * Sets the value of the '{@link pt.isep.edom.mmap.Map#getCreated <em>Created</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Created</em>' attribute.
+	 * @see #getCreated()
+	 * @generated
+	 */
+	void setCreated(Date value);
 
 } // Map

@@ -4,15 +4,21 @@ package pt.isep.edom.mmap.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import pt.isep.edom.mmap.Map;
+import pt.isep.edom.mmap.MapElement;
 import pt.isep.edom.mmap.MmapFactory;
 import pt.isep.edom.mmap.MmapPackage;
+import pt.isep.edom.mmap.Priority;
+import pt.isep.edom.mmap.Relationship;
 import pt.isep.edom.mmap.Topic;
+import pt.isep.edom.mmap.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +40,34 @@ public class MmapPackageImpl extends EPackageImpl implements MmapPackage {
 	 * @generated
 	 */
 	private EClass topicEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass relationshipEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum priorityEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum typeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -125,8 +159,18 @@ public class MmapPackageImpl extends EPackageImpl implements MmapPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getMap_Topic() {
+	public EReference getMap_Elements() {
 		return (EReference) mapEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMap_Created() {
+		return (EAttribute) mapEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -145,8 +189,148 @@ public class MmapPackageImpl extends EPackageImpl implements MmapPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTopic_Name() {
+	public EAttribute getTopic_Description() {
 		return (EAttribute) topicEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTopic_Start() {
+		return (EAttribute) topicEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTopic_End() {
+		return (EAttribute) topicEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTopic_Priority() {
+		return (EAttribute) topicEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTopic_Subtopics() {
+		return (EReference) topicEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTopic_Parent() {
+		return (EReference) topicEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTopic__AllSubtopics() {
+		return topicEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMapElement() {
+		return mapElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMapElement_Name() {
+		return (EAttribute) mapElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getRelationship() {
+		return relationshipEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRelationship_Type() {
+		return (EAttribute) relationshipEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRelationship_Source() {
+		return (EReference) relationshipEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRelationship_Target() {
+		return (EReference) relationshipEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getPriority() {
+		return priorityEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getType() {
+		return typeEEnum;
 	}
 
 	/**
@@ -181,10 +365,29 @@ public class MmapPackageImpl extends EPackageImpl implements MmapPackage {
 		// Create classes and their features
 		mapEClass = createEClass(MAP);
 		createEAttribute(mapEClass, MAP__TITLE);
-		createEReference(mapEClass, MAP__TOPIC);
+		createEReference(mapEClass, MAP__ELEMENTS);
+		createEAttribute(mapEClass, MAP__CREATED);
 
 		topicEClass = createEClass(TOPIC);
-		createEAttribute(topicEClass, TOPIC__NAME);
+		createEAttribute(topicEClass, TOPIC__DESCRIPTION);
+		createEAttribute(topicEClass, TOPIC__START);
+		createEAttribute(topicEClass, TOPIC__END);
+		createEAttribute(topicEClass, TOPIC__PRIORITY);
+		createEReference(topicEClass, TOPIC__SUBTOPICS);
+		createEReference(topicEClass, TOPIC__PARENT);
+		createEOperation(topicEClass, TOPIC___ALL_SUBTOPICS);
+
+		mapElementEClass = createEClass(MAP_ELEMENT);
+		createEAttribute(mapElementEClass, MAP_ELEMENT__NAME);
+
+		relationshipEClass = createEClass(RELATIONSHIP);
+		createEAttribute(relationshipEClass, RELATIONSHIP__TYPE);
+		createEReference(relationshipEClass, RELATIONSHIP__SOURCE);
+		createEReference(relationshipEClass, RELATIONSHIP__TARGET);
+
+		// Create enums
+		priorityEEnum = createEEnum(PRIORITY);
+		typeEEnum = createEEnum(TYPE);
 	}
 
 	/**
@@ -216,18 +419,63 @@ public class MmapPackageImpl extends EPackageImpl implements MmapPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		topicEClass.getESuperTypes().add(this.getMapElement());
+		relationshipEClass.getESuperTypes().add(this.getMapElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(mapEClass, Map.class, "Map", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMap_Title(), ecorePackage.getEString(), "title", null, 0, 1, Map.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMap_Topic(), this.getTopic(), null, "topic", null, 0, -1, Map.class, !IS_TRANSIENT,
+		initEReference(getMap_Elements(), this.getMapElement(), null, "elements", null, 0, -1, Map.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getMap_Created(), ecorePackage.getEDate(), "created", null, 0, 1, Map.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTopic_Name(), ecorePackage.getEString(), "name", null, 0, 1, Topic.class, !IS_TRANSIENT,
+		initEAttribute(getTopic_Description(), ecorePackage.getEString(), "description", null, 0, 1, Topic.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTopic_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Topic.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTopic_End(), ecorePackage.getEDate(), "end", null, 0, 1, Topic.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTopic_Priority(), this.getPriority(), "priority", "LOW", 0, 1, Topic.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTopic_Subtopics(), this.getTopic(), null, "subtopics", null, 0, 1, Topic.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getTopic_Parent(), this.getTopic(), null, "parent", null, 0, -1, Topic.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEOperation(getTopic__AllSubtopics(), this.getTopic(), "allSubtopics", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(mapElementEClass, MapElement.class, "MapElement", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, MapElement.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(relationshipEClass, Relationship.class, "Relationship", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRelationship_Type(), this.getType(), "type", "DEPENDENCY", 0, 1, Relationship.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationship_Source(), this.getTopic(), null, "source", null, 1, 1, Relationship.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationship_Target(), this.getTopic(), null, "target", null, 1, 1, Relationship.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(priorityEEnum, Priority.class, "Priority");
+		addEEnumLiteral(priorityEEnum, Priority.HIGH);
+		addEEnumLiteral(priorityEEnum, Priority.LOW);
+		addEEnumLiteral(priorityEEnum, Priority.MEDIUM);
+
+		initEEnum(typeEEnum, Type.class, "Type");
+		addEEnumLiteral(typeEEnum, Type.DEPENDENCY);
+		addEEnumLiteral(typeEEnum, Type.INCLUDE);
+		addEEnumLiteral(typeEEnum, Type.EXTEND);
 
 		// Create resource
 		createResource(eNS_URI);

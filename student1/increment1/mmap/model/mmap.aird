@@ -4,6 +4,7 @@
     <semanticResources>mmap.ecore</semanticResources>
     <semanticResources>mmap.genmodel</semanticResources>
     <semanticResources>Map1.xmi</semanticResources>
+    <semanticResources>Map2.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_DjboUOSKEemTiamdGsZmpA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DoGF4OSKEemTiamdGsZmpA" name="mmap" repPath="#_DlQ0UOSKEemTiamdGsZmpA">

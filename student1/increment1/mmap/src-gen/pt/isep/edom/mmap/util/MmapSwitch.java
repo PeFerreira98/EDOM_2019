@@ -77,6 +77,24 @@ public class MmapSwitch<T> extends Switch<T> {
 			Topic topic = (Topic) theEObject;
 			T result = caseTopic(topic);
 			if (result == null)
+				result = caseMapElement(topic);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MmapPackage.MAP_ELEMENT: {
+			MapElement mapElement = (MapElement) theEObject;
+			T result = caseMapElement(mapElement);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MmapPackage.RELATIONSHIP: {
+			Relationship relationship = (Relationship) theEObject;
+			T result = caseRelationship(relationship);
+			if (result == null)
+				result = caseMapElement(relationship);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -112,6 +130,36 @@ public class MmapSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTopic(Topic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapElement(MapElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Relationship</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Relationship</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRelationship(Relationship object) {
 		return null;
 	}
 

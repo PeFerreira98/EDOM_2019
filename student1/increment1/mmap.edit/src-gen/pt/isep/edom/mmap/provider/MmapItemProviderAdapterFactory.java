@@ -119,6 +119,29 @@ public class MmapItemProviderAdapterFactory extends MmapAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link pt.isep.edom.mmap.Relationship} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RelationshipItemProvider relationshipItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link pt.isep.edom.mmap.Relationship}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRelationshipAdapter() {
+		if (relationshipItemProvider == null) {
+			relationshipItemProvider = new RelationshipItemProvider(this);
+		}
+
+		return relationshipItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -227,6 +250,8 @@ public class MmapItemProviderAdapterFactory extends MmapAdapterFactory
 			mapItemProvider.dispose();
 		if (topicItemProvider != null)
 			topicItemProvider.dispose();
+		if (relationshipItemProvider != null)
+			relationshipItemProvider.dispose();
 	}
 
 }

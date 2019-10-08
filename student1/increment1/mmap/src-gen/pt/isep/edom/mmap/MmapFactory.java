@@ -40,6 +40,15 @@ public interface MmapFactory extends EFactory {
 	Topic createTopic();
 
 	/**
+	 * Returns a new object of class '<em>Relationship</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Relationship</em>'.
+	 * @generated
+	 */
+	Relationship createRelationship();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

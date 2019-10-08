@@ -4,6 +4,7 @@ package pt.isep.edom.mmap.impl;
 
 import java.util.Collection;
 
+import java.util.Date;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -19,8 +20,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import pt.isep.edom.mmap.Map;
+import pt.isep.edom.mmap.MapElement;
 import pt.isep.edom.mmap.MmapPackage;
-import pt.isep.edom.mmap.Topic;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +32,8 @@ import pt.isep.edom.mmap.Topic;
  * </p>
  * <ul>
  *   <li>{@link pt.isep.edom.mmap.impl.MapImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link pt.isep.edom.mmap.impl.MapImpl#getTopic <em>Topic</em>}</li>
+ *   <li>{@link pt.isep.edom.mmap.impl.MapImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link pt.isep.edom.mmap.impl.MapImpl#getCreated <em>Created</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,14 +60,34 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 	protected String title = TITLE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTopic() <em>Topic</em>}' containment reference list.
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTopic()
+	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Topic> topic;
+	protected EList<MapElement> elements;
+
+	/**
+	 * The default value of the '{@link #getCreated() <em>Created</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreated()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date CREATED_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCreated() <em>Created</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreated()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date created = CREATED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,11 +137,34 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 	 * @generated
 	 */
 	@Override
-	public EList<Topic> getTopic() {
-		if (topic == null) {
-			topic = new EObjectContainmentEList<Topic>(Topic.class, this, MmapPackage.MAP__TOPIC);
+	public EList<MapElement> getElements() {
+		if (elements == null) {
+			elements = new EObjectContainmentEList<MapElement>(MapElement.class, this, MmapPackage.MAP__ELEMENTS);
 		}
-		return topic;
+		return elements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Date getCreated() {
+		return created;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCreated(Date newCreated) {
+		Date oldCreated = created;
+		created = newCreated;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MmapPackage.MAP__CREATED, oldCreated, created));
 	}
 
 	/**
@@ -130,8 +175,8 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MmapPackage.MAP__TOPIC:
-			return ((InternalEList<?>) getTopic()).basicRemove(otherEnd, msgs);
+		case MmapPackage.MAP__ELEMENTS:
+			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -146,8 +191,10 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 		switch (featureID) {
 		case MmapPackage.MAP__TITLE:
 			return getTitle();
-		case MmapPackage.MAP__TOPIC:
-			return getTopic();
+		case MmapPackage.MAP__ELEMENTS:
+			return getElements();
+		case MmapPackage.MAP__CREATED:
+			return getCreated();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,9 +211,12 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 		case MmapPackage.MAP__TITLE:
 			setTitle((String) newValue);
 			return;
-		case MmapPackage.MAP__TOPIC:
-			getTopic().clear();
-			getTopic().addAll((Collection<? extends Topic>) newValue);
+		case MmapPackage.MAP__ELEMENTS:
+			getElements().clear();
+			getElements().addAll((Collection<? extends MapElement>) newValue);
+			return;
+		case MmapPackage.MAP__CREATED:
+			setCreated((Date) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -183,8 +233,11 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 		case MmapPackage.MAP__TITLE:
 			setTitle(TITLE_EDEFAULT);
 			return;
-		case MmapPackage.MAP__TOPIC:
-			getTopic().clear();
+		case MmapPackage.MAP__ELEMENTS:
+			getElements().clear();
+			return;
+		case MmapPackage.MAP__CREATED:
+			setCreated(CREATED_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -200,8 +253,10 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 		switch (featureID) {
 		case MmapPackage.MAP__TITLE:
 			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-		case MmapPackage.MAP__TOPIC:
-			return topic != null && !topic.isEmpty();
+		case MmapPackage.MAP__ELEMENTS:
+			return elements != null && !elements.isEmpty();
+		case MmapPackage.MAP__CREATED:
+			return CREATED_EDEFAULT == null ? created != null : !CREATED_EDEFAULT.equals(created);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -219,6 +274,8 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
+		result.append(", created: ");
+		result.append(created);
 		result.append(')');
 		return result.toString();
 	}

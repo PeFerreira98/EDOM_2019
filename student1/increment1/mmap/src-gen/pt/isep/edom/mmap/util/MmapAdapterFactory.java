@@ -77,6 +77,16 @@ public class MmapAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseMapElement(MapElement object) {
+			return createMapElementAdapter();
+		}
+
+		@Override
+		public Adapter caseRelationship(Relationship object) {
+			return createRelationshipAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -120,6 +130,34 @@ public class MmapAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTopicAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link pt.isep.edom.mmap.MapElement <em>Map Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see pt.isep.edom.mmap.MapElement
+	 * @generated
+	 */
+	public Adapter createMapElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link pt.isep.edom.mmap.Relationship <em>Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see pt.isep.edom.mmap.Relationship
+	 * @generated
+	 */
+	public Adapter createRelationshipAdapter() {
 		return null;
 	}
 
