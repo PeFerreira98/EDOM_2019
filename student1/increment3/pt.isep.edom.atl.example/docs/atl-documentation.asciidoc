@@ -1,0 +1,87 @@
+# ATL Transformations Phases
+
+### 1st Module Initialization Phase
+
+The attributes defined in the context of the transformation module are initialized.
+
+If an entry point called rule has been defined in the scope of the ATL module, the code of this rule (including target model elements generation) is executed after the initialization of the ATL module attributes
+
+### 2nd Matching Phase of the Source Model Elements
+
+When the matching condition of a matched rule is fulfilled, the ATL engine allocates the set of target model elements that correspond to the target pattern elements declared in the rule. 
+
+Note that, at this stage, the target model elements are simply allocated: they are initialized during the target model elements initialization phase.
+
+#### Matches Map to Model
+[plantuml]
+....
+digraph xpto {
+ 
+ label = <Map : Model>
+ Map -> Model [constraint=false];
+}
+.... 
+
+#### Matches Topics with no parent with RequirementGroup
+[plantuml]
+....
+digraph xpto {
+ 
+ label = <Topic[s.parent.oclIsUndefined()] : RequirementGroup>
+ Topic -> RequirementGroup [constraint=false];
+}
+.... 
+
+#### Matches Topics with parent with Requirement
+[plantuml]
+....
+digraph xpto {
+ 
+ label = <Topic[not t2.parent.oclIsUndefined()] : Requirement>
+ Topic -> Requirement [constraint=false];
+}
+.... 
+
+### 3th Target Model Elements Initialization Phase
+
+The last phase of the execution of an ATL module corresponds to the initialization of the target model elements that have been generated during the previous step. 
+
+At this stage, each allocated target model element is initialized by executing the code of the bindings that are associated with the target pattern element the element comes from.
+
+The imperative code section that can be specified in the scope of a matched rule is executed once the rule initialization step has completed. This imperative code can trigger the execution of some of the called rules that have been defined in the scope of the ATL module.
+
+Examples:
+
+*line 30*
+
+	groups <- m1.rootTopics	
+
+In the previous statement `groups` will be initialized with all the RequirementGroup that were created from the Topic of `rootTopics`
+
+
+*line 47*
+
+	requirements <-  s.subtopics  
+	
+In the previous statement `requirements` will be initialized with all the Requirement that were created from the Topic of `subtopics`
+	
+*line 67*
+
+	children <- t2.subtopics   
+	
+In the previous statement `children` will be initialized with all the Requirement that were created from the Topic of `subtopics`
+	
+*line 76*
+
+	r2.dependencies <- thisModule.resolveTemp(p.target, 'r2');  
+	
+In the previous statement a special operation `resolveTemp` is used to query the trace model.
+
+This operation makes it possible to access the target model elements that are associated with the non-default target pattern elements of a remote rule. 
+
+The first parameter is the source model element which is matched by the remote rule for generating the target model element. The second parameter is the name of the target pattern element.
+	
+## Notes
+
+It is possible to use the operation `debug` to print data to the console during execution of a transformation (see line 78).
+

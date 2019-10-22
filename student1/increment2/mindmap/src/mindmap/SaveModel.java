@@ -2,6 +2,7 @@ package mindmap;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -66,20 +67,27 @@ public class SaveModel {
 		// Retrieve the default factory singleton
         MindmapFactory factory = MindmapFactory.eINSTANCE;
         
-        // Create a map
+     // Create a map
         Map myMap = factory.createMap();
+        myMap.setTitle("MapTitle");
         
         // Create a Topic
         Topic myTopicAgenda = factory.createTopic();
         myTopicAgenda.setName("Agenda");
+        myTopicAgenda.setStart(new Date(2019, 10, 01));
+        myTopicAgenda.setEnd(new Date(2019, 10, 02));
         
         // Create a Topic
         Topic myTopicContacts = factory.createTopic();
         myTopicContacts.setName("Contacts");
+        myTopicContacts.setStart(new Date(2019, 10, 01));
+        myTopicContacts.setEnd(new Date(2019, 10, 02));
 
         // Create a Topic
         Topic myTopicMeeting = factory.createTopic();
         myTopicMeeting.setName("Meeting");
+        myTopicMeeting.setStart(new Date(2019, 10, 01));
+        myTopicMeeting.setEnd(new Date(2019, 10, 02));
 
         // link Agenda and Contacts
         myTopicAgenda.getSubtopics().add(myTopicContacts);
