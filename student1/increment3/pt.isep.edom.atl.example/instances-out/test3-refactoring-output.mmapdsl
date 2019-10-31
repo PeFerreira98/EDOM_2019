@@ -1,0 +1,7 @@
+Map { elements { 
+	Topic AGENDA { subtopics ( Contacts , Meeting ) } , 
+	Topic CONTACTS { parent Agenda } , 
+	Topic MEETING { parent Agenda }, 
+	Topic NEWTOPIC {} 
+	} 
+}
