@@ -1,0 +1,28 @@
+Map { 
+	title "Agenda Map" elements {
+		Topic "Agenda App" {
+			start "2018-09-01" end '2018-10-01' subtopics ( "Contacts", "Meeting" ) 
+		},
+		Topic "Contacts" {
+			start "2018-09-01" end '2018-10-01' subtopics ( "Address", "Email" ) parent "Agenda App" 
+		},
+		Topic "Schedule Meeting" {
+			start "2018-09-01" end '2030-10-01' parent "Meeting"
+		},
+		Topic "Address" {
+			start "2018-01-01" end '2020-01-01' parent "Contacts"
+		},
+		Topic "Meeting" { 
+			start "2018-01-01" end '2020-01-01' subtopics ( "Schedule Meeting", "Room" ) parent "Agenda App" 
+		},
+		Topic "Email" { 
+			start "2018-01-01" end '2020-01-01' parent "Contacts"
+		},
+		Topic "Room" { 
+			start "2018-01-01" end '2020-01-01' parent "Meeting"
+		},
+		Relationship "meeting2contact" { source "Meeting" target "Contacts" }
+	} 
+}
+
+

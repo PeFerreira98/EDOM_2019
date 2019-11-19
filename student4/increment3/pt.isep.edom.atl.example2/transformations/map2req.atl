@@ -1,0 +1,86 @@
+-- @atlcompiler emftvm
+-- @path MM=/pt.isep.edom.mindmap/model/mindmap.ecore
+-- @path MM1=/pt.isep.edom.requirements/model/requirements.ecore
+ 
+module map2req;
+create OUT : MM1 from IN : MM;
+
+-- A counter for Requirement ID
+helper def: contIdR: Integer = 1;
+
+-- A counter for RequirementGroup ID
+helper def: contIdRG: Integer = 0;
+	
+-- All dependencies in mindmap instance
+helper def: dependencies: Set(MM!Relationship) = Set{};
+
+--helper context MM!"Map" def : allDependencies(): Set(MM!Relationship) = 
+--		self.elements->select(x| x.oclIsTypeOf(MM!Relationship))
+--     		->asSet()->select(y|y.oclIsTypeOf(MM!Relationship) and y.type = #DEPENDENCY)->asSet(); 
+
+helper context MM!"Map" def : allDependencies(): Set(MM!Relationship) = 
+		self.elements->select(x| x.oclIsTypeOf(MM!Relationship) and x.type = #DEPENDENCY);
+
+helper context Integer def: inc(): Integer =
+	self + 1;
+ 
+rule Map2Model {
+	from
+		m1: MM!"Map"
+	to 
+		m2: MM1!Model (
+			title <- m1.title 
+		    , groups <- m1.rootTopics		
+		)
+		do { 
+			thisModule.dependencies <- m1.allDependencies(); 
+	}
+}
+
+--implementation of requirement 2
+rule Topic2RequirementGroup {
+	from
+		s: MM!Topic ( 
+			s.parent.oclIsUndefined()
+		)
+	to
+		t: MM1!RequirementGroup (
+			name <- s.name
+			, description <- s.description
+			, requirements <-  s.subtopics  
+		)
+	do { 
+		 thisModule.contIdRG <- thisModule.contIdRG.inc(); 
+		 t.id <- 'G0' + thisModule.contIdRG.toString(); 
+	}
+}
+
+--implementation of equirements 3 and 4
+rule Topic2Requirement{
+	from
+		t2: MM!Topic (
+			not t2.parent.oclIsUndefined()
+		)
+	to
+		r2: MM1!Requirement (
+			name <- t2.name
+			, description <- t2.description, 
+			version <- version
+			--, id <- 'R0' + thisModule.contIdR.toString()
+			, children <-t2.subtopics 			
+		)
+		,
+ 		version: MM1!Version (
+			 major <- 1 -- idem restantes atributos
+	)
+	do { 
+	thisModule.contIdR <- thisModule.contIdR.inc(); 
+	r2.id <- 'R0' + thisModule.contIdR.toString(); 
+	
+	thisModule.dependencies->select(p | p.source = t2)->iterate(a; b:String='' | ('RelationShip '+a.name+' target Topic: '+a.target.name).debug() ); 
+	-- r2.dependencies <- thisModule.dependencies->select(p | p.source = t2);
+	r2.dependencies <- thisModule.dependencies->select(p | p.source = t2)->collect(p2 | thisModule.resolveTemp(p2.target, 'r2'));
+	--	('Topic '+t2.name).debug();
+	}
+}
+
