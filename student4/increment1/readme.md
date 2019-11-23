@@ -7,6 +7,7 @@ file of the folder for this increment):
 3- Analyze possible problems in the coding of the generation of the diagram;"
 
 1- As validações OCL adicionadas ao eCore "gorgeousfood" foram distribuidas de acordo com a responsabilidade de cada entidade criada no modelo.
+
     MealItem
     a. O atributo MealItemID é positivo e um número inteiro;
     b. O MealItem necessita obrigatoriamente ter data de expiro (ExpDate) e data de produção (PrdDate);
