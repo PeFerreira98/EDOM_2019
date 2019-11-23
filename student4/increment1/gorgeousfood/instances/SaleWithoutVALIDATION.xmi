@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gorgeousfood:Sale
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gorgeousfood="http://www.example.org/gorgeousfood"
+    xsi:schemaLocation="http://www.example.org/gorgeousfood gorgeousfood.ecore"
+    SaleID="1"
+    Date="2019-11-10">
+  <mealitem
+      MealItemID="5"
+      ExpDate="2020-10-12"
+      PrdDate="2019-11-10">
+    <meal MealID="20"
+        Description="Massa Bolonhesa">
+      <descriptor
+          DescriptorID="1"
+          Description="Calorias"/>
+      <ingredient
+          IngredientID="50"
+          Description="Massa"/>
+      <ingredient
+          IngredientID="7"
+          Description="Carne"/>
+    </meal>
+  </mealitem>
+  <mealitem
+      MealItemID="6"
+      ExpDate="2022-01-10"
+      PrdDate="2019-11-10">
+    <meal MealID="1"
+        Description="Arroz Atum">
+      <descriptor
+          DescriptorID="2"
+          Description="Proteína"/>
+      <ingredient
+          IngredientID="30"
+          Description="Atum"/>
+      <ingredient
+          IngredientID="1"
+          Description="Arroz"/>
+    </meal>
+  </mealitem>
+</gorgeousfood:Sale>

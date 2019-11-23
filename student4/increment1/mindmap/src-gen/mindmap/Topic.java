@@ -34,6 +34,10 @@ public interface Topic extends MapElement {
 	 * The list contents are of type {@link mindmap.Topic}.
 	 * It is bidirectional and its opposite is '{@link mindmap.Topic#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Subtopics</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subtopics</em>' reference list.
 	 * @see mindmap.MindmapPackage#getTopic_Subtopics()
@@ -47,6 +51,10 @@ public interface Topic extends MapElement {
 	 * Returns the value of the '<em><b>Parent</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link mindmap.Topic#getSubtopics <em>Subtopics</em>}'.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parent</em>' reference.
 	 * @see #setParent(Topic)
@@ -70,6 +78,10 @@ public interface Topic extends MapElement {
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
@@ -92,6 +104,10 @@ public interface Topic extends MapElement {
 	/**
 	 * Returns the value of the '<em><b>Start</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Start</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start</em>' attribute.
 	 * @see #setStart(Date)
@@ -114,6 +130,10 @@ public interface Topic extends MapElement {
 	/**
 	 * Returns the value of the '<em><b>End</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>End</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End</em>' attribute.
 	 * @see #setEnd(Date)
@@ -137,6 +157,10 @@ public interface Topic extends MapElement {
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
 	 * The literals are from the enumeration {@link mindmap.Priority}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Priority</em>' attribute.
 	 * @see mindmap.Priority

@@ -29,6 +29,10 @@ public interface Map extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
@@ -52,6 +56,10 @@ public interface Map extends EObject {
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
 	 * The list contents are of type {@link mindmap.MapElement}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see mindmap.MindmapPackage#getMap_Elements()
@@ -64,6 +72,10 @@ public interface Map extends EObject {
 	 * Returns the value of the '<em><b>Root Topics</b></em>' reference list.
 	 * The list contents are of type {@link mindmap.Topic}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Root Topics</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Root Topics</em>' reference list.
 	 * @see mindmap.MindmapPackage#getMap_RootTopics()

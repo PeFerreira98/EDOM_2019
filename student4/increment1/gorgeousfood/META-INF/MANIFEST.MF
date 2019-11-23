@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: gorgeousfood;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.core.runtime,
+  org.eclipse.ocl.xtext.oclinecore;bundle-version="1.3.0",
+ org.apache.log4j;bundle-version="1.2.15",
+ org.eclipse.ocl.ecore;bundle-version="3.6.200"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: edom.gorgeousfood,
+ edom.gorgeousfood.impl,
+ edom.gorgeousfood.util
+Import-Package: org.eclipse.ocl.common,
+ org.eclipse.ocl.ecore.delegate
+

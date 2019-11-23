@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gorgeousfood:Sale
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gorgeousfood="http://www.example.org/gorgeousfood"
+    xsi:schemaLocation="http://www.example.org/gorgeousfood ../model/gorgeousfood.ecore"
+    SaleID="1">
+  <mealitem
+      MealItemID="1"
+      ExpDate="2019-11-11T00:00:00.000+0000"
+      PrdDate="2018-11-11T00:00:00.000+0000">
+    <meal MealID="1"
+        Description="DESCRmeal"/>
+  </mealitem>
+</gorgeousfood:Sale>

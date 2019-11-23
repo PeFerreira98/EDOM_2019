@@ -10,7 +10,8 @@
       <!-- @generated mindmap -->
       <package
             uri="http://www.example.org/mindmap"
-            class="mindmap.MindmapPackage"/>
+            class="mindmap.MindmapPackage"
+            genModel="model/mindmap.genmodel"/>
    </extension>
 
 </plugin>

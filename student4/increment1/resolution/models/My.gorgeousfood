@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gorgeousfood:Sale xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:gorgeousfood="http://www.example.org/gorgeousfood" Date="2019-11-10">
+  <mealitem ExpDate="2020-01-10" PrdDate="2019-11-10">
+    <meal MealID="20" Description="Arroz Atum">
+      <descriptor DescriptorID="10" Description="Calorias"/>
+      <ingredient IngredientID="2" Description="Atum"/>
+      <ingredient IngredientID="1" Description="Arroz"/>
+    </meal>
+  </mealitem>
+  <mealitem MealItemID="1">
+    <meal MealID="10" Description="Arroz Branco">
+      <descriptor DescriptorID="4" Description="Proteina"/>
+      <ingredient IngredientID="1" Description="Arroz"/>
+    </meal>
+  </mealitem>
+</gorgeousfood:Sale>

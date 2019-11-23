@@ -51,6 +51,10 @@ public enum Priority implements Enumerator {
 	/**
 	 * The '<em><b>HIGH</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>HIGH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HIGH
 	 * @model
@@ -62,6 +66,10 @@ public enum Priority implements Enumerator {
 	/**
 	 * The '<em><b>MEDIUM</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MEDIUM</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MEDIUM
 	 * @model
@@ -73,6 +81,10 @@ public enum Priority implements Enumerator {
 	/**
 	 * The '<em><b>LOW</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>LOW</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LOW
 	 * @model
@@ -191,7 +203,6 @@ public enum Priority implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getValue() {
 		return value;
 	}
@@ -201,7 +212,6 @@ public enum Priority implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -211,7 +221,6 @@ public enum Priority implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getLiteral() {
 		return literal;
 	}

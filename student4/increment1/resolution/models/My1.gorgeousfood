@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gorgeousfood:Sale xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:gorgeousfood="http://www.example.org/gorgeousfood" SaleID="1" Date="2015-10-09T00:00:00.000+0100">
+  <mealitem MealItemID="1" ExpDate="2020-01-01T00:00:00.000+0000" PrdDate="2010-01-01T00:00:00.000+0000">
+    <meal MealID="2" Description="BBB">
+      <descriptor DescriptorID="1" Description="Des1"/>
+      <ingredient IngredientID="1" Description="ING1"/>
+    </meal>
+    <meal MealID="1" Description="AAA">
+      <ingredient IngredientID="2" Description="AAAA"/>
+    </meal>
+  </mealitem>
+</gorgeousfood:Sale>
