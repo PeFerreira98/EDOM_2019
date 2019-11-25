@@ -3,6 +3,7 @@
  */
 package pt.isep.edom.mmapdsl
 
+
 import org.eclipse.xtext.conversion.IValueConverterService
 import pt.isep.edom.mmapdsl.converter.MMapDslValueConverter
 
@@ -10,9 +11,11 @@ import pt.isep.edom.mmapdsl.converter.MMapDslValueConverter
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class MMapDslRuntimeModule extends AbstractMMapDslRuntimeModule {
+	
 	override
     public Class<? extends IValueConverterService> bindIValueConverterService() {
     	// return null
         return MMapDslValueConverter 
-    }
+    }	
+    
 }

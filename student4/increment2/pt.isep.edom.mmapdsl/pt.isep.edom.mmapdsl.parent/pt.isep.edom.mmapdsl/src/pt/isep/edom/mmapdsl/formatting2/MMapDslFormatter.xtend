@@ -4,22 +4,21 @@
 package pt.isep.edom.mmapdsl.formatting2
 
 import com.google.inject.Inject
-import mindmap.Map
-import mindmap.MapElement
+import pt.isep.edom.mindmap.Map
+import pt.isep.edom.mindmap.MapElement
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import pt.isep.edom.mmapdsl.services.MMapDslGrammarAccess
-import mindmap.Topic
+import pt.isep.edom.mindmap.Topic
 
 class MMapDslFormatter extends AbstractFormatter2 {
-
+	
 	@Inject extension MMapDslGrammarAccess
 
 	def dispatch void format(Map map, extension IFormattableDocument document) {
-		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		
 		val open = map.regionFor.keyword(mapAccess.leftCurlyBracketKeyword_4_1)
 		val close = map.regionFor.keyword(mapAccess.rightCurlyBracketKeyword_4_4)
+		
 		open.append[newLine]
 		interior(open, close)[indent]
 
@@ -29,11 +28,13 @@ class MMapDslFormatter extends AbstractFormatter2 {
 		}
 	}
 
-	// TODO: implement for 
 	def dispatch void format(Topic topic, extension IFormattableDocument document) {
 		val open = topic.regionFor.keyword("{")
 		val close = topic.regionFor.keyword("}")
+		
 		open.append[newLine]
+		close.append[newLine]
 		interior(open, close)[indent]
-	}
+
+	} 
 }

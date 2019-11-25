@@ -4,7 +4,7 @@
 package pt.isep.edom.mmapdsl.tests
 
 import com.google.inject.Inject
-import mindmap.Map
+import pt.isep.edom.mindmap.Map
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
@@ -21,14 +21,43 @@ class MMapDslParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Map { elements { 
-				Topic Agenda { subtopics ( Contacts , Meeting ) } , 
-				Topic Contacts { parent Agenda } , 
-				Topic Meeting { parent Agenda }, 
-				Topic NewTopic {}
-			} }
+			Map {title Agenda elements {
+				Topic Contacts {
+					description "descrição" start "2019-10-11" end "2020-01-01"}
+				, Topic ABC{
+					description "descrição" start "2019-10-11" end "2020-01-01" parent Contacts}
+			}}
 		''') 
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
+	
+	@Test
+	def void loadModel2() {
+		val result = parseHelper.parse('''
+			Map {{
+				Topic Contacts {
+					description "descrição" start "2019-10-11" end "2020-01-01"}
+				, Topic ABC{
+					description "descrição" start "2019-10-11" end "2020-01-01" parent Contacts}
+			}}
+		''') 
+		Assert.assertNotNull(result)
+		Assert.assertFalse(result.eResource.errors.isEmpty)
+	}
+	
+	@Test
+	def void loadModel3() {
+		val result = parseHelper.parse('''
+			Map {{
+				Topic Contacts {
+					description "descrição" start "2019-10-11" end "2020-01-01", Topic ABC{
+										description "descrição" start "2019-10-11" end "2020-01-01" parent Contacts}}
+				
+			}}
+		''') 
+		Assert.assertNotNull(result)
+		Assert.assertFalse(result.eResource.errors.isEmpty)
+	}
+
 }

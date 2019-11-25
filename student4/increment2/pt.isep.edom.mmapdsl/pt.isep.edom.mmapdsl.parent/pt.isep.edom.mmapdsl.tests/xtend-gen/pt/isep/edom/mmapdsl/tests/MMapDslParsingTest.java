@@ -4,7 +4,6 @@
 package pt.isep.edom.mmapdsl.tests;
 
 import com.google.inject.Inject;
-import mindmap.Map;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
@@ -13,6 +12,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import pt.isep.edom.mindmap.Map;
 import pt.isep.edom.mmapdsl.tests.MMapDslInjectorProvider;
 
 @RunWith(XtextRunner.class)
@@ -26,25 +26,80 @@ public class MMapDslParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Map { elements { ");
+      _builder.append("Map {title Agenda elements {");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("Topic Agenda { subtopics ( Contacts , Meeting ) } , ");
+      _builder.append("Topic Contacts {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("description \"descrição\" start \"2019-10-11\" end \"2020-01-01\"}");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("Topic Contacts { parent Agenda } , ");
+      _builder.append(", Topic ABC{");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("Topic Meeting { parent Agenda }, ");
+      _builder.append("\t\t");
+      _builder.append("description \"descrição\" start \"2019-10-11\" end \"2020-01-01\" parent Contacts}");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("Topic NewTopic {}");
-      _builder.newLine();
-      _builder.append("} }");
+      _builder.append("}}");
       _builder.newLine();
       final Map result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
       Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void loadModel2() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Map {{");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Topic Contacts {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("description \"descrição\" start \"2019-10-11\" end \"2020-01-01\"}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append(", Topic ABC{");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("description \"descrição\" start \"2019-10-11\" end \"2020-01-01\" parent Contacts}");
+      _builder.newLine();
+      _builder.append("}}");
+      _builder.newLine();
+      final Map result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertFalse(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void loadModel3() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Map {{");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Topic Contacts {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("description \"descrição\" start \"2019-10-11\" end \"2020-01-01\", Topic ABC{");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t\t");
+      _builder.append("description \"descrição\" start \"2019-10-11\" end \"2020-01-01\" parent Contacts}}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("}}");
+      _builder.newLine();
+      final Map result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertFalse(result.eResource().getErrors().isEmpty());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

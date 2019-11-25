@@ -5,9 +5,6 @@ package pt.isep.edom.mmapdsl.formatting2;
 
 import com.google.inject.Inject;
 import java.util.Arrays;
-import mindmap.Map;
-import mindmap.MapElement;
-import mindmap.Topic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
@@ -17,6 +14,9 @@ import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegion;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import pt.isep.edom.mindmap.Map;
+import pt.isep.edom.mindmap.MapElement;
+import pt.isep.edom.mindmap.Topic;
 import pt.isep.edom.mmapdsl.services.MMapDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -56,9 +56,13 @@ public class MMapDslFormatter extends AbstractFormatter2 {
     };
     document.append(open, _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(close, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.indent();
     };
-    document.<ISemanticRegion, ISemanticRegion>interior(open, close, _function_1);
+    document.<ISemanticRegion, ISemanticRegion>interior(open, close, _function_2);
   }
   
   public void format(final Object topic, final IFormattableDocument document) {

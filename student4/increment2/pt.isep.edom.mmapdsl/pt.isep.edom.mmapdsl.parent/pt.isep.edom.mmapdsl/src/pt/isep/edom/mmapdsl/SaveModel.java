@@ -1,6 +1,7 @@
 package pt.isep.edom.mmapdsl;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,10 +26,10 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 
-import mindmap.Map;
-import mindmap.MindmapFactory;
-import mindmap.MindmapPackage;
-import mindmap.Topic;
+import pt.isep.edom.mindmap.Map;
+import pt.isep.edom.mindmap.MindmapFactory;
+import pt.isep.edom.mindmap.MindmapPackage;
+import pt.isep.edom.mindmap.Topic;
 
 public class SaveModel {
 
@@ -80,14 +81,20 @@ public class SaveModel {
         // Create a Topic
         Topic myTopicAgenda = factory.createTopic();
         myTopicAgenda.setName("Agenda");
+        myTopicAgenda.setStart(new Date(2019,1,1));
+        myTopicAgenda.setEnd(new Date(2020,1,1));
         
         // Create a Topic
         Topic myTopicContacts = factory.createTopic();
         myTopicContacts.setName("Contacts");
+        myTopicContacts.setStart(new Date(2019,1,1));
+        myTopicContacts.setEnd(new Date(2020,1,1));
 
         // Create a Topic
         Topic myTopicMeeting = factory.createTopic();
         myTopicMeeting.setName("Meeting");
+        myTopicMeeting.setStart(new Date(2019,1,1));
+        myTopicMeeting.setEnd(new Date(2020,1,1));
 
         // link Agenda and Contacts
         myTopicAgenda.getSubtopics().add(myTopicContacts);

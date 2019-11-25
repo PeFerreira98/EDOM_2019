@@ -9,6 +9,7 @@
     <semanticResources>../instances/Sale.xmi</semanticResources>
     <semanticResources>../run-tasks/build.xml</semanticResources>
     <semanticResources>../build.xml</semanticResources>
+    <semanticResources>../pom.xml</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_z8_t8A1lEeqdufjJBMgjkA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_0CWvEA1lEeqdufjJBMgjkA" name="gorgeousfood" repPath="#_z_u44A1lEeqdufjJBMgjkA">

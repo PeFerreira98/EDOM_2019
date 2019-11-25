@@ -3,12 +3,8 @@
  */
 package pt.isep.edom.mmapdsl.serializer;
 
-import com.google.inject.Inject;
 import java.util.Set;
-import mindmap.Map;
-import mindmap.MindmapPackage;
-import mindmap.Relationship;
-import mindmap.Topic;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Action;
@@ -16,6 +12,13 @@ import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+
+import com.google.inject.Inject;
+
+import pt.isep.edom.mindmap.Map;
+import pt.isep.edom.mindmap.MindmapPackage;
+import pt.isep.edom.mindmap.Relationship;
+import pt.isep.edom.mindmap.Topic;
 import pt.isep.edom.mmapdsl.services.MMapDslGrammarAccess;
 
 @SuppressWarnings("all")
