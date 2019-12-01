@@ -26,7 +26,7 @@ public enum FieldType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STRING(0, "STRING", "STRING"),
+	STRING(3, "STRING", "STRING"),
 
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal object.
@@ -46,7 +46,16 @@ public enum FieldType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REAL(3, "REAL", "REAL");
+	REAL(3, "REAL", "REAL"),
+	/**
+	* The '<em><b>BOOL</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #BOOL_VALUE
+	* @generated
+	* @ordered
+	*/
+	BOOL(0, "BOOL", "BOOL");
 
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
@@ -61,7 +70,7 @@ public enum FieldType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STRING_VALUE = 0;
+	public static final int STRING_VALUE = 3;
 
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal value.
@@ -94,12 +103,23 @@ public enum FieldType implements Enumerator {
 	public static final int REAL_VALUE = 3;
 
 	/**
+	 * The '<em><b>BOOL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BOOL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BOOL_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Field Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final FieldType[] VALUES_ARRAY = new FieldType[] { STRING, INTEGER, REAL, };
+	private static final FieldType[] VALUES_ARRAY = new FieldType[] { STRING, INTEGER, REAL, BOOL, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Field Type</b></em>' enumerators.
@@ -159,8 +179,8 @@ public enum FieldType implements Enumerator {
 			return STRING;
 		case INTEGER_VALUE:
 			return INTEGER;
-		case REAL_VALUE:
-			return REAL;
+		case BOOL_VALUE:
+			return BOOL;
 		}
 		return null;
 	}
@@ -203,6 +223,7 @@ public enum FieldType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -212,6 +233,7 @@ public enum FieldType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -221,6 +243,7 @@ public enum FieldType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 		return literal;
 	}

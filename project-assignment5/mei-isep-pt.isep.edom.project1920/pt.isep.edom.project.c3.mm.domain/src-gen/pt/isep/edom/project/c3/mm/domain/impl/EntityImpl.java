@@ -22,7 +22,7 @@ import pt.isep.edom.project.c3.mm.domain.DomainPackage;
 import pt.isep.edom.project.c3.mm.domain.Entity;
 import pt.isep.edom.project.c3.mm.domain.Field;
 import pt.isep.edom.project.c3.mm.domain.Reference;
-import pt.isep.edom.project.c3.mm.domain.SubEntity;
+import pt.isep.edom.project.c3.mm.domain.ValueObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,8 +34,9 @@ import pt.isep.edom.project.c3.mm.domain.SubEntity;
  * <ul>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getFields <em>Fields</em>}</li>
- *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getSubentities <em>Subentities</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getReferences <em>References</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#isRoot <em>Root</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,16 +73,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	protected EList<Field> fields;
 
 	/**
-	 * The cached value of the '{@link #getSubentities() <em>Subentities</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubentities()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<SubEntity> subentities;
-
-	/**
 	 * The cached value of the '{@link #getReferences() <em>References</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,6 +81,36 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * @ordered
 	 */
 	protected EList<Reference> references;
+
+	/**
+	 * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ROOT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean root = ROOT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getValueobject() <em>Valueobject</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueobject()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ValueObject> valueobject;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,6 +136,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -124,6 +146,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -136,6 +159,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Field> getFields() {
 		if (fields == null) {
 			fields = new EObjectContainmentEList<Field>(Field.class, this, DomainPackage.ENTITY__FIELDS);
@@ -148,19 +172,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<SubEntity> getSubentities() {
-		if (subentities == null) {
-			subentities = new EObjectContainmentEList<SubEntity>(SubEntity.class, this,
-					DomainPackage.ENTITY__SUBENTITIES);
-		}
-		return subentities;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public EList<Reference> getReferences() {
 		if (references == null) {
 			references = new EObjectContainmentEList<Reference>(Reference.class, this,
@@ -175,14 +187,51 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * @generated
 	 */
 	@Override
+	public boolean isRoot() {
+		return root;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRoot(boolean newRoot) {
+		boolean oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DomainPackage.ENTITY__ROOT, oldRoot, root));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<ValueObject> getValueobject() {
+		if (valueobject == null) {
+			valueobject = new EObjectContainmentEList<ValueObject>(ValueObject.class, this,
+					DomainPackage.ENTITY__VALUEOBJECT);
+		}
+		return valueobject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DomainPackage.ENTITY__FIELDS:
 			return ((InternalEList<?>) getFields()).basicRemove(otherEnd, msgs);
-		case DomainPackage.ENTITY__SUBENTITIES:
-			return ((InternalEList<?>) getSubentities()).basicRemove(otherEnd, msgs);
 		case DomainPackage.ENTITY__REFERENCES:
 			return ((InternalEList<?>) getReferences()).basicRemove(otherEnd, msgs);
+		case DomainPackage.ENTITY__VALUEOBJECT:
+			return ((InternalEList<?>) getValueobject()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -199,10 +248,12 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 			return getName();
 		case DomainPackage.ENTITY__FIELDS:
 			return getFields();
-		case DomainPackage.ENTITY__SUBENTITIES:
-			return getSubentities();
 		case DomainPackage.ENTITY__REFERENCES:
 			return getReferences();
+		case DomainPackage.ENTITY__ROOT:
+			return isRoot();
+		case DomainPackage.ENTITY__VALUEOBJECT:
+			return getValueobject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -223,13 +274,16 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 			getFields().clear();
 			getFields().addAll((Collection<? extends Field>) newValue);
 			return;
-		case DomainPackage.ENTITY__SUBENTITIES:
-			getSubentities().clear();
-			getSubentities().addAll((Collection<? extends SubEntity>) newValue);
-			return;
 		case DomainPackage.ENTITY__REFERENCES:
 			getReferences().clear();
 			getReferences().addAll((Collection<? extends Reference>) newValue);
+			return;
+		case DomainPackage.ENTITY__ROOT:
+			setRoot((Boolean) newValue);
+			return;
+		case DomainPackage.ENTITY__VALUEOBJECT:
+			getValueobject().clear();
+			getValueobject().addAll((Collection<? extends ValueObject>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -249,11 +303,14 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 		case DomainPackage.ENTITY__FIELDS:
 			getFields().clear();
 			return;
-		case DomainPackage.ENTITY__SUBENTITIES:
-			getSubentities().clear();
-			return;
 		case DomainPackage.ENTITY__REFERENCES:
 			getReferences().clear();
+			return;
+		case DomainPackage.ENTITY__ROOT:
+			setRoot(ROOT_EDEFAULT);
+			return;
+		case DomainPackage.ENTITY__VALUEOBJECT:
+			getValueobject().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -271,10 +328,12 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case DomainPackage.ENTITY__FIELDS:
 			return fields != null && !fields.isEmpty();
-		case DomainPackage.ENTITY__SUBENTITIES:
-			return subentities != null && !subentities.isEmpty();
 		case DomainPackage.ENTITY__REFERENCES:
 			return references != null && !references.isEmpty();
+		case DomainPackage.ENTITY__ROOT:
+			return root != ROOT_EDEFAULT;
+		case DomainPackage.ENTITY__VALUEOBJECT:
+			return valueobject != null && !valueobject.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -289,9 +348,11 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", root: ");
+		result.append(root);
 		result.append(')');
 		return result.toString();
 	}

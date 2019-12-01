@@ -63,10 +63,10 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 			return createEntity();
 		case DomainPackage.FIELD:
 			return createField();
-		case DomainPackage.SUB_ENTITY:
-			return createSubEntity();
 		case DomainPackage.REFERENCE:
 			return createReference();
+		case DomainPackage.VALUE_OBJECT:
+			return createValueObject();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +107,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainModel createDomainModel() {
 		DomainModelImpl domainModel = new DomainModelImpl();
 		return domainModel;
@@ -117,6 +118,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Entity createEntity() {
 		EntityImpl entity = new EntityImpl();
 		return entity;
@@ -127,6 +129,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Field createField() {
 		FieldImpl field = new FieldImpl();
 		return field;
@@ -137,9 +140,10 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SubEntity createSubEntity() {
-		SubEntityImpl subEntity = new SubEntityImpl();
-		return subEntity;
+	@Override
+	public Reference createReference() {
+		ReferenceImpl reference = new ReferenceImpl();
+		return reference;
 	}
 
 	/**
@@ -147,9 +151,10 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference createReference() {
-		ReferenceImpl reference = new ReferenceImpl();
-		return reference;
+	@Override
+	public ValueObject createValueObject() {
+		ValueObjectImpl valueObject = new ValueObjectImpl();
+		return valueObject;
 	}
 
 	/**
@@ -179,6 +184,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainPackage getDomainPackage() {
 		return (DomainPackage) getEPackage();
 	}

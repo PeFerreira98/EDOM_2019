@@ -13,7 +13,7 @@ import pt.isep.edom.project.c3.dsl.domain.ui.AbstractDomainUiModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class DomainUiModule extends AbstractDomainUiModule {
-  public DomainUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public DomainUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }

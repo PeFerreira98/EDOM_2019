@@ -50,7 +50,7 @@ public interface Field extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The default value is <code>"INTEGER"</code>.
+	 * The default value is <code>"STRING"</code>.
 	 * The literals are from the enumeration {@link pt.isep.edom.project.c3.mm.domain.FieldType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -62,7 +62,7 @@ public interface Field extends EObject {
 	 * @see pt.isep.edom.project.c3.mm.domain.FieldType
 	 * @see #setType(FieldType)
 	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getField_Type()
-	 * @model default="INTEGER"
+	 * @model default="STRING"
 	 * @generated
 	 */
 	FieldType getType();

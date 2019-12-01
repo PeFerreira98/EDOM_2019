@@ -87,16 +87,16 @@ public class DomainSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case DomainPackage.SUB_ENTITY: {
-			SubEntity subEntity = (SubEntity) theEObject;
-			T result = caseSubEntity(subEntity);
+		case DomainPackage.REFERENCE: {
+			Reference reference = (Reference) theEObject;
+			T result = caseReference(reference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case DomainPackage.REFERENCE: {
-			Reference reference = (Reference) theEObject;
-			T result = caseReference(reference);
+		case DomainPackage.VALUE_OBJECT: {
+			ValueObject valueObject = (ValueObject) theEObject;
+			T result = caseValueObject(valueObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -152,21 +152,6 @@ public class DomainSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sub Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sub Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSubEntity(SubEntity object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -178,6 +163,21 @@ public class DomainSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseReference(Reference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValueObject(ValueObject object) {
 		return null;
 	}
 

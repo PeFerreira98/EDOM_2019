@@ -49,15 +49,6 @@ public interface DomainFactory extends EFactory {
 	Field createField();
 
 	/**
-	 * Returns a new object of class '<em>Sub Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sub Entity</em>'.
-	 * @generated
-	 */
-	SubEntity createSubEntity();
-
-	/**
 	 * Returns a new object of class '<em>Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +56,15 @@ public interface DomainFactory extends EFactory {
 	 * @generated
 	 */
 	Reference createReference();
+
+	/**
+	 * Returns a new object of class '<em>Value Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Value Object</em>'.
+	 * @generated
+	 */
+	ValueObject createValueObject();
 
 	/**
 	 * Returns the package supported by this factory.
