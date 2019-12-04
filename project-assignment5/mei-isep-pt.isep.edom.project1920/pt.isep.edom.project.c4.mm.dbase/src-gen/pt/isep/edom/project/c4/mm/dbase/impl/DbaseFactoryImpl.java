@@ -62,6 +62,10 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 			return createTable();
 		case DbasePackage.COLUMN:
 			return createColumn();
+		case DbasePackage.CONSTRAINT:
+			return createConstraint();
+		case DbasePackage.CARDINALITY:
+			return createCardinality();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -77,6 +81,10 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 		switch (eDataType.getClassifierID()) {
 		case DbasePackage.COLUMN_TYPE:
 			return createColumnTypeFromString(eDataType, initialValue);
+		case DbasePackage.BOUNDS_TYPE:
+			return createBoundsTypeFromString(eDataType, initialValue);
+		case DbasePackage.CONSTRAINT_TYPE:
+			return createConstraintTypeFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +100,10 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 		switch (eDataType.getClassifierID()) {
 		case DbasePackage.COLUMN_TYPE:
 			return convertColumnTypeToString(eDataType, instanceValue);
+		case DbasePackage.BOUNDS_TYPE:
+			return convertBoundsTypeToString(eDataType, instanceValue);
+		case DbasePackage.CONSTRAINT_TYPE:
+			return convertConstraintTypeToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -132,6 +144,26 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Constraint createConstraint() {
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Cardinality createCardinality() {
+		CardinalityImpl cardinality = new CardinalityImpl();
+		return cardinality;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ColumnType createColumnTypeFromString(EDataType eDataType, String initialValue) {
 		ColumnType result = ColumnType.get(initialValue);
 		if (result == null)
@@ -146,6 +178,50 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 	 * @generated
 	 */
 	public String convertColumnTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BoundsType createBoundsTypeFromString(EDataType eDataType, String initialValue) {
+		BoundsType result = BoundsType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBoundsTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConstraintType createConstraintTypeFromString(EDataType eDataType, String initialValue) {
+		ConstraintType result = ConstraintType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertConstraintTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

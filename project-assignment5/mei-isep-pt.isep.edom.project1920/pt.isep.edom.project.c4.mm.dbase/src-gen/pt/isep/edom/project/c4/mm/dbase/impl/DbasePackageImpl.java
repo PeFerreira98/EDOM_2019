@@ -8,14 +8,20 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import pt.isep.edom.project.c4.mm.dbase.BoundsType;
+import pt.isep.edom.project.c4.mm.dbase.Cardinality;
 import pt.isep.edom.project.c4.mm.dbase.Column;
 import pt.isep.edom.project.c4.mm.dbase.ColumnType;
+import pt.isep.edom.project.c4.mm.dbase.Constraint;
+import pt.isep.edom.project.c4.mm.dbase.ConstraintType;
 import pt.isep.edom.project.c4.mm.dbase.DbaseFactory;
 import pt.isep.edom.project.c4.mm.dbase.DbaseModel;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
 import pt.isep.edom.project.c4.mm.dbase.Table;
+import pt.isep.edom.project.c4.mm.dbase.util.DbaseValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,7 +54,35 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass constraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cardinalityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum columnTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum boundsTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum constraintTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -104,6 +138,13 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 
 		// Initialize created meta-data
 		theDbasePackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put(theDbasePackage, new EValidator.Descriptor() {
+			public EValidator getEValidator() {
+				return DbaseValidator.INSTANCE;
+			}
+		});
 
 		// Mark meta-data to indicate it can't be changed
 		theDbasePackage.freeze();
@@ -181,6 +222,15 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTable_Constraint() {
+		return (EReference) tableEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getColumn() {
 		return columnEClass;
 	}
@@ -208,8 +258,8 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getColumn_Key() {
-		return (EAttribute) columnEClass.getEStructuralFeatures().get(2);
+	public EClass getConstraint() {
+		return constraintEClass;
 	}
 
 	/**
@@ -217,8 +267,53 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getColumn_ForeignKey() {
-		return (EReference) columnEClass.getEStructuralFeatures().get(3);
+	public EAttribute getConstraint_Name() {
+		return (EAttribute) constraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConstraint_ConstraintType() {
+		return (EAttribute) constraintEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConstraint_Column() {
+		return (EReference) constraintEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConstraint_Cardinality() {
+		return (EReference) constraintEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCardinality() {
+		return cardinalityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCardinality_BoundsType() {
+		return (EAttribute) cardinalityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -228,6 +323,24 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 */
 	public EEnum getColumnType() {
 		return columnTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getBoundsType() {
+		return boundsTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getConstraintType() {
+		return constraintTypeEEnum;
 	}
 
 	/**
@@ -267,15 +380,25 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 		createEAttribute(tableEClass, TABLE__NAME);
 		createEReference(tableEClass, TABLE__COLUMNS);
 		createEAttribute(tableEClass, TABLE__ENTITY);
+		createEReference(tableEClass, TABLE__CONSTRAINT);
 
 		columnEClass = createEClass(COLUMN);
 		createEAttribute(columnEClass, COLUMN__NAME);
 		createEAttribute(columnEClass, COLUMN__TYPE);
-		createEAttribute(columnEClass, COLUMN__KEY);
-		createEReference(columnEClass, COLUMN__FOREIGN_KEY);
+
+		constraintEClass = createEClass(CONSTRAINT);
+		createEAttribute(constraintEClass, CONSTRAINT__NAME);
+		createEAttribute(constraintEClass, CONSTRAINT__CONSTRAINT_TYPE);
+		createEReference(constraintEClass, CONSTRAINT__COLUMN);
+		createEReference(constraintEClass, CONSTRAINT__CARDINALITY);
+
+		cardinalityEClass = createEClass(CARDINALITY);
+		createEAttribute(cardinalityEClass, CARDINALITY__BOUNDS_TYPE);
 
 		// Create enums
 		columnTypeEEnum = createEEnum(COLUMN_TYPE);
+		boundsTypeEEnum = createEEnum(BOUNDS_TYPE);
+		constraintTypeEEnum = createEEnum(CONSTRAINT_TYPE);
 	}
 
 	/**
@@ -325,26 +448,94 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 				IS_ORDERED);
 		initEAttribute(getTable_Entity(), ecorePackage.getEString(), "entity", null, 0, 1, Table.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Constraint(), this.getConstraint(), null, "constraint", null, 0, -1, Table.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, Column.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Type(), this.getColumnType(), "type", null, 0, 1, Column.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getColumn_Key(), ecorePackage.getEBoolean(), "key", null, 0, 1, Column.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getColumn_ForeignKey(), this.getColumn(), null, "foreignKey", null, 0, -1, Column.class,
+
+		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConstraint_Name(), ecorePackage.getEString(), "name", null, 0, 1, Constraint.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstraint_ConstraintType(), this.getConstraintType(), "constraintType", null, 0, 1,
+				Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Column(), this.getColumn(), null, "column", null, 1, -1, Constraint.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Cardinality(), this.getCardinality(), null, "cardinality", null, 0, -1,
+				Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(cardinalityEClass, Cardinality.class, "Cardinality", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCardinality_BoundsType(), this.getBoundsType(), "boundsType", null, 0, 1, Cardinality.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(columnTypeEEnum, ColumnType.class, "ColumnType");
 		addEEnumLiteral(columnTypeEEnum, ColumnType.VARCHAR);
 		addEEnumLiteral(columnTypeEEnum, ColumnType.INTEGER);
 		addEEnumLiteral(columnTypeEEnum, ColumnType.REAL);
+		addEEnumLiteral(columnTypeEEnum, ColumnType.BOOL);
+
+		initEEnum(boundsTypeEEnum, BoundsType.class, "BoundsType");
+		addEEnumLiteral(boundsTypeEEnum, BoundsType.ONE_TO_ONE);
+		addEEnumLiteral(boundsTypeEEnum, BoundsType.ONE_TO_MANY);
+		addEEnumLiteral(boundsTypeEEnum, BoundsType.MANY_TO_MANY);
+
+		initEEnum(constraintTypeEEnum, ConstraintType.class, "ConstraintType");
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.PKFK);
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.UNIQUE);
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.NOTNULL);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation(this, source,
+				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
+						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
+		addAnnotation(dbaseModelEClass, source,
+				new String[] { "constraints", "haveDBModelName validDBModelName containTables uniqueTableName" });
+		addAnnotation(tableEClass, source,
+				new String[] { "constraints", "haveTableName validTableName containColumns" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(dbaseModelEClass, source,
+				new String[] { "haveDBModelName", "not name.oclIsUndefined()", "validDBModelName",
+						"name.matches(\'[a-zA-Z]*\')", "containTables", "self.tables->notEmpty()", "uniqueTableName",
+						"tables->isUnique(name)" });
+		addAnnotation(tableEClass, source, new String[] { "haveTableName", "not name.oclIsUndefined()",
+				"validTableName", "name.matches(\'[a-zA-Z]*\')", "containColumns", "self.columns->notEmpty()" });
 	}
 
 } //DbasePackageImpl
