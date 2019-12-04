@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Reference#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Reference#getEntity <em>Entity</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Reference#getUpperBound <em>Upper Bound</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.Reference#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getReference()
@@ -86,7 +87,7 @@ public interface Reference extends EObject {
 	 * @return the value of the '<em>Upper Bound</em>' attribute.
 	 * @see #setUpperBound(int)
 	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getReference_UpperBound()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getUpperBound();
@@ -100,5 +101,27 @@ public interface Reference extends EObject {
 	 * @generated
 	 */
 	void setUpperBound(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Valueobject</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Valueobject</em>' reference.
+	 * @see #setValueobject(ValueObject)
+	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getReference_Valueobject()
+	 * @model
+	 * @generated
+	 */
+	ValueObject getValueobject();
+
+	/**
+	 * Sets the value of the '{@link pt.isep.edom.project.c3.mm.domain.Reference#getValueobject <em>Valueobject</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Valueobject</em>' reference.
+	 * @see #getValueobject()
+	 * @generated
+	 */
+	void setValueobject(ValueObject value);
 
 } // Reference

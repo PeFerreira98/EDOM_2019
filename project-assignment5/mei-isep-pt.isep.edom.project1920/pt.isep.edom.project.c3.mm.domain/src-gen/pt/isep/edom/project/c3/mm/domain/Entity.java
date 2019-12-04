@@ -17,12 +17,14 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getFields <em>Fields</em>}</li>
- *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getSubentities <em>Subentities</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getReferences <em>References</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#isRoot <em>Root</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustCheckRoot merda mustHaveDescription'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustCheckRoot='root = true or root = false' merda='self.oclType().allInstances() -&gt; exists(r | self &lt;&gt; r  and  self.name =  r.name) = false' mustHaveDescription='not name.oclIsInvalid()'"
  * @generated
  */
 public interface Entity extends EObject {
@@ -69,22 +71,6 @@ public interface Entity extends EObject {
 	EList<Field> getFields();
 
 	/**
-	 * Returns the value of the '<em><b>Subentities</b></em>' containment reference list.
-	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.SubEntity}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Subentities</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Subentities</em>' containment reference list.
-	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity_Subentities()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<SubEntity> getSubentities();
-
-	/**
 	 * Returns the value of the '<em><b>References</b></em>' containment reference list.
 	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.Reference}.
 	 * <!-- begin-user-doc -->
@@ -99,5 +85,40 @@ public interface Entity extends EObject {
 	 * @generated
 	 */
 	EList<Reference> getReferences();
+
+	/**
+	 * Returns the value of the '<em><b>Root</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Root</em>' attribute.
+	 * @see #setRoot(boolean)
+	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity_Root()
+	 * @model default="false" required="true"
+	 * @generated
+	 */
+	boolean isRoot();
+
+	/**
+	 * Sets the value of the '{@link pt.isep.edom.project.c3.mm.domain.Entity#isRoot <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Root</em>' attribute.
+	 * @see #isRoot()
+	 * @generated
+	 */
+	void setRoot(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Valueobject</b></em>' containment reference list.
+	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.ValueObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Valueobject</em>' containment reference list.
+	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity_Valueobject()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ValueObject> getValueobject();
 
 } // Entity

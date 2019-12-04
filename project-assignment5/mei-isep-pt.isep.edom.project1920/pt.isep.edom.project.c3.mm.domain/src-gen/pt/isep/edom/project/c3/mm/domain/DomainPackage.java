@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see pt.isep.edom.project.c3.mm.domain.DomainFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface DomainPackage extends EPackage {
@@ -132,22 +134,31 @@ public interface DomainPackage extends EPackage {
 	int ENTITY__FIELDS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Subentities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY__SUBENTITIES = 2;
-
-	/**
 	 * The feature id for the '<em><b>References</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__REFERENCES = 3;
+	int ENTITY__REFERENCES = 2;
+
+	/**
+	 * The feature id for the '<em><b>Root</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__ROOT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Valueobject</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__VALUEOBJECT = 4;
 
 	/**
 	 * The number of structural features of the '<em>Entity</em>' class.
@@ -156,7 +167,7 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_FEATURE_COUNT = 4;
+	int ENTITY_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Entity</em>' class.
@@ -214,61 +225,6 @@ public interface DomainPackage extends EPackage {
 	int FIELD_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link pt.isep.edom.project.c3.mm.domain.impl.SubEntityImpl <em>Sub Entity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see pt.isep.edom.project.c3.mm.domain.impl.SubEntityImpl
-	 * @see pt.isep.edom.project.c3.mm.domain.impl.DomainPackageImpl#getSubEntity()
-	 * @generated
-	 */
-	int SUB_ENTITY = 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ENTITY__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Entity</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ENTITY__ENTITY = 1;
-
-	/**
-	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ENTITY__UPPER_BOUND = 2;
-
-	/**
-	 * The number of structural features of the '<em>Sub Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ENTITY_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Sub Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ENTITY_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl <em>Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,7 +232,7 @@ public interface DomainPackage extends EPackage {
 	 * @see pt.isep.edom.project.c3.mm.domain.impl.DomainPackageImpl#getReference()
 	 * @generated
 	 */
-	int REFERENCE = 4;
+	int REFERENCE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -306,13 +262,22 @@ public interface DomainPackage extends EPackage {
 	int REFERENCE__UPPER_BOUND = 2;
 
 	/**
+	 * The feature id for the '<em><b>Valueobject</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE__VALUEOBJECT = 3;
+
+	/**
 	 * The number of structural features of the '<em>Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE_FEATURE_COUNT = 3;
+	int REFERENCE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Reference</em>' class.
@@ -322,6 +287,52 @@ public interface DomainPackage extends EPackage {
 	 * @ordered
 	 */
 	int REFERENCE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl <em>Value Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl
+	 * @see pt.isep.edom.project.c3.mm.domain.impl.DomainPackageImpl#getValueObject()
+	 * @generated
+	 */
+	int VALUE_OBJECT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Field</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__FIELD = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__NAME = 1;
+
+	/**
+	 * The number of structural features of the '<em>Value Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Value Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link pt.isep.edom.project.c3.mm.domain.FieldType <em>Field Type</em>}' enum.
@@ -398,17 +409,6 @@ public interface DomainPackage extends EPackage {
 	EReference getEntity_Fields();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c3.mm.domain.Entity#getSubentities <em>Subentities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Subentities</em>'.
-	 * @see pt.isep.edom.project.c3.mm.domain.Entity#getSubentities()
-	 * @see #getEntity()
-	 * @generated
-	 */
-	EReference getEntity_Subentities();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c3.mm.domain.Entity#getReferences <em>References</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +418,28 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEntity_References();
+
+	/**
+	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.Entity#isRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Root</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.Entity#isRoot()
+	 * @see #getEntity()
+	 * @generated
+	 */
+	EAttribute getEntity_Root();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c3.mm.domain.Entity#getValueobject <em>Valueobject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Valueobject</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.Entity#getValueobject()
+	 * @see #getEntity()
+	 * @generated
+	 */
+	EReference getEntity_Valueobject();
 
 	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c3.mm.domain.Field <em>Field</em>}'.
@@ -450,49 +472,6 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getField_Type();
-
-	/**
-	 * Returns the meta object for class '{@link pt.isep.edom.project.c3.mm.domain.SubEntity <em>Sub Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Sub Entity</em>'.
-	 * @see pt.isep.edom.project.c3.mm.domain.SubEntity
-	 * @generated
-	 */
-	EClass getSubEntity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.SubEntity#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see pt.isep.edom.project.c3.mm.domain.SubEntity#getName()
-	 * @see #getSubEntity()
-	 * @generated
-	 */
-	EAttribute getSubEntity_Name();
-
-	/**
-	 * Returns the meta object for the reference '{@link pt.isep.edom.project.c3.mm.domain.SubEntity#getEntity <em>Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Entity</em>'.
-	 * @see pt.isep.edom.project.c3.mm.domain.SubEntity#getEntity()
-	 * @see #getSubEntity()
-	 * @generated
-	 */
-	EReference getSubEntity_Entity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.SubEntity#getUpperBound <em>Upper Bound</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
-	 * @see pt.isep.edom.project.c3.mm.domain.SubEntity#getUpperBound()
-	 * @see #getSubEntity()
-	 * @generated
-	 */
-	EAttribute getSubEntity_UpperBound();
 
 	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c3.mm.domain.Reference <em>Reference</em>}'.
@@ -536,6 +515,49 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getReference_UpperBound();
+
+	/**
+	 * Returns the meta object for the reference '{@link pt.isep.edom.project.c3.mm.domain.Reference#getValueobject <em>Valueobject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Valueobject</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.Reference#getValueobject()
+	 * @see #getReference()
+	 * @generated
+	 */
+	EReference getReference_Valueobject();
+
+	/**
+	 * Returns the meta object for class '{@link pt.isep.edom.project.c3.mm.domain.ValueObject <em>Value Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value Object</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.ValueObject
+	 * @generated
+	 */
+	EClass getValueObject();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link pt.isep.edom.project.c3.mm.domain.ValueObject#getField <em>Field</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Field</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.ValueObject#getField()
+	 * @see #getValueObject()
+	 * @generated
+	 */
+	EReference getValueObject_Field();
+
+	/**
+	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.ValueObject#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.ValueObject#getName()
+	 * @see #getValueObject()
+	 * @generated
+	 */
+	EAttribute getValueObject_Name();
 
 	/**
 	 * Returns the meta object for enum '{@link pt.isep.edom.project.c3.mm.domain.FieldType <em>Field Type</em>}'.
@@ -623,20 +645,28 @@ public interface DomainPackage extends EPackage {
 		EReference ENTITY__FIELDS = eINSTANCE.getEntity_Fields();
 
 		/**
-		 * The meta object literal for the '<em><b>Subentities</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY__SUBENTITIES = eINSTANCE.getEntity_Subentities();
-
-		/**
 		 * The meta object literal for the '<em><b>References</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ENTITY__REFERENCES = eINSTANCE.getEntity_References();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENTITY__ROOT = eINSTANCE.getEntity_Root();
+
+		/**
+		 * The meta object literal for the '<em><b>Valueobject</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY__VALUEOBJECT = eINSTANCE.getEntity_Valueobject();
 
 		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.impl.FieldImpl <em>Field</em>}' class.
@@ -663,40 +693,6 @@ public interface DomainPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FIELD__TYPE = eINSTANCE.getField_Type();
-
-		/**
-		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.impl.SubEntityImpl <em>Sub Entity</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see pt.isep.edom.project.c3.mm.domain.impl.SubEntityImpl
-		 * @see pt.isep.edom.project.c3.mm.domain.impl.DomainPackageImpl#getSubEntity()
-		 * @generated
-		 */
-		EClass SUB_ENTITY = eINSTANCE.getSubEntity();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SUB_ENTITY__NAME = eINSTANCE.getSubEntity_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SUB_ENTITY__ENTITY = eINSTANCE.getSubEntity_Entity();
-
-		/**
-		 * The meta object literal for the '<em><b>Upper Bound</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SUB_ENTITY__UPPER_BOUND = eINSTANCE.getSubEntity_UpperBound();
 
 		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl <em>Reference</em>}' class.
@@ -731,6 +727,40 @@ public interface DomainPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute REFERENCE__UPPER_BOUND = eINSTANCE.getReference_UpperBound();
+
+		/**
+		 * The meta object literal for the '<em><b>Valueobject</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REFERENCE__VALUEOBJECT = eINSTANCE.getReference_Valueobject();
+
+		/**
+		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl <em>Value Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl
+		 * @see pt.isep.edom.project.c3.mm.domain.impl.DomainPackageImpl#getValueObject()
+		 * @generated
+		 */
+		EClass VALUE_OBJECT = eINSTANCE.getValueObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Field</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE_OBJECT__FIELD = eINSTANCE.getValueObject_Field();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VALUE_OBJECT__NAME = eINSTANCE.getValueObject_Name();
 
 		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.FieldType <em>Field Type</em>}' enum.

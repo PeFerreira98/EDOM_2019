@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import pt.isep.edom.project.c3.mm.domain.DomainPackage;
 import pt.isep.edom.project.c3.mm.domain.Entity;
 import pt.isep.edom.project.c3.mm.domain.Reference;
+import pt.isep.edom.project.c3.mm.domain.ValueObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +26,7 @@ import pt.isep.edom.project.c3.mm.domain.Reference;
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getEntity <em>Entity</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getUpperBound <em>Upper Bound</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,6 +83,16 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	protected int upperBound = UPPER_BOUND_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getValueobject() <em>Valueobject</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueobject()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueObject valueobject;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -104,6 +116,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -113,6 +126,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -125,6 +139,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Entity getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject) entity;
@@ -152,6 +167,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(Entity newEntity) {
 		Entity oldEntity = entity;
 		entity = newEntity;
@@ -164,6 +180,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getUpperBound() {
 		return upperBound;
 	}
@@ -173,12 +190,55 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpperBound(int newUpperBound) {
 		int oldUpperBound = upperBound;
 		upperBound = newUpperBound;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DomainPackage.REFERENCE__UPPER_BOUND, oldUpperBound,
 					upperBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ValueObject getValueobject() {
+		if (valueobject != null && valueobject.eIsProxy()) {
+			InternalEObject oldValueobject = (InternalEObject) valueobject;
+			valueobject = (ValueObject) eResolveProxy(oldValueobject);
+			if (valueobject != oldValueobject) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DomainPackage.REFERENCE__VALUEOBJECT,
+							oldValueobject, valueobject));
+			}
+		}
+		return valueobject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueObject basicGetValueobject() {
+		return valueobject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setValueobject(ValueObject newValueobject) {
+		ValueObject oldValueobject = valueobject;
+		valueobject = newValueobject;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DomainPackage.REFERENCE__VALUEOBJECT, oldValueobject,
+					valueobject));
 	}
 
 	/**
@@ -197,6 +257,10 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 			return basicGetEntity();
 		case DomainPackage.REFERENCE__UPPER_BOUND:
 			return getUpperBound();
+		case DomainPackage.REFERENCE__VALUEOBJECT:
+			if (resolve)
+				return getValueobject();
+			return basicGetValueobject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -217,6 +281,9 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 			return;
 		case DomainPackage.REFERENCE__UPPER_BOUND:
 			setUpperBound((Integer) newValue);
+			return;
+		case DomainPackage.REFERENCE__VALUEOBJECT:
+			setValueobject((ValueObject) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -239,6 +306,9 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 		case DomainPackage.REFERENCE__UPPER_BOUND:
 			setUpperBound(UPPER_BOUND_EDEFAULT);
 			return;
+		case DomainPackage.REFERENCE__VALUEOBJECT:
+			setValueobject((ValueObject) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -257,6 +327,8 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 			return entity != null;
 		case DomainPackage.REFERENCE__UPPER_BOUND:
 			return upperBound != UPPER_BOUND_EDEFAULT;
+		case DomainPackage.REFERENCE__VALUEOBJECT:
+			return valueobject != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -271,7 +343,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", upperBound: ");

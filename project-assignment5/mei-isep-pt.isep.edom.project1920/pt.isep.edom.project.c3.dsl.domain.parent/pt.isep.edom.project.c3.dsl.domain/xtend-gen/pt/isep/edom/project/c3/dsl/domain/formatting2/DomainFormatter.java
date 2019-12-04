@@ -14,9 +14,6 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import pt.isep.edom.project.c3.dsl.domain.services.DomainGrammarAccess;
 import pt.isep.edom.project.c3.mm.domain.DomainModel;
 import pt.isep.edom.project.c3.mm.domain.Entity;
-import pt.isep.edom.project.c3.mm.domain.Field;
-import pt.isep.edom.project.c3.mm.domain.Reference;
-import pt.isep.edom.project.c3.mm.domain.SubEntity;
 
 @SuppressWarnings("all")
 public class DomainFormatter extends AbstractFormatter2 {
@@ -32,18 +29,8 @@ public class DomainFormatter extends AbstractFormatter2 {
   }
   
   protected void _format(final Entity entity, @Extension final IFormattableDocument document) {
-    EList<Field> _fields = entity.getFields();
-    for (final Field field : _fields) {
-      document.<Field>format(field);
-    }
-    EList<SubEntity> _subentities = entity.getSubentities();
-    for (final SubEntity subEntity : _subentities) {
-      document.<SubEntity>format(subEntity);
-    }
-    EList<Reference> _references = entity.getReferences();
-    for (final Reference reference : _references) {
-      document.<Reference>format(reference);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method getSubentities() is undefined for the type Entity");
   }
   
   public void format(final Object domainModel, final IFormattableDocument document) {

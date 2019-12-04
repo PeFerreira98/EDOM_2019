@@ -82,13 +82,13 @@ public class DomainAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSubEntity(SubEntity object) {
-			return createSubEntityAdapter();
+		public Adapter caseReference(Reference object) {
+			return createReferenceAdapter();
 		}
 
 		@Override
-		public Adapter caseReference(Reference object) {
-			return createReferenceAdapter();
+		public Adapter caseValueObject(ValueObject object) {
+			return createValueObjectAdapter();
 		}
 
 		@Override
@@ -153,20 +153,6 @@ public class DomainAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link pt.isep.edom.project.c3.mm.domain.SubEntity <em>Sub Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see pt.isep.edom.project.c3.mm.domain.SubEntity
-	 * @generated
-	 */
-	public Adapter createSubEntityAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link pt.isep.edom.project.c3.mm.domain.Reference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -177,6 +163,20 @@ public class DomainAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link pt.isep.edom.project.c3.mm.domain.ValueObject <em>Value Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see pt.isep.edom.project.c3.mm.domain.ValueObject
+	 * @generated
+	 */
+	public Adapter createValueObjectAdapter() {
 		return null;
 	}
 
