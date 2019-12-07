@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import pt.isep.edom.project.c3.mm.domain.DomainModel;
 import pt.isep.edom.project.c3.mm.domain.DomainPackage;
 import pt.isep.edom.project.c3.mm.domain.Entity;
+import pt.isep.edom.project.c3.mm.domain.ValueObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,6 +33,7 @@ import pt.isep.edom.project.c3.mm.domain.Entity;
  * <ul>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.DomainModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.DomainModelImpl#getEntities <em>Entities</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.DomainModelImpl#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +68,16 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 	 * @ordered
 	 */
 	protected EList<Entity> entities;
+
+	/**
+	 * The cached value of the '{@link #getValueobject() <em>Valueobject</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueobject()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ValueObject> valueobject;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,10 +140,26 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 	 * @generated
 	 */
 	@Override
+	public EList<ValueObject> getValueobject() {
+		if (valueobject == null) {
+			valueobject = new EObjectContainmentEList<ValueObject>(ValueObject.class, this,
+					DomainPackage.DOMAIN_MODEL__VALUEOBJECT);
+		}
+		return valueobject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DomainPackage.DOMAIN_MODEL__ENTITIES:
 			return ((InternalEList<?>) getEntities()).basicRemove(otherEnd, msgs);
+		case DomainPackage.DOMAIN_MODEL__VALUEOBJECT:
+			return ((InternalEList<?>) getValueobject()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -148,6 +176,8 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 			return getName();
 		case DomainPackage.DOMAIN_MODEL__ENTITIES:
 			return getEntities();
+		case DomainPackage.DOMAIN_MODEL__VALUEOBJECT:
+			return getValueobject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,6 +198,10 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 			getEntities().clear();
 			getEntities().addAll((Collection<? extends Entity>) newValue);
 			return;
+		case DomainPackage.DOMAIN_MODEL__VALUEOBJECT:
+			getValueobject().clear();
+			getValueobject().addAll((Collection<? extends ValueObject>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -186,6 +220,9 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 		case DomainPackage.DOMAIN_MODEL__ENTITIES:
 			getEntities().clear();
 			return;
+		case DomainPackage.DOMAIN_MODEL__VALUEOBJECT:
+			getValueobject().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,6 +239,8 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case DomainPackage.DOMAIN_MODEL__ENTITIES:
 			return entities != null && !entities.isEmpty();
+		case DomainPackage.DOMAIN_MODEL__VALUEOBJECT:
+			return valueobject != null && !valueobject.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

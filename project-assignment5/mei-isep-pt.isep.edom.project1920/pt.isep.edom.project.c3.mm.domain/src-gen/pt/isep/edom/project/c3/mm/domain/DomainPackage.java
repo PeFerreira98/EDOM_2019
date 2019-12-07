@@ -88,13 +88,22 @@ public interface DomainPackage extends EPackage {
 	int DOMAIN_MODEL__ENTITIES = 1;
 
 	/**
+	 * The feature id for the '<em><b>Valueobject</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_MODEL__VALUEOBJECT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_MODEL_FEATURE_COUNT = 2;
+	int DOMAIN_MODEL_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Model</em>' class.
@@ -152,22 +161,13 @@ public interface DomainPackage extends EPackage {
 	int ENTITY__ROOT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Valueobject</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY__VALUEOBJECT = 4;
-
-	/**
 	 * The number of structural features of the '<em>Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_FEATURE_COUNT = 5;
+	int ENTITY_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Entity</em>' class.
@@ -235,22 +235,13 @@ public interface DomainPackage extends EPackage {
 	int REFERENCE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REFERENCE__NAME = 0;
-
-	/**
 	 * The feature id for the '<em><b>Entity</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE__ENTITY = 1;
+	int REFERENCE__ENTITY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -259,7 +250,7 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE__UPPER_BOUND = 2;
+	int REFERENCE__UPPER_BOUND = 1;
 
 	/**
 	 * The feature id for the '<em><b>Valueobject</b></em>' reference.
@@ -268,7 +259,25 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE__VALUEOBJECT = 3;
+	int REFERENCE__VALUEOBJECT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE__LOWER_BOUND = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE__NAME = 4;
 
 	/**
 	 * The number of structural features of the '<em>Reference</em>' class.
@@ -277,7 +286,7 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE_FEATURE_COUNT = 4;
+	int REFERENCE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Reference</em>' class.
@@ -317,13 +326,22 @@ public interface DomainPackage extends EPackage {
 	int VALUE_OBJECT__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Is Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__IS_ID = 2;
+
+	/**
 	 * The number of structural features of the '<em>Value Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_OBJECT_FEATURE_COUNT = 2;
+	int VALUE_OBJECT_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Value Object</em>' class.
@@ -375,6 +393,17 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDomainModel_Entities();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c3.mm.domain.DomainModel#getValueobject <em>Valueobject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Valueobject</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.DomainModel#getValueobject()
+	 * @see #getDomainModel()
+	 * @generated
+	 */
+	EReference getDomainModel_Valueobject();
 
 	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c3.mm.domain.Entity <em>Entity</em>}'.
@@ -431,17 +460,6 @@ public interface DomainPackage extends EPackage {
 	EAttribute getEntity_Root();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c3.mm.domain.Entity#getValueobject <em>Valueobject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Valueobject</em>'.
-	 * @see pt.isep.edom.project.c3.mm.domain.Entity#getValueobject()
-	 * @see #getEntity()
-	 * @generated
-	 */
-	EReference getEntity_Valueobject();
-
-	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c3.mm.domain.Field <em>Field</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -484,17 +502,6 @@ public interface DomainPackage extends EPackage {
 	EClass getReference();
 
 	/**
-	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.Reference#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see pt.isep.edom.project.c3.mm.domain.Reference#getName()
-	 * @see #getReference()
-	 * @generated
-	 */
-	EAttribute getReference_Name();
-
-	/**
 	 * Returns the meta object for the reference '{@link pt.isep.edom.project.c3.mm.domain.Reference#getEntity <em>Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -528,6 +535,28 @@ public interface DomainPackage extends EPackage {
 	EReference getReference_Valueobject();
 
 	/**
+	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.Reference#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.Reference#getLowerBound()
+	 * @see #getReference()
+	 * @generated
+	 */
+	EAttribute getReference_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.Reference#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.Reference#getName()
+	 * @see #getReference()
+	 * @generated
+	 */
+	EAttribute getReference_Name();
+
+	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c3.mm.domain.ValueObject <em>Value Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -558,6 +587,17 @@ public interface DomainPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getValueObject_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c3.mm.domain.ValueObject#isIsId <em>Is Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Id</em>'.
+	 * @see pt.isep.edom.project.c3.mm.domain.ValueObject#isIsId()
+	 * @see #getValueObject()
+	 * @generated
+	 */
+	EAttribute getValueObject_IsId();
 
 	/**
 	 * Returns the meta object for enum '{@link pt.isep.edom.project.c3.mm.domain.FieldType <em>Field Type</em>}'.
@@ -619,6 +659,14 @@ public interface DomainPackage extends EPackage {
 		EReference DOMAIN_MODEL__ENTITIES = eINSTANCE.getDomainModel_Entities();
 
 		/**
+		 * The meta object literal for the '<em><b>Valueobject</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_MODEL__VALUEOBJECT = eINSTANCE.getDomainModel_Valueobject();
+
+		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl <em>Entity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -661,14 +709,6 @@ public interface DomainPackage extends EPackage {
 		EAttribute ENTITY__ROOT = eINSTANCE.getEntity_Root();
 
 		/**
-		 * The meta object literal for the '<em><b>Valueobject</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY__VALUEOBJECT = eINSTANCE.getEntity_Valueobject();
-
-		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.impl.FieldImpl <em>Field</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -705,14 +745,6 @@ public interface DomainPackage extends EPackage {
 		EClass REFERENCE = eINSTANCE.getReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REFERENCE__NAME = eINSTANCE.getReference_Name();
-
-		/**
 		 * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -735,6 +767,22 @@ public interface DomainPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REFERENCE__VALUEOBJECT = eINSTANCE.getReference_Valueobject();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower Bound</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE__LOWER_BOUND = eINSTANCE.getReference_LowerBound();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE__NAME = eINSTANCE.getReference_Name();
 
 		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl <em>Value Object</em>}' class.
@@ -761,6 +809,14 @@ public interface DomainPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VALUE_OBJECT__NAME = eINSTANCE.getValueObject_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VALUE_OBJECT__IS_ID = eINSTANCE.getValueObject_IsId();
 
 		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c3.mm.domain.FieldType <em>Field Type</em>}' enum.

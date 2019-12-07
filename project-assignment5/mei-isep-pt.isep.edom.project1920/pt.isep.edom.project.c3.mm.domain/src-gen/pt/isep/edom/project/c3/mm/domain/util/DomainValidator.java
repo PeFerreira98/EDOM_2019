@@ -111,7 +111,47 @@ public class DomainValidator extends EObjectValidator {
 	 */
 	public boolean validateDomainModel(DomainModel domainModel, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(domainModel, diagnostics, context);
+		if (!validate_NoCircularContainment(domainModel, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(domainModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDomainModel_valueObjectNameNotEqual(domainModel, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the valueObjectNameNotEqual constraint of '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String DOMAIN_MODEL__VALUE_OBJECT_NAME_NOT_EQUAL__EEXPRESSION = "self.valueobject -> exists(r | self <> r  and  self.name =  r.name) = false";
+
+	/**
+	 * Validates the valueObjectNameNotEqual constraint of '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDomainModel_valueObjectNameNotEqual(DomainModel domainModel, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.DOMAIN_MODEL, domainModel, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "valueObjectNameNotEqual",
+				DOMAIN_MODEL__VALUE_OBJECT_NAME_NOT_EQUAL__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -140,9 +180,17 @@ public class DomainValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validateEntity_mustCheckRoot(entity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateEntity_merda(entity, diagnostics, context);
+			result &= validateEntity_mustHaveDifferentName(entity, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateEntity_mustHaveDescription(entity, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateEntity_mustNotHaveRootReference(entity, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateEntity_referenceNameNotEqual(entity, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateEntity_fieldNameNotEqual(entity, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateEntity_mustHaveDifferentFieldName(entity, diagnostics, context);
 		return result;
 	}
 
@@ -168,23 +216,24 @@ public class DomainValidator extends EObjectValidator {
 	}
 
 	/**
-	 * The cached validation expression for the merda constraint of '<em>Entity</em>'.
+	 * The cached validation expression for the mustHaveDifferentName constraint of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String ENTITY__MERDA__EEXPRESSION = "self.oclType().allInstances() -> exists(r | self <> r  and  self.name =  r.name) = false";
+	protected static final String ENTITY__MUST_HAVE_DIFFERENT_NAME__EEXPRESSION = "self.oclType().allInstances() -> exists(r | self <> r  and  self.name =  r.name) = false";
 
 	/**
-	 * Validates the merda constraint of '<em>Entity</em>'.
+	 * Validates the mustHaveDifferentName constraint of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEntity_merda(Entity entity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateEntity_mustHaveDifferentName(Entity entity, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "merda", ENTITY__MERDA__EEXPRESSION,
-				Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveDifferentName",
+				ENTITY__MUST_HAVE_DIFFERENT_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -193,7 +242,7 @@ public class DomainValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String ENTITY__MUST_HAVE_DESCRIPTION__EEXPRESSION = "not name.oclIsInvalid()";
+	protected static final String ENTITY__MUST_HAVE_DESCRIPTION__EEXPRESSION = "name.oclIsInvalid() = false";
 
 	/**
 	 * Validates the mustHaveDescription constraint of '<em>Entity</em>'.
@@ -206,6 +255,90 @@ public class DomainValidator extends EObjectValidator {
 		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveDescription",
 				ENTITY__MUST_HAVE_DESCRIPTION__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the mustNotHaveRootReference constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ENTITY__MUST_NOT_HAVE_ROOT_REFERENCE__EEXPRESSION = "self.root = 'true' implies self.references -> one(Entity.root = 'true') = false";
+
+	/**
+	 * Validates the mustNotHaveRootReference constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntity_mustNotHaveRootReference(Entity entity, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustNotHaveRootReference",
+				ENTITY__MUST_NOT_HAVE_ROOT_REFERENCE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the referenceNameNotEqual constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ENTITY__REFERENCE_NAME_NOT_EQUAL__EEXPRESSION = "self.references -> exists(r | self <> r  and  self.name =  r.name) = false";
+
+	/**
+	 * Validates the referenceNameNotEqual constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntity_referenceNameNotEqual(Entity entity, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "referenceNameNotEqual",
+				ENTITY__REFERENCE_NAME_NOT_EQUAL__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the fieldNameNotEqual constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ENTITY__FIELD_NAME_NOT_EQUAL__EEXPRESSION = "self.fields -> exists(r | self <> r  and  self.name =  r.name) = false";
+
+	/**
+	 * Validates the fieldNameNotEqual constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntity_fieldNameNotEqual(Entity entity, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "fieldNameNotEqual",
+				ENTITY__FIELD_NAME_NOT_EQUAL__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveDifferentFieldName constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ENTITY__MUST_HAVE_DIFFERENT_FIELD_NAME__EEXPRESSION = "self.fields -> exists(r | self <> r  and  self.name =  r.name) = false";
+
+	/**
+	 * Validates the mustHaveDifferentFieldName constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntity_mustHaveDifferentFieldName(Entity entity, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveDifferentFieldName",
+				ENTITY__MUST_HAVE_DIFFERENT_FIELD_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -223,7 +356,93 @@ public class DomainValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateReference(Reference reference, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(reference, diagnostics, context);
+		if (!validate_NoCircularContainment(reference, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReference_mustHaveValueObjectOrEntity(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReference_needsName(reference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReference_mustHaveDifferentReferenceName(reference, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveValueObjectOrEntity constraint of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REFERENCE__MUST_HAVE_VALUE_OBJECT_OR_ENTITY__EEXPRESSION = "entity.oclIsUndefined() <> valueobject.oclIsUndefined()";
+
+	/**
+	 * Validates the mustHaveValueObjectOrEntity constraint of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateReference_mustHaveValueObjectOrEntity(Reference reference, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.REFERENCE, reference, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveValueObjectOrEntity",
+				REFERENCE__MUST_HAVE_VALUE_OBJECT_OR_ENTITY__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the needsName constraint of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REFERENCE__NEEDS_NAME__EEXPRESSION = "name.oclIsUndefined() = false";
+
+	/**
+	 * Validates the needsName constraint of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateReference_needsName(Reference reference, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.REFERENCE, reference, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "needsName", REFERENCE__NEEDS_NAME__EEXPRESSION,
+				Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveDifferentReferenceName constraint of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REFERENCE__MUST_HAVE_DIFFERENT_REFERENCE_NAME__EEXPRESSION = "self.oclType().allInstances() -> exists(r | self <> r  and  self.name =  r.name) = false";
+
+	/**
+	 * Validates the mustHaveDifferentReferenceName constraint of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateReference_mustHaveDifferentReferenceName(Reference reference, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.REFERENCE, reference, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveDifferentReferenceName",
+				REFERENCE__MUST_HAVE_DIFFERENT_REFERENCE_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -233,7 +452,48 @@ public class DomainValidator extends EObjectValidator {
 	 */
 	public boolean validateValueObject(ValueObject valueObject, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(valueObject, diagnostics, context);
+		if (!validate_NoCircularContainment(valueObject, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(valueObject, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateValueObject_mustHaveDifferentValueObjectName(valueObject, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveDifferentValueObjectName constraint of '<em>Value Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String VALUE_OBJECT__MUST_HAVE_DIFFERENT_VALUE_OBJECT_NAME__EEXPRESSION = "self.oclType().allInstances() -> exists(r | self <> r  and  self.name =  r.name) = false";
+
+	/**
+	 * Validates the mustHaveDifferentValueObjectName constraint of '<em>Value Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateValueObject_mustHaveDifferentValueObjectName(ValueObject valueObject,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.VALUE_OBJECT, valueObject, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveDifferentValueObjectName",
+				VALUE_OBJECT__MUST_HAVE_DIFFERENT_VALUE_OBJECT_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE,
+				0);
 	}
 
 	/**

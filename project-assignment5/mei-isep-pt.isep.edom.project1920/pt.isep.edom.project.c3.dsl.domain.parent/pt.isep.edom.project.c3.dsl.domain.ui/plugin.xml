@@ -4,48 +4,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
-			extensions="domain"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain"
+			extensions="Domain"
+			id="pt.isep.edom.project.c3.dsl.Domain"
 			name="Domain Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+					definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="pt.isep.edom.project.c3.dsl.domain.Domain.validate">
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="pt.isep.edom.project.c3.dsl.Domain.validate">
 		<activeWhen>
 			<reference
-					definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+					definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 			</reference>
 		</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened" />
+				<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.XtextEditor.opened" />
+					<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+		<definition id="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="pt.isep.edom.project.c3.dsl.domain.Domain"
+						value="pt.isep.edom.project.c3.dsl.Domain"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
 		</definition>
-		<definition id="pt.isep.edom.project.c3.dsl.domain.Domain.XtextEditor.opened">
+		<definition id="pt.isep.edom.project.c3.dsl.Domain.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="pt.isep.edom.project.c3.dsl.domain.Domain"
+						value="pt.isep.edom.project.c3.dsl.Domain"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
@@ -78,33 +78,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain"
 			name="Domain">
-			<keywordReference id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"/>
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
 		</page>
 		<page
-			category="pt.isep.edom.project.c3.dsl.domain.Domain"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain.coloring"
+			category="pt.isep.edom.project.c3.dsl.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"/>
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
 		</page>
 		<page
-			category="pt.isep.edom.project.c3.dsl.domain.Domain"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain.templates"
+			category="pt.isep.edom.project.c3.dsl.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain.templates"
 			name="Templates">
-			<keywordReference id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"/>
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain"
 			name="Domain">
-			<keywordReference id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"/>
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -114,14 +114,14 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"
+			id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"
 			label="Domain"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 	<command
 			description="Trigger expensive validation"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain.validate"
+			id="pt.isep.edom.project.c3.dsl.Domain.validate"
 			name="Validate">
 	</command>
 	<!-- copy qualified name -->
@@ -142,12 +142,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			 <command
-				 commandId="pt.isep.edom.project.c3.dsl.domain.Domain.validate"
+				 commandId="pt.isep.edom.project.c3.dsl.Domain.validate"
 				 style="push"
 				 tooltip="Trigger expensive validation">
 			<visibleWhen checkEnabled="false">
 				<reference
-					definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+					definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 				</reference>
 			</visibleWhen>
 		</command>
@@ -157,7 +157,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened" />
+					<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -165,7 +165,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened" />
+					<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.XtextEditor.opened" />
+						<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+					<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -195,30 +195,39 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+					definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
+	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="Domain"
+			id="pt.isep.edom.project.c3.dsl.Domain.contenttype"
+			name="Domain File"
+			priority="normal">
+		</content-type>
 	</extension>
 	<!-- adding resource factories -->
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="domain">
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="Domain">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-			uriExtension="domain">
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="Domain">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for pt.isep.edom.project.c3.dsl.domain.Domain -->
+	<!-- marker definitions for pt.isep.edom.project.c3.dsl.Domain -->
 	<extension
 			id="domain.check.fast"
 			name="Domain Problem"
@@ -240,27 +249,36 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="pt.isep.edom.project.c3.dsl.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
+		</page>
+	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-			fileExtensions="domain"/>
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			fileExtensions="Domain"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="pt.isep.edom.project.c3.dsl.domain.Domain"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain.compiler.preferencePage"
+			category="pt.isep.edom.project.c3.dsl.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"/>
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="pt.isep.edom.project.c3.dsl.domain.Domain"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain.compiler.propertyPage"
+			category="pt.isep.edom.project.c3.dsl.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"/>
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -271,20 +289,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="pt.isep.edom.project.c3.dsl.domain.Domain.OpenGeneratedCode"
+				id="pt.isep.edom.project.c3.dsl.Domain.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened" />
+					<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened" />
+				<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -292,11 +310,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+					definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -316,16 +334,16 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened"/>
+					<reference definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for pt.isep.edom.project.c3.dsl.domain.Domain -->
+	<!-- quickfix marker resolution generator for pt.isep.edom.project.c3.dsl.Domain -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="pt.isep.edom.project.c3.dsl.domain.ui.domain.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
@@ -333,7 +351,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="pt.isep.edom.project.c3.dsl.domain.ui.domain.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
@@ -341,7 +359,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="pt.isep.edom.project.c3.dsl.domain.ui.domain.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
@@ -352,11 +370,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+					definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -368,7 +386,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="pt.isep.edom.project.c3.dsl.domain.Domain.Editor.opened">
+						definitionId="pt.isep.edom.project.c3.dsl.Domain.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -376,34 +394,40 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="pt.isep.edom.project.c3.dsl.domain.Domain"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="pt.isep.edom.project.c3.dsl.domain.Domain.refactoring"
+			category="pt.isep.edom.project.c3.dsl.Domain"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="pt.isep.edom.project.c3.dsl.Domain.refactoring"
 			name="Refactoring">
-			<keywordReference id="pt.isep.edom.project.c3.dsl.domain.ui.keyword_Domain"/>
+			<keywordReference id="pt.isep.edom.project.c3.dsl.ui.keyword_Domain"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="pt.isep.edom.project.c3.dsl.domain.Domain.compare.contentViewers"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="domain">
+		<viewer id="pt.isep.edom.project.c3.dsl.Domain.compare.contentViewers"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="Domain">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="pt.isep.edom.project.c3.dsl.Domain.contenttype"
+			contentViewerId="pt.isep.edom.project.c3.dsl.Domain.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="pt.isep.edom.project.c3.dsl.domain.Domain.compare.contentMergeViewers"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="domain" label="Domain Compare">
+		<viewer id="pt.isep.edom.project.c3.dsl.Domain.compare.contentMergeViewers"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="Domain" label="Domain Compare">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="pt.isep.edom.project.c3.dsl.Domain.contenttype"
+			contentMergeViewerId="pt.isep.edom.project.c3.dsl.Domain.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="pt.isep.edom.project.c3.dsl.domain.Domain.editors.documentProviders"
-			class="pt.isep.edom.project.c3.dsl.domain.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-			extensions="domain">
+		<provider id="pt.isep.edom.project.c3.dsl.Domain.editors.documentProviders"
+			class="pt.isep.edom.project.c3.dsl.ui.DomainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+			extensions="Domain">
 		</provider>
 	</extension>
 	<extension point="org.eclipse.team.core.fileTypes">
 		<fileTypes
-			extension="domain"
+			extension="Domain"
 			type="text">
 		</fileTypes>
 	</extension>

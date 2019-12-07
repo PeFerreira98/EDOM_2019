@@ -17,20 +17,18 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.DomainModel#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.DomainModel#getEntities <em>Entities</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.DomainModel#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getDomainModel()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='valueObjectNameNotEqual'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot valueObjectNameNotEqual='self.valueobject -&gt; exists(r | self &lt;&gt; r  and  self.name =  r.name) = false'"
  * @generated
  */
 public interface DomainModel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -54,10 +52,6 @@ public interface DomainModel extends EObject {
 	 * Returns the value of the '<em><b>Entities</b></em>' containment reference list.
 	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.Entity}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Entities</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entities</em>' containment reference list.
 	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getDomainModel_Entities()
@@ -65,5 +59,17 @@ public interface DomainModel extends EObject {
 	 * @generated
 	 */
 	EList<Entity> getEntities();
+
+	/**
+	 * Returns the value of the '<em><b>Valueobject</b></em>' containment reference list.
+	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.ValueObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Valueobject</em>' containment reference list.
+	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getDomainModel_Valueobject()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ValueObject> getValueobject();
 
 } // DomainModel

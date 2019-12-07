@@ -22,7 +22,6 @@ import pt.isep.edom.project.c3.mm.domain.DomainPackage;
 import pt.isep.edom.project.c3.mm.domain.Entity;
 import pt.isep.edom.project.c3.mm.domain.Field;
 import pt.isep.edom.project.c3.mm.domain.Reference;
-import pt.isep.edom.project.c3.mm.domain.ValueObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +35,6 @@ import pt.isep.edom.project.c3.mm.domain.ValueObject;
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getReferences <em>References</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#isRoot <em>Root</em>}</li>
- *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.EntityImpl#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @generated
@@ -101,16 +99,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * @ordered
 	 */
 	protected boolean root = ROOT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getValueobject() <em>Valueobject</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueobject()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ValueObject> valueobject;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,28 +198,12 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * @generated
 	 */
 	@Override
-	public EList<ValueObject> getValueobject() {
-		if (valueobject == null) {
-			valueobject = new EObjectContainmentEList<ValueObject>(ValueObject.class, this,
-					DomainPackage.ENTITY__VALUEOBJECT);
-		}
-		return valueobject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DomainPackage.ENTITY__FIELDS:
 			return ((InternalEList<?>) getFields()).basicRemove(otherEnd, msgs);
 		case DomainPackage.ENTITY__REFERENCES:
 			return ((InternalEList<?>) getReferences()).basicRemove(otherEnd, msgs);
-		case DomainPackage.ENTITY__VALUEOBJECT:
-			return ((InternalEList<?>) getValueobject()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -252,8 +224,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 			return getReferences();
 		case DomainPackage.ENTITY__ROOT:
 			return isRoot();
-		case DomainPackage.ENTITY__VALUEOBJECT:
-			return getValueobject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -281,10 +251,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 		case DomainPackage.ENTITY__ROOT:
 			setRoot((Boolean) newValue);
 			return;
-		case DomainPackage.ENTITY__VALUEOBJECT:
-			getValueobject().clear();
-			getValueobject().addAll((Collection<? extends ValueObject>) newValue);
-			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -309,9 +275,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 		case DomainPackage.ENTITY__ROOT:
 			setRoot(ROOT_EDEFAULT);
 			return;
-		case DomainPackage.ENTITY__VALUEOBJECT:
-			getValueobject().clear();
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -332,8 +295,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 			return references != null && !references.isEmpty();
 		case DomainPackage.ENTITY__ROOT:
 			return root != ROOT_EDEFAULT;
-		case DomainPackage.ENTITY__VALUEOBJECT:
-			return valueobject != null && !valueobject.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

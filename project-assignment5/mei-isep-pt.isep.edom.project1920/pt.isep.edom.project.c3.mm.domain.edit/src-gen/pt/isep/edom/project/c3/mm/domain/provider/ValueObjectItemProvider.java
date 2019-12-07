@@ -57,6 +57,7 @@ public class ValueObjectItemProvider extends ItemProviderAdapter implements IEdi
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addIsIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -75,6 +76,22 @@ public class ValueObjectItemProvider extends ItemProviderAdapter implements IEdi
 								"_UI_ValueObject_type"),
 						DomainPackage.Literals.VALUE_OBJECT__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ValueObject_isId_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ValueObject_isId_feature",
+								"_UI_ValueObject_type"),
+						DomainPackage.Literals.VALUE_OBJECT__IS_ID, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -154,6 +171,7 @@ public class ValueObjectItemProvider extends ItemProviderAdapter implements IEdi
 
 		switch (notification.getFeatureID(ValueObject.class)) {
 		case DomainPackage.VALUE_OBJECT__NAME:
+		case DomainPackage.VALUE_OBJECT__IS_ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case DomainPackage.VALUE_OBJECT__FIELD:

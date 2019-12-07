@@ -29,7 +29,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="mustCheckRoot" value="root = true or root = false"/>
       <details key="mustHaveDifferentName" value="self.oclType().allInstances() -> exists(r | self &lt;> r  and  self.name =  r.name) = false"/>
-      <details key="mustHaveDescription" value="not name.oclIsInvalid()"/>
+      <details key="mustHaveDescription" value="name.oclIsInvalid() = false"/>
       <details key="mustNotHaveRootReference" value="self.root = 'true' implies self.references -> one(Entity.root = 'true') = false"/>
       <details key="referenceNameNotEqual" value="self.references -> exists(r | self &lt;> r  and  self.name =  r.name) = false"/>
       <details key="fieldNameNotEqual" value="self.fields -> exists(r | self &lt;> r  and  self.name =  r.name) = false"/>
