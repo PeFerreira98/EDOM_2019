@@ -13,7 +13,7 @@ import pt.isep.edom.project.c4.dsl.dbase.ui.AbstractDbaseUiModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class DbaseUiModule extends AbstractDbaseUiModule {
-  public DbaseUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public DbaseUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }
