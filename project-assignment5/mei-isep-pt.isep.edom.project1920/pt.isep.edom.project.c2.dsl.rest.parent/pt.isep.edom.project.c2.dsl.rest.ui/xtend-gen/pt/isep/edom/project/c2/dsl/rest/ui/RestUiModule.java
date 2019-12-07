@@ -13,7 +13,7 @@ import pt.isep.edom.project.c2.dsl.rest.ui.AbstractRestUiModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class RestUiModule extends AbstractRestUiModule {
-  public RestUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public RestUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

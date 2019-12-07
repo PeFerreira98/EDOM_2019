@@ -49,24 +49,6 @@ public interface DbaseFactory extends EFactory {
 	Column createColumn();
 
 	/**
-	 * Returns a new object of class '<em>Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Constraint</em>'.
-	 * @generated
-	 */
-	Constraint createConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Cardinality</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Cardinality</em>'.
-	 * @generated
-	 */
-	Cardinality createCardinality();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

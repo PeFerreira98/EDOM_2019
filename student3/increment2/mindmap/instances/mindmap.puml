@@ -1,9 +1,0 @@
-@startuml
-digraph xpto {
-Agenda
-Contacts
-Meeting
-Agenda -> Contacts
-Agenda -> Meeting
-}
-@enduml

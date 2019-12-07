@@ -13,7 +13,7 @@ import pt.isep.edom.project.c1.dsl.nav.ui.AbstractNavUiModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class NavUiModule extends AbstractNavUiModule {
-  public NavUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public NavUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

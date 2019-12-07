@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see pt.isep.edom.project.c4.mm.dbase.DbaseFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface DbasePackage extends EPackage {
@@ -142,22 +141,13 @@ public interface DbasePackage extends EPackage {
 	int TABLE__ENTITY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TABLE__CONSTRAINT = 3;
-
-	/**
 	 * The number of structural features of the '<em>Table</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_FEATURE_COUNT = 4;
+	int TABLE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Table</em>' class.
@@ -197,13 +187,31 @@ public interface DbasePackage extends EPackage {
 	int COLUMN__TYPE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN__KEY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN__FOREIGN_KEY = 3;
+
+	/**
 	 * The number of structural features of the '<em>Column</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLUMN_FEATURE_COUNT = 2;
+	int COLUMN_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Column</em>' class.
@@ -215,107 +223,6 @@ public interface DbasePackage extends EPackage {
 	int COLUMN_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl <em>Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl
-	 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getConstraint()
-	 * @generated
-	 */
-	int CONSTRAINT = 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Constraint Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CONSTRAINT_TYPE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Column</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__COLUMN = 2;
-
-	/**
-	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CARDINALITY = 3;
-
-	/**
-	 * The number of structural features of the '<em>Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT_FEATURE_COUNT = 4;
-
-	/**
-	 * The number of operations of the '<em>Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link pt.isep.edom.project.c4.mm.dbase.impl.CardinalityImpl <em>Cardinality</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see pt.isep.edom.project.c4.mm.dbase.impl.CardinalityImpl
-	 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getCardinality()
-	 * @generated
-	 */
-	int CARDINALITY = 4;
-
-	/**
-	 * The feature id for the '<em><b>Bounds Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARDINALITY__BOUNDS_TYPE = 0;
-
-	/**
-	 * The number of structural features of the '<em>Cardinality</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARDINALITY_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Cardinality</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARDINALITY_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link pt.isep.edom.project.c4.mm.dbase.ColumnType <em>Column Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -323,27 +230,7 @@ public interface DbasePackage extends EPackage {
 	 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getColumnType()
 	 * @generated
 	 */
-	int COLUMN_TYPE = 5;
-
-	/**
-	 * The meta object id for the '{@link pt.isep.edom.project.c4.mm.dbase.BoundsType <em>Bounds Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see pt.isep.edom.project.c4.mm.dbase.BoundsType
-	 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getBoundsType()
-	 * @generated
-	 */
-	int BOUNDS_TYPE = 6;
-
-	/**
-	 * The meta object id for the '{@link pt.isep.edom.project.c4.mm.dbase.ConstraintType <em>Constraint Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see pt.isep.edom.project.c4.mm.dbase.ConstraintType
-	 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getConstraintType()
-	 * @generated
-	 */
-	int CONSTRAINT_TYPE = 7;
+	int COLUMN_TYPE = 3;
 
 	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c4.mm.dbase.DbaseModel <em>Model</em>}'.
@@ -421,17 +308,6 @@ public interface DbasePackage extends EPackage {
 	EAttribute getTable_Entity();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c4.mm.dbase.Table#getConstraint <em>Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Constraint</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Table#getConstraint()
-	 * @see #getTable()
-	 * @generated
-	 */
-	EReference getTable_Constraint();
-
-	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c4.mm.dbase.Column <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -464,79 +340,26 @@ public interface DbasePackage extends EPackage {
 	EAttribute getColumn_Type();
 
 	/**
-	 * Returns the meta object for class '{@link pt.isep.edom.project.c4.mm.dbase.Constraint <em>Constraint</em>}'.
+	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c4.mm.dbase.Column#isKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Constraint</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Constraint
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see pt.isep.edom.project.c4.mm.dbase.Column#isKey()
+	 * @see #getColumn()
 	 * @generated
 	 */
-	EClass getConstraint();
+	EAttribute getColumn_Key();
 
 	/**
-	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c4.mm.dbase.Constraint#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c4.mm.dbase.Column#getForeignKey <em>Foreign Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Constraint#getName()
-	 * @see #getConstraint()
+	 * @return the meta object for the containment reference list '<em>Foreign Key</em>'.
+	 * @see pt.isep.edom.project.c4.mm.dbase.Column#getForeignKey()
+	 * @see #getColumn()
 	 * @generated
 	 */
-	EAttribute getConstraint_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c4.mm.dbase.Constraint#getConstraintType <em>Constraint Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Constraint Type</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Constraint#getConstraintType()
-	 * @see #getConstraint()
-	 * @generated
-	 */
-	EAttribute getConstraint_ConstraintType();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c4.mm.dbase.Constraint#getColumn <em>Column</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Column</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Constraint#getColumn()
-	 * @see #getConstraint()
-	 * @generated
-	 */
-	EReference getConstraint_Column();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c4.mm.dbase.Constraint#getCardinality <em>Cardinality</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Cardinality</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Constraint#getCardinality()
-	 * @see #getConstraint()
-	 * @generated
-	 */
-	EReference getConstraint_Cardinality();
-
-	/**
-	 * Returns the meta object for class '{@link pt.isep.edom.project.c4.mm.dbase.Cardinality <em>Cardinality</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cardinality</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Cardinality
-	 * @generated
-	 */
-	EClass getCardinality();
-
-	/**
-	 * Returns the meta object for the attribute '{@link pt.isep.edom.project.c4.mm.dbase.Cardinality#getBoundsType <em>Bounds Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Bounds Type</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Cardinality#getBoundsType()
-	 * @see #getCardinality()
-	 * @generated
-	 */
-	EAttribute getCardinality_BoundsType();
+	EReference getColumn_ForeignKey();
 
 	/**
 	 * Returns the meta object for enum '{@link pt.isep.edom.project.c4.mm.dbase.ColumnType <em>Column Type</em>}'.
@@ -547,26 +370,6 @@ public interface DbasePackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getColumnType();
-
-	/**
-	 * Returns the meta object for enum '{@link pt.isep.edom.project.c4.mm.dbase.BoundsType <em>Bounds Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Bounds Type</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.BoundsType
-	 * @generated
-	 */
-	EEnum getBoundsType();
-
-	/**
-	 * Returns the meta object for enum '{@link pt.isep.edom.project.c4.mm.dbase.ConstraintType <em>Constraint Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Constraint Type</em>'.
-	 * @see pt.isep.edom.project.c4.mm.dbase.ConstraintType
-	 * @generated
-	 */
-	EEnum getConstraintType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -652,14 +455,6 @@ public interface DbasePackage extends EPackage {
 		EAttribute TABLE__ENTITY = eINSTANCE.getTable_Entity();
 
 		/**
-		 * The meta object literal for the '<em><b>Constraint</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TABLE__CONSTRAINT = eINSTANCE.getTable_Constraint();
-
-		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c4.mm.dbase.impl.ColumnImpl <em>Column</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -686,64 +481,20 @@ public interface DbasePackage extends EPackage {
 		EAttribute COLUMN__TYPE = eINSTANCE.getColumn_Type();
 
 		/**
-		 * The meta object literal for the '{@link pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl
-		 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getConstraint()
 		 * @generated
 		 */
-		EClass CONSTRAINT = eINSTANCE.getConstraint();
+		EAttribute COLUMN__KEY = eINSTANCE.getColumn_Key();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Foreign Key</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSTRAINT__NAME = eINSTANCE.getConstraint_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Constraint Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONSTRAINT__CONSTRAINT_TYPE = eINSTANCE.getConstraint_ConstraintType();
-
-		/**
-		 * The meta object literal for the '<em><b>Column</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONSTRAINT__COLUMN = eINSTANCE.getConstraint_Column();
-
-		/**
-		 * The meta object literal for the '<em><b>Cardinality</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONSTRAINT__CARDINALITY = eINSTANCE.getConstraint_Cardinality();
-
-		/**
-		 * The meta object literal for the '{@link pt.isep.edom.project.c4.mm.dbase.impl.CardinalityImpl <em>Cardinality</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see pt.isep.edom.project.c4.mm.dbase.impl.CardinalityImpl
-		 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getCardinality()
-		 * @generated
-		 */
-		EClass CARDINALITY = eINSTANCE.getCardinality();
-
-		/**
-		 * The meta object literal for the '<em><b>Bounds Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CARDINALITY__BOUNDS_TYPE = eINSTANCE.getCardinality_BoundsType();
+		EReference COLUMN__FOREIGN_KEY = eINSTANCE.getColumn_ForeignKey();
 
 		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c4.mm.dbase.ColumnType <em>Column Type</em>}' enum.
@@ -754,26 +505,6 @@ public interface DbasePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COLUMN_TYPE = eINSTANCE.getColumnType();
-
-		/**
-		 * The meta object literal for the '{@link pt.isep.edom.project.c4.mm.dbase.BoundsType <em>Bounds Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see pt.isep.edom.project.c4.mm.dbase.BoundsType
-		 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getBoundsType()
-		 * @generated
-		 */
-		EEnum BOUNDS_TYPE = eINSTANCE.getBoundsType();
-
-		/**
-		 * The meta object literal for the '{@link pt.isep.edom.project.c4.mm.dbase.ConstraintType <em>Constraint Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see pt.isep.edom.project.c4.mm.dbase.ConstraintType
-		 * @see pt.isep.edom.project.c4.mm.dbase.impl.DbasePackageImpl#getConstraintType()
-		 * @generated
-		 */
-		EEnum CONSTRAINT_TYPE = eINSTANCE.getConstraintType();
 
 	}
 

@@ -2,10 +2,22 @@
  */
 package pt.isep.edom.project.c4.mm.dbase.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import pt.isep.edom.project.c4.mm.dbase.Column;
 import pt.isep.edom.project.c4.mm.dbase.ColumnType;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
@@ -20,6 +32,8 @@ import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
  * <ul>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ColumnImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ColumnImpl#getType <em>Type</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ColumnImpl#isKey <em>Key</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ColumnImpl#getForeignKey <em>Foreign Key</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,6 +78,36 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * @ordered
 	 */
 	protected ColumnType type = TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isKey() <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean KEY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isKey() <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean key = KEY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getForeignKey() <em>Foreign Key</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForeignKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Column> foreignKey;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,6 +175,53 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isKey() {
+		return key;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKey(boolean newKey) {
+		boolean oldKey = key;
+		key = newKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DbasePackage.COLUMN__KEY, oldKey, key));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Column> getForeignKey() {
+		if (foreignKey == null) {
+			foreignKey = new EObjectContainmentEList<Column>(Column.class, this, DbasePackage.COLUMN__FOREIGN_KEY);
+		}
+		return foreignKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case DbasePackage.COLUMN__FOREIGN_KEY:
+			return ((InternalEList<?>) getForeignKey()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -138,6 +229,10 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 			return getName();
 		case DbasePackage.COLUMN__TYPE:
 			return getType();
+		case DbasePackage.COLUMN__KEY:
+			return isKey();
+		case DbasePackage.COLUMN__FOREIGN_KEY:
+			return getForeignKey();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +252,13 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		case DbasePackage.COLUMN__TYPE:
 			setType((ColumnType) newValue);
 			return;
+		case DbasePackage.COLUMN__KEY:
+			setKey((Boolean) newValue);
+			return;
+		case DbasePackage.COLUMN__FOREIGN_KEY:
+			getForeignKey().clear();
+			getForeignKey().addAll((Collection<? extends Column>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -175,6 +277,12 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		case DbasePackage.COLUMN__TYPE:
 			setType(TYPE_EDEFAULT);
 			return;
+		case DbasePackage.COLUMN__KEY:
+			setKey(KEY_EDEFAULT);
+			return;
+		case DbasePackage.COLUMN__FOREIGN_KEY:
+			getForeignKey().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -191,6 +299,10 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case DbasePackage.COLUMN__TYPE:
 			return type != TYPE_EDEFAULT;
+		case DbasePackage.COLUMN__KEY:
+			return key != KEY_EDEFAULT;
+		case DbasePackage.COLUMN__FOREIGN_KEY:
+			return foreignKey != null && !foreignKey.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,6 +322,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		result.append(name);
 		result.append(", type: ");
 		result.append(type);
+		result.append(", key: ");
+		result.append(key);
 		result.append(')');
 		return result.toString();
 	}

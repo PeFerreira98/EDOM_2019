@@ -13,7 +13,7 @@ import pt.isep.edom.project.c0.dsl.usecase.ui.AbstractUseCaseUiModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class UseCaseUiModule extends AbstractUseCaseUiModule {
-  public UseCaseUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public UseCaseUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

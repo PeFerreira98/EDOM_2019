@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="pt.isep.edom.project.c2.mtl.rest">
-    <property name="ECLIPSE_HOME" value="../../../../../../../../../../../Applications/Eclipse.app/Contents/Eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../../../../../workspaceproject5"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../../Applications/Eclipse Oxygen.app/Contents/Eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../pt.isep.edom.project1920.workspace"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="pt.isep.edom.project.c2.mtl.rest.libraryclasspath">
         <pathelement location="${ECLIPSE_WORKSPACE}/pt.isep.edom.project.c2.mtl.rest/bin"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.13.0.v20170207-1030.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/javax.inject_1.0.0.v20091030.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.12.50.v20170928-1321.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.12.100.v20180210-1608.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi.compatibility.state_1.1.0.v20170516-1513.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.common_3.9.0.v20170207-1454.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.jobs_3.9.1.v20170714-0547.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.jobs_3.9.3.v20180115-1757.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry_3.7.0.v20170222-1344.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.preferences_3.7.0.v20170126-2132.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.6.0.v20170207-1037.jar"/>
@@ -31,7 +31,6 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen_2.12.0.v20170609-0928.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/com.google.guava_21.0.0.v20170206-1425.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/com.google.inject_3.0.0.v201312141243.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/com.google.inject.multibindings_3.0.0.v201402270930.jar"/>
     </path>
 
     <path id="pt.isep.edom.project.c2.mtl.rest.classpath">

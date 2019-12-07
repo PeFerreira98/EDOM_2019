@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
-    modelDirectory="/pt.isep.edom.project.c4.mm.dbase/src-gen" creationIcons="false"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/pt.isep.edom.project.c4.mm.dbase/src-gen" creationIcons="false"
     editDirectory="/pt.isep.edom.project.c4.mm.dbase.edit/src-gen" editorDirectory="/pt.isep.edom.project.c4.mm.dbase.editor/src-gen"
     modelPluginID="pt.isep.edom.project.c4.mm.dbase" modelName="Dbase" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
@@ -9,45 +8,5 @@
   <foreignModel>dbase.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Dbase" basePackage="pt.isep.edom.project.c4.mm" disposableProviderFactory="true"
-      ecorePackage="dbase.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dbase.ecore#//ColumnType">
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ColumnType/VARCHAR"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ColumnType/INTEGER"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ColumnType/REAL"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ColumnType/BOOL"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dbase.ecore#//BoundsType">
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//BoundsType/OneToOne"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//BoundsType/OneToMany"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//BoundsType/ManyToMany"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dbase.ecore#//ConstraintType">
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ConstraintType/PKFK"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ConstraintType/UNIQUE"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ConstraintType/NOTNULL"/>
-    </genEnums>
-    <genClasses ecoreClass="dbase.ecore#//DbaseModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//DbaseModel/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//DbaseModel/tables"/>
-    </genClasses>
-    <genClasses ecoreClass="dbase.ecore#//Table">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Table/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//Table/columns"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Table/entity"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//Table/constraint"/>
-    </genClasses>
-    <genClasses ecoreClass="dbase.ecore#//Column">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Column/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Column/type"/>
-    </genClasses>
-    <genClasses ecoreClass="dbase.ecore#//Constraint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Constraint/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Constraint/constraintType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//Constraint/column"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//Constraint/cardinality"/>
-    </genClasses>
-    <genClasses ecoreClass="dbase.ecore#//Cardinality">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Cardinality/boundsType"/>
-    </genClasses>
-  </genPackages>
+      ecorePackage="dbase.ecore#/"/>
 </genmodel:GenModel>

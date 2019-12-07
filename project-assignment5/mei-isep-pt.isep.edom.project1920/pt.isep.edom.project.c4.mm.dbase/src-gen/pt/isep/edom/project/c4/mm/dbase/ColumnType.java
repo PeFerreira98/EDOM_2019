@@ -46,16 +46,7 @@ public enum ColumnType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REAL(2, "REAL", "REAL"),
-	/**
-	 * The '<em><b>BOOL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	* <!-- end-user-doc -->
-	 * @see #BOOL_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	BOOL(3, "BOOL", "BOOL");
+	REAL(2, "REAL", "REAL");
 
 	/**
 	 * The '<em><b>VARCHAR</b></em>' literal value.
@@ -103,27 +94,12 @@ public enum ColumnType implements Enumerator {
 	public static final int REAL_VALUE = 2;
 
 	/**
-	 * The '<em><b>BOOL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>BOOL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #BOOL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BOOL_VALUE = 3;
-
-	/**
 	 * An array of all the '<em><b>Column Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ColumnType[] VALUES_ARRAY = new ColumnType[] { VARCHAR, INTEGER, REAL, BOOL, };
+	private static final ColumnType[] VALUES_ARRAY = new ColumnType[] { VARCHAR, INTEGER, REAL, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Column Type</b></em>' enumerators.
@@ -185,8 +161,6 @@ public enum ColumnType implements Enumerator {
 			return INTEGER;
 		case REAL_VALUE:
 			return REAL;
-		case BOOL_VALUE:
-			return BOOL;
 		}
 		return null;
 	}
