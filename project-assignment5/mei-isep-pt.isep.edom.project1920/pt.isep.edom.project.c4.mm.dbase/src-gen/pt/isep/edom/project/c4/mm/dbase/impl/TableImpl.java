@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import pt.isep.edom.project.c4.mm.dbase.Column;
+import pt.isep.edom.project.c4.mm.dbase.Constraint;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
 import pt.isep.edom.project.c4.mm.dbase.Table;
 
@@ -33,6 +34,7 @@ import pt.isep.edom.project.c4.mm.dbase.Table;
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.TableImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.TableImpl#getColumns <em>Columns</em>}</li>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.TableImpl#getEntity <em>Entity</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.TableImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
  * @generated
@@ -87,6 +89,16 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	 * @ordered
 	 */
 	protected String entity = ENTITY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraint()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> constraint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,11 +178,26 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Constraint> getConstraint() {
+		if (constraint == null) {
+			constraint = new EObjectContainmentEList<Constraint>(Constraint.class, this,
+					DbasePackage.TABLE__CONSTRAINT);
+		}
+		return constraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DbasePackage.TABLE__COLUMNS:
 			return ((InternalEList<?>) getColumns()).basicRemove(otherEnd, msgs);
+		case DbasePackage.TABLE__CONSTRAINT:
+			return ((InternalEList<?>) getConstraint()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -189,6 +216,8 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 			return getColumns();
 		case DbasePackage.TABLE__ENTITY:
 			return getEntity();
+		case DbasePackage.TABLE__CONSTRAINT:
+			return getConstraint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,6 +241,10 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 		case DbasePackage.TABLE__ENTITY:
 			setEntity((String) newValue);
 			return;
+		case DbasePackage.TABLE__CONSTRAINT:
+			getConstraint().clear();
+			getConstraint().addAll((Collection<? extends Constraint>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -233,6 +266,9 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 		case DbasePackage.TABLE__ENTITY:
 			setEntity(ENTITY_EDEFAULT);
 			return;
+		case DbasePackage.TABLE__CONSTRAINT:
+			getConstraint().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -251,6 +287,8 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 			return columns != null && !columns.isEmpty();
 		case DbasePackage.TABLE__ENTITY:
 			return ENTITY_EDEFAULT == null ? entity != null : !ENTITY_EDEFAULT.equals(entity);
+		case DbasePackage.TABLE__CONSTRAINT:
+			return constraint != null && !constraint.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

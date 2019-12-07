@@ -87,6 +87,20 @@ public class DbaseSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case DbasePackage.CONSTRAINT: {
+			Constraint constraint = (Constraint) theEObject;
+			T result = caseConstraint(constraint);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case DbasePackage.CARDINALITY: {
+			Cardinality cardinality = (Cardinality) theEObject;
+			T result = caseCardinality(cardinality);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -134,6 +148,36 @@ public class DbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseColumn(Column object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConstraint(Constraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cardinality</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cardinality</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCardinality(Cardinality object) {
 		return null;
 	}
 

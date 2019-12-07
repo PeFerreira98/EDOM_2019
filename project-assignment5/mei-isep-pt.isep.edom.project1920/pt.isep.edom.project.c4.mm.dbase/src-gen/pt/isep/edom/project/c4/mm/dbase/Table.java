@@ -18,10 +18,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.Table#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.Table#getColumns <em>Columns</em>}</li>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.Table#getEntity <em>Entity</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c4.mm.dbase.Table#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getTable()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='haveTableName validTableName containColumns'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot haveTableName='not name.oclIsUndefined()' validTableName='name.matches(\'[a-zA-Z]*\')' containColumns='self.columns-&gt;notEmpty()'"
  * @generated
  */
 public interface Table extends EObject {
@@ -92,5 +94,21 @@ public interface Table extends EObject {
 	 * @generated
 	 */
 	void setEntity(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Constraint</b></em>' containment reference list.
+	 * The list contents are of type {@link pt.isep.edom.project.c4.mm.dbase.Constraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraint</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraint</em>' containment reference list.
+	 * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getTable_Constraint()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Constraint> getConstraint();
 
 } // Table

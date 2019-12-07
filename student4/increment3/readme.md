@@ -1,6 +1,7 @@
 # EDOM - Project Increment 3
 
-
-In this folder you should add **all** artifacts developed for the project increment 3.
-
-**Note:** If for some reason you need to bypass these guidelines please ask for directions with your teacher and **always** state the exceptions in your commits and issues in bitbucket.
+" 
+1- Explain your options regarding the transformation between requirements and use cases as well as options regarding the use case metamodel or changes in the requirements metamodel;
+2- The proposed approach (slide 7) ignores RequirementGroup. The use case metamodel also does not include the concept of Subject.
+    Could we develop an alternative DSL and transformation which includes RequirementGroup and Subject?
+    See the following example diagram from the UML official documentation."
