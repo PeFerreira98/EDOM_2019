@@ -58,7 +58,6 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 
 			addNamePropertyDescriptor(object);
 			addRootPropertyDescriptor(object);
-			addValueobjectPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -94,21 +93,6 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 	}
 
 	/**
-	 * This adds a property descriptor for the Valueobject feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValueobjectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Entity_valueobject_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Entity_valueobject_feature",
-								"_UI_Entity_type"),
-						DomainPackage.Literals.ENTITY__VALUEOBJECT, false, false, true, null, null, null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -122,7 +106,6 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DomainPackage.Literals.ENTITY__FIELDS);
 			childrenFeatures.add(DomainPackage.Literals.ENTITY__REFERENCES);
-			childrenFeatures.add(DomainPackage.Literals.ENTITY__VALUEOBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -192,7 +175,6 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 			return;
 		case DomainPackage.ENTITY__FIELDS:
 		case DomainPackage.ENTITY__REFERENCES:
-		case DomainPackage.ENTITY__VALUEOBJECT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -215,9 +197,6 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 
 		newChildDescriptors.add(createChildParameter(DomainPackage.Literals.ENTITY__REFERENCES,
 				DomainFactory.eINSTANCE.createReference()));
-
-		newChildDescriptors.add(createChildParameter(DomainPackage.Literals.ENTITY__VALUEOBJECT,
-				DomainFactory.eINSTANCE.createValueObject()));
 	}
 
 	/**

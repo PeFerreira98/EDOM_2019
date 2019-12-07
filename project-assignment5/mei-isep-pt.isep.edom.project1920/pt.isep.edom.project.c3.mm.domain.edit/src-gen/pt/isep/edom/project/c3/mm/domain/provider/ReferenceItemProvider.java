@@ -53,10 +53,11 @@ public class ReferenceItemProvider extends ItemProviderAdapter implements IEditi
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 			addEntityPropertyDescriptor(object);
 			addUpperBoundPropertyDescriptor(object);
 			addValueobjectPropertyDescriptor(object);
+			addLowerBoundPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -124,6 +125,22 @@ public class ReferenceItemProvider extends ItemProviderAdapter implements IEditi
 	}
 
 	/**
+	 * This adds a property descriptor for the Lower Bound feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLowerBoundPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Reference_lowerBound_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Reference_lowerBound_feature",
+								"_UI_Reference_type"),
+						DomainPackage.Literals.REFERENCE__LOWER_BOUND, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This returns Reference.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,8 +186,9 @@ public class ReferenceItemProvider extends ItemProviderAdapter implements IEditi
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Reference.class)) {
-		case DomainPackage.REFERENCE__NAME:
 		case DomainPackage.REFERENCE__UPPER_BOUND:
+		case DomainPackage.REFERENCE__LOWER_BOUND:
+		case DomainPackage.REFERENCE__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

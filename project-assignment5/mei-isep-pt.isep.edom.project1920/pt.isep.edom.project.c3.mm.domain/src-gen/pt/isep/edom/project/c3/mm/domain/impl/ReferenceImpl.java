@@ -23,35 +23,16 @@ import pt.isep.edom.project.c3.mm.domain.ValueObject;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getEntity <em>Entity</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getValueobject <em>Valueobject</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ReferenceImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ReferenceImpl extends MinimalEObjectImpl.Container implements Reference {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getEntity() <em>Entity</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -93,6 +74,46 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	protected ValueObject valueobject;
 
 	/**
+	 * The default value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOWER_BOUND_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected int lowerBound = LOWER_BOUND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -109,29 +130,6 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	@Override
 	protected EClass eStaticClass() {
 		return DomainPackage.Literals.REFERENCE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DomainPackage.REFERENCE__NAME, oldName, name));
 	}
 
 	/**
@@ -247,10 +245,55 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	 * @generated
 	 */
 	@Override
+	public int getLowerBound() {
+		return lowerBound;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLowerBound(int newLowerBound) {
+		int oldLowerBound = lowerBound;
+		lowerBound = newLowerBound;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DomainPackage.REFERENCE__LOWER_BOUND, oldLowerBound,
+					lowerBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DomainPackage.REFERENCE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case DomainPackage.REFERENCE__NAME:
-			return getName();
 		case DomainPackage.REFERENCE__ENTITY:
 			if (resolve)
 				return getEntity();
@@ -261,6 +304,10 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 			if (resolve)
 				return getValueobject();
 			return basicGetValueobject();
+		case DomainPackage.REFERENCE__LOWER_BOUND:
+			return getLowerBound();
+		case DomainPackage.REFERENCE__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -273,9 +320,6 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case DomainPackage.REFERENCE__NAME:
-			setName((String) newValue);
-			return;
 		case DomainPackage.REFERENCE__ENTITY:
 			setEntity((Entity) newValue);
 			return;
@@ -284,6 +328,12 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 			return;
 		case DomainPackage.REFERENCE__VALUEOBJECT:
 			setValueobject((ValueObject) newValue);
+			return;
+		case DomainPackage.REFERENCE__LOWER_BOUND:
+			setLowerBound((Integer) newValue);
+			return;
+		case DomainPackage.REFERENCE__NAME:
+			setName((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -297,9 +347,6 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case DomainPackage.REFERENCE__NAME:
-			setName(NAME_EDEFAULT);
-			return;
 		case DomainPackage.REFERENCE__ENTITY:
 			setEntity((Entity) null);
 			return;
@@ -308,6 +355,12 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 			return;
 		case DomainPackage.REFERENCE__VALUEOBJECT:
 			setValueobject((ValueObject) null);
+			return;
+		case DomainPackage.REFERENCE__LOWER_BOUND:
+			setLowerBound(LOWER_BOUND_EDEFAULT);
+			return;
+		case DomainPackage.REFERENCE__NAME:
+			setName(NAME_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -321,14 +374,16 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case DomainPackage.REFERENCE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case DomainPackage.REFERENCE__ENTITY:
 			return entity != null;
 		case DomainPackage.REFERENCE__UPPER_BOUND:
 			return upperBound != UPPER_BOUND_EDEFAULT;
 		case DomainPackage.REFERENCE__VALUEOBJECT:
 			return valueobject != null;
+		case DomainPackage.REFERENCE__LOWER_BOUND:
+			return lowerBound != LOWER_BOUND_EDEFAULT;
+		case DomainPackage.REFERENCE__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -344,10 +399,12 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", upperBound: ");
+		result.append(" (upperBound: ");
 		result.append(upperBound);
+		result.append(", lowerBound: ");
+		result.append(lowerBound);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
