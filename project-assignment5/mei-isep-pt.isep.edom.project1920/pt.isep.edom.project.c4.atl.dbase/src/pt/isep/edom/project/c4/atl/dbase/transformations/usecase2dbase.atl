@@ -4,6 +4,8 @@
   
 module usecase2dbase;
 create OUT : MMDbase from IN : MMUseCase;
+
+helper def: tables : Set(MMDbase!Table) = Set{};
  
 rule UseCaseModel2DbaseModel {
 	from
@@ -19,6 +21,9 @@ rule UseCaseModel2DbaseModel {
 				endif
 				)
 		)
+	do{
+		thisModule.tables <- m2.tables;
+	}
 }
 
 --Each UseCase with comments CRUD and entity or local entity shoudl result in a Table with one column for its key
