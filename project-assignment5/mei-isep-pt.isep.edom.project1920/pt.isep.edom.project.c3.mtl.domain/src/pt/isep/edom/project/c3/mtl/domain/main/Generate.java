@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.inject.Injector;
 
-import pt.isep.edom.project.c3.dsl.domain.DomainStandaloneSetup;
+import pt.isep.edom.project.c3.dsl.DomainStandaloneSetup;
 import pt.isep.edom.project.c3.mm.domain.DomainPackage;
 
 /**
