@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.EValidator;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import pt.isep.edom.project.c3.mm.domain.DomainFactory;
@@ -19,6 +19,7 @@ import pt.isep.edom.project.c3.mm.domain.Field;
 import pt.isep.edom.project.c3.mm.domain.FieldType;
 import pt.isep.edom.project.c3.mm.domain.Reference;
 import pt.isep.edom.project.c3.mm.domain.ValueObject;
+
 import pt.isep.edom.project.c3.mm.domain.util.DomainValidator;
 
 /**
@@ -178,6 +179,16 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getDomainModel_Valueobject() {
+		return (EReference) domainModelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEntity() {
 		return entityEClass;
 	}
@@ -228,16 +239,6 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getEntity_Valueobject() {
-		return (EReference) entityEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getField() {
 		return fieldEClass;
 	}
@@ -278,18 +279,8 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getReference_Name() {
-		return (EAttribute) referenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getReference_Entity() {
-		return (EReference) referenceEClass.getEStructuralFeatures().get(1);
+		return (EReference) referenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -299,7 +290,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 */
 	@Override
 	public EAttribute getReference_UpperBound() {
-		return (EAttribute) referenceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) referenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -309,7 +300,27 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 */
 	@Override
 	public EReference getReference_Valueobject() {
-		return (EReference) referenceEClass.getEStructuralFeatures().get(3);
+		return (EReference) referenceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReference_LowerBound() {
+		return (EAttribute) referenceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReference_Name() {
+		return (EAttribute) referenceEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -340,6 +351,16 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	@Override
 	public EAttribute getValueObject_Name() {
 		return (EAttribute) valueObjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getValueObject_IsId() {
+		return (EAttribute) valueObjectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -385,27 +406,29 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 		domainModelEClass = createEClass(DOMAIN_MODEL);
 		createEAttribute(domainModelEClass, DOMAIN_MODEL__NAME);
 		createEReference(domainModelEClass, DOMAIN_MODEL__ENTITIES);
+		createEReference(domainModelEClass, DOMAIN_MODEL__VALUEOBJECT);
 
 		entityEClass = createEClass(ENTITY);
 		createEAttribute(entityEClass, ENTITY__NAME);
 		createEReference(entityEClass, ENTITY__FIELDS);
 		createEReference(entityEClass, ENTITY__REFERENCES);
 		createEAttribute(entityEClass, ENTITY__ROOT);
-		createEReference(entityEClass, ENTITY__VALUEOBJECT);
 
 		fieldEClass = createEClass(FIELD);
 		createEAttribute(fieldEClass, FIELD__NAME);
 		createEAttribute(fieldEClass, FIELD__TYPE);
 
 		referenceEClass = createEClass(REFERENCE);
-		createEAttribute(referenceEClass, REFERENCE__NAME);
 		createEReference(referenceEClass, REFERENCE__ENTITY);
 		createEAttribute(referenceEClass, REFERENCE__UPPER_BOUND);
 		createEReference(referenceEClass, REFERENCE__VALUEOBJECT);
+		createEAttribute(referenceEClass, REFERENCE__LOWER_BOUND);
+		createEAttribute(referenceEClass, REFERENCE__NAME);
 
 		valueObjectEClass = createEClass(VALUE_OBJECT);
 		createEReference(valueObjectEClass, VALUE_OBJECT__FIELD);
 		createEAttribute(valueObjectEClass, VALUE_OBJECT__NAME);
+		createEAttribute(valueObjectEClass, VALUE_OBJECT__IS_ID);
 
 		// Create enums
 		fieldTypeEEnum = createEEnum(FIELD_TYPE);
@@ -449,6 +472,9 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 		initEReference(getDomainModel_Entities(), this.getEntity(), null, "entities", null, 0, -1, DomainModel.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainModel_Valueobject(), this.getValueObject(), null, "valueobject", null, 0, -1,
+				DomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT,
@@ -461,9 +487,6 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntity_Root(), ecorePackage.getEBoolean(), "root", "false", 1, 1, Entity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEntity_Valueobject(), this.getValueObject(), null, "valueobject", null, 0, -1, Entity.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getField_Name(), ecorePackage.getEString(), "name", null, 0, 1, Field.class, !IS_TRANSIENT,
@@ -473,8 +496,6 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 
 		initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReference_Name(), ecorePackage.getEString(), "name", null, 0, 1, Reference.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReference_Entity(), this.getEntity(), null, "entity", null, 0, 1, Reference.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -483,6 +504,10 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 		initEReference(getReference_Valueobject(), this.getValueObject(), null, "valueobject", null, 0, 1,
 				Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReference_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 1, 1, Reference.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReference_Name(), ecorePackage.getEString(), "name", null, 0, 1, Reference.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueObjectEClass, ValueObject.class, "ValueObject", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -490,6 +515,8 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getValueObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, ValueObject.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getValueObject_IsId(), ecorePackage.getEBoolean(), "isId", "false", 1, 1, ValueObject.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
@@ -534,7 +561,12 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
 						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
 						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
-		addAnnotation(entityEClass, source, new String[] { "constraints", "mustCheckRoot merda mustHaveDescription" });
+		addAnnotation(domainModelEClass, source, new String[] { "constraints", "valueObjectNameNotEqual" });
+		addAnnotation(entityEClass, source, new String[] { "constraints",
+				"mustCheckRoot mustHaveDifferentName mustHaveDescription mustNotHaveRootReference referenceNameNotEqual fieldNameNotEqual mustHaveDifferentFieldName" });
+		addAnnotation(referenceEClass, source,
+				new String[] { "constraints", "mustHaveValueObjectOrEntity needsName mustHaveDifferentReferenceName" });
+		addAnnotation(valueObjectEClass, source, new String[] { "constraints", "mustHaveDifferentValueObjectName" });
 	}
 
 	/**
@@ -545,10 +577,24 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 */
 	protected void createPivotAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(domainModelEClass, source, new String[] { "valueObjectNameNotEqual",
+				"self.valueobject -> exists(r | self <> r  and  self.name =  r.name) = false" });
 		addAnnotation(entityEClass, source,
-				new String[] { "mustCheckRoot", "root = true or root = false", "merda",
+				new String[] { "mustCheckRoot", "root = true or root = false", "mustHaveDifferentName",
 						"self.oclType().allInstances() -> exists(r | self <> r  and  self.name =  r.name) = false",
-						"mustHaveDescription", "not name.oclIsInvalid()" });
+						"mustHaveDescription", "name.oclIsInvalid() = false", "mustNotHaveRootReference",
+						"self.root = \'true\' implies self.references -> one(Entity.root = \'true\') = false",
+						"referenceNameNotEqual",
+						"self.references -> exists(r | self <> r  and  self.name =  r.name) = false",
+						"fieldNameNotEqual", "self.fields -> exists(r | self <> r  and  self.name =  r.name) = false",
+						"mustHaveDifferentFieldName",
+						"self.fields -> exists(r | self <> r  and  self.name =  r.name) = false" });
+		addAnnotation(referenceEClass, source,
+				new String[] { "mustHaveValueObjectOrEntity", "entity.oclIsUndefined() <> valueobject.oclIsUndefined()",
+						"needsName", "name.oclIsUndefined() = false", "mustHaveDifferentReferenceName",
+						"self.oclType().allInstances() -> exists(r | self <> r  and  self.name =  r.name) = false" });
+		addAnnotation(valueObjectEClass, source, new String[] { "mustHaveDifferentValueObjectName",
+				"self.oclType().allInstances() -> exists(r | self <> r  and  self.name =  r.name) = false" });
 	}
 
 } //DomainPackageImpl

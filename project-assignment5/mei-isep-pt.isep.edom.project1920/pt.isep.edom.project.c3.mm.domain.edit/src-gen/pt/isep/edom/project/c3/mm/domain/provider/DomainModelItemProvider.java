@@ -90,6 +90,7 @@ public class DomainModelItemProvider extends ItemProviderAdapter implements IEdi
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DomainPackage.Literals.DOMAIN_MODEL__ENTITIES);
+			childrenFeatures.add(DomainPackage.Literals.DOMAIN_MODEL__VALUEOBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -157,6 +158,7 @@ public class DomainModelItemProvider extends ItemProviderAdapter implements IEdi
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case DomainPackage.DOMAIN_MODEL__ENTITIES:
+		case DomainPackage.DOMAIN_MODEL__VALUEOBJECT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -176,6 +178,9 @@ public class DomainModelItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add(createChildParameter(DomainPackage.Literals.DOMAIN_MODEL__ENTITIES,
 				DomainFactory.eINSTANCE.createEntity()));
+
+		newChildDescriptors.add(createChildParameter(DomainPackage.Literals.DOMAIN_MODEL__VALUEOBJECT,
+				DomainFactory.eINSTANCE.createValueObject()));
 	}
 
 	/**

@@ -25,6 +25,7 @@ import pt.isep.edom.project.c3.mm.domain.ValueObject;
  * <ul>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl#getField <em>Field</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c3.mm.domain.impl.ValueObjectImpl#isIsId <em>Is Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,6 +60,26 @@ public class ValueObjectImpl extends MinimalEObjectImpl.Container implements Val
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsId() <em>Is Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ID_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsId() <em>Is Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsId()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isId = IS_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,6 +181,29 @@ public class ValueObjectImpl extends MinimalEObjectImpl.Container implements Val
 	 * @generated
 	 */
 	@Override
+	public boolean isIsId() {
+		return isId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIsId(boolean newIsId) {
+		boolean oldIsId = isId;
+		isId = newIsId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DomainPackage.VALUE_OBJECT__IS_ID, oldIsId, isId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DomainPackage.VALUE_OBJECT__FIELD:
@@ -180,6 +224,8 @@ public class ValueObjectImpl extends MinimalEObjectImpl.Container implements Val
 			return getField();
 		case DomainPackage.VALUE_OBJECT__NAME:
 			return getName();
+		case DomainPackage.VALUE_OBJECT__IS_ID:
+			return isIsId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,6 +243,9 @@ public class ValueObjectImpl extends MinimalEObjectImpl.Container implements Val
 			return;
 		case DomainPackage.VALUE_OBJECT__NAME:
 			setName((String) newValue);
+			return;
+		case DomainPackage.VALUE_OBJECT__IS_ID:
+			setIsId((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -216,6 +265,9 @@ public class ValueObjectImpl extends MinimalEObjectImpl.Container implements Val
 		case DomainPackage.VALUE_OBJECT__NAME:
 			setName(NAME_EDEFAULT);
 			return;
+		case DomainPackage.VALUE_OBJECT__IS_ID:
+			setIsId(IS_ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,6 +284,8 @@ public class ValueObjectImpl extends MinimalEObjectImpl.Container implements Val
 			return field != null;
 		case DomainPackage.VALUE_OBJECT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case DomainPackage.VALUE_OBJECT__IS_ID:
+			return isId != IS_ID_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -249,6 +303,8 @@ public class ValueObjectImpl extends MinimalEObjectImpl.Container implements Val
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", isId: ");
+		result.append(isId);
 		result.append(')');
 		return result.toString();
 	}

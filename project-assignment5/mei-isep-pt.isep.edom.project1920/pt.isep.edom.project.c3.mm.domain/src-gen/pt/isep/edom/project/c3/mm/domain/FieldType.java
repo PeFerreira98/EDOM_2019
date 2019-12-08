@@ -26,7 +26,7 @@ public enum FieldType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STRING(3, "STRING", "STRING"),
+	STRING(0, "STRING", "STRING"),
 
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal object.
@@ -46,39 +46,32 @@ public enum FieldType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REAL(3, "REAL", "REAL"),
+	REAL(2, "REAL", "REAL"),
+
 	/**
-	* The '<em><b>BOOL</b></em>' literal object.
-	* <!-- begin-user-doc -->
-	* <!-- end-user-doc -->
-	* @see #BOOL_VALUE
-	* @generated
-	* @ordered
-	*/
-	BOOL(0, "BOOL", "BOOL");
+	 * The '<em><b>BOOL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BOOL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BOOL(3, "BOOL", "BOOLEAN");
 
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STRING
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STRING_VALUE = 3;
+	public static final int STRING_VALUE = 0;
 
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>INTEGER</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INTEGER
 	 * @model
@@ -90,28 +83,24 @@ public enum FieldType implements Enumerator {
 	/**
 	 * The '<em><b>REAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>REAL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REAL
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REAL_VALUE = 3;
+	public static final int REAL_VALUE = 2;
 
 	/**
 	 * The '<em><b>BOOL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #BOOL
-	 * @model
+	 * @model literal="BOOLEAN"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BOOL_VALUE = 0;
+	public static final int BOOL_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>Field Type</b></em>' enumerators.
@@ -179,6 +168,8 @@ public enum FieldType implements Enumerator {
 			return STRING;
 		case INTEGER_VALUE:
 			return INTEGER;
+		case REAL_VALUE:
+			return REAL;
 		case BOOL_VALUE:
 			return BOOL;
 		}

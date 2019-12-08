@@ -19,22 +19,17 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getFields <em>Fields</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getReferences <em>References</em>}</li>
  *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#isRoot <em>Root</em>}</li>
- *   <li>{@link pt.isep.edom.project.c3.mm.domain.Entity#getValueobject <em>Valueobject</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustCheckRoot merda mustHaveDescription'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustCheckRoot='root = true or root = false' merda='self.oclType().allInstances() -&gt; exists(r | self &lt;&gt; r  and  self.name =  r.name) = false' mustHaveDescription='not name.oclIsInvalid()'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustCheckRoot mustHaveDifferentName mustHaveDescription mustNotHaveRootReference referenceNameNotEqual fieldNameNotEqual mustHaveDifferentFieldName'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustCheckRoot='root = true or root = false' mustHaveDifferentName='self.oclType().allInstances() -&gt; exists(r | self &lt;&gt; r  and  self.name =  r.name) = false' mustHaveDescription='name.oclIsInvalid() = false' mustNotHaveRootReference='self.root = \'true\' implies self.references -&gt; one(Entity.root = \'true\') = false' referenceNameNotEqual='self.references -&gt; exists(r | self &lt;&gt; r  and  self.name =  r.name) = false' fieldNameNotEqual='self.fields -&gt; exists(r | self &lt;&gt; r  and  self.name =  r.name) = false' mustHaveDifferentFieldName='self.fields -&gt; exists(r | self &lt;&gt; r  and  self.name =  r.name) = false'"
  * @generated
  */
 public interface Entity extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -58,10 +53,6 @@ public interface Entity extends EObject {
 	 * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
 	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.Field}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Fields</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fields</em>' containment reference list.
 	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity_Fields()
@@ -74,10 +65,6 @@ public interface Entity extends EObject {
 	 * Returns the value of the '<em><b>References</b></em>' containment reference list.
 	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.Reference}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>References</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>References</em>' containment reference list.
 	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity_References()
@@ -108,17 +95,5 @@ public interface Entity extends EObject {
 	 * @generated
 	 */
 	void setRoot(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Valueobject</b></em>' containment reference list.
-	 * The list contents are of type {@link pt.isep.edom.project.c3.mm.domain.ValueObject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Valueobject</em>' containment reference list.
-	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getEntity_Valueobject()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<ValueObject> getValueobject();
 
 } // Entity
