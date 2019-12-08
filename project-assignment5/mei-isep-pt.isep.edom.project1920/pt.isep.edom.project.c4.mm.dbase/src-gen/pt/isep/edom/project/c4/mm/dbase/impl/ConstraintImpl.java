@@ -2,27 +2,18 @@
  */
 package pt.isep.edom.project.c4.mm.dbase.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import pt.isep.edom.project.c4.mm.dbase.Cardinality;
 import pt.isep.edom.project.c4.mm.dbase.Column;
 import pt.isep.edom.project.c4.mm.dbase.Constraint;
 import pt.isep.edom.project.c4.mm.dbase.ConstraintType;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
+import pt.isep.edom.project.c4.mm.dbase.Relationship;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +26,7 @@ import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl#getConstraintType <em>Constraint Type</em>}</li>
  *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl#getColumn <em>Column</em>}</li>
- *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl#getCardinality <em>Cardinality</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c4.mm.dbase.impl.ConstraintImpl#getRelationship <em>Relationship</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,24 +73,24 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	protected ConstraintType constraintType = CONSTRAINT_TYPE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference list.
+	 * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getColumn()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Column> column;
+	protected Column column;
 
 	/**
-	 * The cached value of the '{@link #getCardinality() <em>Cardinality</em>}' containment reference list.
+	 * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCardinality()
+	 * @see #getRelationship()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Cardinality> cardinality;
+	protected Relationship relationship;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,10 +159,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Column> getColumn() {
-		if (column == null) {
-			column = new EObjectContainmentEList<Column>(Column.class, this, DbasePackage.CONSTRAINT__COLUMN);
-		}
+	public Column getColumn() {
 		return column;
 	}
 
@@ -180,12 +168,90 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Cardinality> getCardinality() {
-		if (cardinality == null) {
-			cardinality = new EObjectContainmentEList<Cardinality>(Cardinality.class, this,
-					DbasePackage.CONSTRAINT__CARDINALITY);
+	public NotificationChain basicSetColumn(Column newColumn, NotificationChain msgs) {
+		Column oldColumn = column;
+		column = newColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					DbasePackage.CONSTRAINT__COLUMN, oldColumn, newColumn);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
-		return cardinality;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColumn(Column newColumn) {
+		if (newColumn != column) {
+			NotificationChain msgs = null;
+			if (column != null)
+				msgs = ((InternalEObject) column).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - DbasePackage.CONSTRAINT__COLUMN, null, msgs);
+			if (newColumn != null)
+				msgs = ((InternalEObject) newColumn).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - DbasePackage.CONSTRAINT__COLUMN, null, msgs);
+			msgs = basicSetColumn(newColumn, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DbasePackage.CONSTRAINT__COLUMN, newColumn,
+					newColumn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Relationship getRelationship() {
+		return relationship;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRelationship(Relationship newRelationship, NotificationChain msgs) {
+		Relationship oldRelationship = relationship;
+		relationship = newRelationship;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					DbasePackage.CONSTRAINT__RELATIONSHIP, oldRelationship, newRelationship);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRelationship(Relationship newRelationship) {
+		if (newRelationship != relationship) {
+			NotificationChain msgs = null;
+			if (relationship != null)
+				msgs = ((InternalEObject) relationship).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - DbasePackage.CONSTRAINT__RELATIONSHIP, null, msgs);
+			if (newRelationship != null)
+				msgs = ((InternalEObject) newRelationship).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - DbasePackage.CONSTRAINT__RELATIONSHIP, null, msgs);
+			msgs = basicSetRelationship(newRelationship, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DbasePackage.CONSTRAINT__RELATIONSHIP,
+					newRelationship, newRelationship));
 	}
 
 	/**
@@ -197,9 +263,9 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DbasePackage.CONSTRAINT__COLUMN:
-			return ((InternalEList<?>) getColumn()).basicRemove(otherEnd, msgs);
-		case DbasePackage.CONSTRAINT__CARDINALITY:
-			return ((InternalEList<?>) getCardinality()).basicRemove(otherEnd, msgs);
+			return basicSetColumn(null, msgs);
+		case DbasePackage.CONSTRAINT__RELATIONSHIP:
+			return basicSetRelationship(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -218,8 +284,8 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			return getConstraintType();
 		case DbasePackage.CONSTRAINT__COLUMN:
 			return getColumn();
-		case DbasePackage.CONSTRAINT__CARDINALITY:
-			return getCardinality();
+		case DbasePackage.CONSTRAINT__RELATIONSHIP:
+			return getRelationship();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -240,12 +306,10 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			setConstraintType((ConstraintType) newValue);
 			return;
 		case DbasePackage.CONSTRAINT__COLUMN:
-			getColumn().clear();
-			getColumn().addAll((Collection<? extends Column>) newValue);
+			setColumn((Column) newValue);
 			return;
-		case DbasePackage.CONSTRAINT__CARDINALITY:
-			getCardinality().clear();
-			getCardinality().addAll((Collection<? extends Cardinality>) newValue);
+		case DbasePackage.CONSTRAINT__RELATIONSHIP:
+			setRelationship((Relationship) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -266,10 +330,10 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			setConstraintType(CONSTRAINT_TYPE_EDEFAULT);
 			return;
 		case DbasePackage.CONSTRAINT__COLUMN:
-			getColumn().clear();
+			setColumn((Column) null);
 			return;
-		case DbasePackage.CONSTRAINT__CARDINALITY:
-			getCardinality().clear();
+		case DbasePackage.CONSTRAINT__RELATIONSHIP:
+			setRelationship((Relationship) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -288,9 +352,9 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 		case DbasePackage.CONSTRAINT__CONSTRAINT_TYPE:
 			return constraintType != CONSTRAINT_TYPE_EDEFAULT;
 		case DbasePackage.CONSTRAINT__COLUMN:
-			return column != null && !column.isEmpty();
-		case DbasePackage.CONSTRAINT__CARDINALITY:
-			return cardinality != null && !cardinality.isEmpty();
+			return column != null;
+		case DbasePackage.CONSTRAINT__RELATIONSHIP:
+			return relationship != null;
 		}
 		return super.eIsSet(featureID);
 	}

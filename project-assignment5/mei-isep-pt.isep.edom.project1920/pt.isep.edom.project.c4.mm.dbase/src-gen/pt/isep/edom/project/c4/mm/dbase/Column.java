@@ -18,7 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getColumn()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='haveColumnName validColumnName containType'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot haveColumnName='not name.oclIsUndefined()' validColumnName='name.matches(\'[a-zA-Z]*\')' containType='self.type-&gt;notEmpty()'"
  * @generated
  */
 public interface Column extends EObject {

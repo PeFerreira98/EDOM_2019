@@ -16,10 +16,10 @@
       <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ColumnType/REAL"/>
       <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ColumnType/BOOL"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dbase.ecore#//BoundsType">
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//BoundsType/OneToOne"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//BoundsType/OneToMany"/>
-      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//BoundsType/ManyToMany"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dbase.ecore#//CardinalityType">
+      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//CardinalityType/OneToOne"/>
+      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//CardinalityType/OneToMany"/>
+      <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//CardinalityType/ManyToMany"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dbase.ecore#//ConstraintType">
       <genEnumLiterals ecoreEnumLiteral="dbase.ecore#//ConstraintType/PKFK"/>
@@ -46,8 +46,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//Constraint/column"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//Constraint/cardinality"/>
     </genClasses>
-    <genClasses ecoreClass="dbase.ecore#//Cardinality">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Cardinality/boundsType"/>
+    <genClasses ecoreClass="dbase.ecore#//Relationship">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dbase.ecore#//Relationship/cardinalityType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dbase.ecore#//Relationship/table"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

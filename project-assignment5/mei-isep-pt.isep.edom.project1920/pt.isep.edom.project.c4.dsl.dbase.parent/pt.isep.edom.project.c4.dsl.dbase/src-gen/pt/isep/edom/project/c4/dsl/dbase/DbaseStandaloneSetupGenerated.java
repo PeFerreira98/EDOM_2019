@@ -31,7 +31,7 @@ public class DbaseStandaloneSetupGenerated implements ISetup {
 		IResourceFactory resourceFactory = injector.getInstance(IResourceFactory.class);
 		IResourceServiceProvider serviceProvider = injector.getInstance(IResourceServiceProvider.class);
 		
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("dbase", resourceFactory);
-		IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().put("dbase", serviceProvider);
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("Dbase", resourceFactory);
+		IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().put("Dbase", serviceProvider);
 	}
 }

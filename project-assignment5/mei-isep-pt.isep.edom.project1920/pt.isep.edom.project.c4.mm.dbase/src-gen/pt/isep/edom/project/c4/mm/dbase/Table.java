@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getTable()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='haveTableName validTableName containColumns'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot haveTableName='not name.oclIsUndefined()' validTableName='name.matches(\'[a-zA-Z]*\')' containColumns='self.columns-&gt;notEmpty()'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='haveTableName validTableName containColumns uniqueTableColumnsName'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot haveTableName='not name.oclIsUndefined()' validTableName='name.matches(\'[a-zA-Z]*\')' containColumns='self.columns-&gt;notEmpty()' uniqueTableColumnsName='self.columns-&gt;isUnique(Column.name)'"
  * @generated
  */
 public interface Table extends EObject {

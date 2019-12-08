@@ -8,13 +8,14 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="DbaseModel">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="haveDBModelName validDBModelName containTables uniqueTableName"/>
+      <details key="constraints" value="haveDBModelName validDBModelName containTables uniqueTableName uniqueEntitieName"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="haveDBModelName" value="not name.oclIsUndefined()"/>
       <details key="validDBModelName" value="name.matches('[a-zA-Z]*')"/>
       <details key="containTables" value="self.tables->notEmpty()"/>
-      <details key="uniqueTableName" value="tables->isUnique(name)"/>
+      <details key="uniqueTableName" value="self.tables->isUnique(name)"/>
+      <details key="uniqueEntitieName" value="self.tables->isUnique(entity)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tables" upperBound="-1"
@@ -22,12 +23,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Table">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="haveTableName validTableName containColumns"/>
+      <details key="constraints" value="haveTableName validTableName containColumns uniqueTableColumnsName"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="haveTableName" value="not name.oclIsUndefined()"/>
       <details key="validTableName" value="name.matches('[a-zA-Z]*')"/>
       <details key="containColumns" value="self.columns->notEmpty()"/>
+      <details key="uniqueTableColumnsName" value="self.columns->isUnique(Column.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
@@ -37,6 +39,14 @@
         eType="#//Constraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Column">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="haveColumnName validColumnName containType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="haveColumnName" value="not name.oclIsUndefined()"/>
+      <details key="validColumnName" value="name.matches('[a-zA-Z]*')"/>
+      <details key="containType" value="self.type->notEmpty()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ColumnType"/>
   </eClassifiers>
@@ -47,17 +57,31 @@
     <eLiterals name="BOOL" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constraint">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="constraintPKIsIntegerType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="constraintPKIsIntegerType" value="self.constraintType = 0 implies self.column.type = 1"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintType" eType="#//ConstraintType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" lowerBound="1"
-        upperBound="-1" eType="#//Column" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cardinality" upperBound="-1"
-        eType="#//Cardinality" containment="true"/>
+        eType="#//Column" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" lowerBound="1"
+        eType="#//Relationship" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Cardinality">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boundsType" eType="#//BoundsType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Relationship">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="validRelationTable"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="validRelationTable" value="self.table->notEmpty()"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinalityType" eType="#//CardinalityType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" lowerBound="1" eType="#//Table"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="BoundsType">
+  <eClassifiers xsi:type="ecore:EEnum" name="CardinalityType">
     <eLiterals name="OneToOne"/>
     <eLiterals name="OneToMany" value="1"/>
     <eLiterals name="ManyToMany" value="2"/>

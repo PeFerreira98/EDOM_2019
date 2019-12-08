@@ -5,19 +5,37 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dbase="http://www.example.org/dbase"
     xsi:schemaLocation="http://www.example.org/dbase ../model/dbase.ecore"
-    name="GorgeousFoodDB">
+    name="DB">
   <tables name="Meal"
       entity="Meal">
     <columns
-        name="MealID"
-        type="INTEGER"/>
+        name="Desc"/>
     <constraint
-        name="MealPK">
+        name="PrimaryKey">
       <column
           name="MealID"
           type="INTEGER"/>
+      <relationship
+          cardinalityType="OneToMany">
+        <table
+            name="Item"
+            entity="Item">
+          <columns
+              name="MealID"
+              type="INTEGER"/>
+        </table>
+      </relationship>
     </constraint>
   </tables>
   <tables name="Item"
-      entity="Item"/>
+      entity="Item">
+    <constraint
+        name="ItemID"/>
+    <constraint
+        name="PrimaryKey">
+      <column
+          name="ItemID"
+          type="INTEGER"/>
+    </constraint>
+  </tables>
 </dbase:DbaseModel>

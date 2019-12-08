@@ -14,6 +14,8 @@ DbaseModel returns DbaseModel:
 
 
 
+
+
 EString returns ecore::EString:
 	STRING | ID;
 
@@ -24,20 +26,38 @@ Table returns Table:
 	'{'
 		('entity' entity=EString)?
 		('columns' '{' columns+=Column ( "," columns+=Column)* '}' )?
+		('constraint' '{' constraint+=Constraint ( "," constraint+=Constraint)* '}' )?
 	'}';
 
 Column returns Column:
 	{Column}
-	(key?='key')?
 	'Column'
 	name=EString
 	'{'
 		('type' type=ColumnType)?
-		('foreignKey' '{' foreignKey+=Column ( "," foreignKey+=Column)* '}' )?
+	'}';
+
+Constraint returns Constraint:
+	'Constraint'
+	name=EString
+	'{'
+		('constraintType' constraintType=ConstraintType)?
+		'column' column=Column
+		'relationship' relationship=Relationship
 	'}';
 
 enum ColumnType returns ColumnType:
-				VARCHAR = 'VARCHAR' | INTEGER = 'INTEGER' | REAL = 'REAL';
+				VARCHAR = 'VARCHAR' | INTEGER = 'INTEGER' | REAL = 'REAL' | BOOL = 'BOOL';
 
-EBoolean returns ecore::EBoolean:
-	'true' | 'false';
+enum ConstraintType returns ConstraintType:
+				PKFK = 'PKFK' | UNIQUE = 'UNIQUE' | NOTNULL = 'NOTNULL';
+
+Relationship returns Relationship:
+	'Relationship'
+	'{'
+		('cardinalityType' cardinalityType=CardinalityType)?
+		'table' table=Table
+	'}';
+
+enum CardinalityType returns CardinalityType:
+				OneToOne = 'OneToOne' | OneToMany = 'OneToMany' | ManyToMany = 'ManyToMany';

@@ -165,26 +165,26 @@ public class DbaseItemProviderAdapterFactory extends DbaseAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link pt.isep.edom.project.c4.mm.dbase.Cardinality} instances.
+	 * This keeps track of the one adapter used for all {@link pt.isep.edom.project.c4.mm.dbase.Relationship} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CardinalityItemProvider cardinalityItemProvider;
+	protected RelationshipItemProvider relationshipItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link pt.isep.edom.project.c4.mm.dbase.Cardinality}.
+	 * This creates an adapter for a {@link pt.isep.edom.project.c4.mm.dbase.Relationship}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCardinalityAdapter() {
-		if (cardinalityItemProvider == null) {
-			cardinalityItemProvider = new CardinalityItemProvider(this);
+	public Adapter createRelationshipAdapter() {
+		if (relationshipItemProvider == null) {
+			relationshipItemProvider = new RelationshipItemProvider(this);
 		}
 
-		return cardinalityItemProvider;
+		return relationshipItemProvider;
 	}
 
 	/**
@@ -294,8 +294,8 @@ public class DbaseItemProviderAdapterFactory extends DbaseAdapterFactory
 			columnItemProvider.dispose();
 		if (constraintItemProvider != null)
 			constraintItemProvider.dispose();
-		if (cardinalityItemProvider != null)
-			cardinalityItemProvider.dispose();
+		if (relationshipItemProvider != null)
+			relationshipItemProvider.dispose();
 	}
 
 }

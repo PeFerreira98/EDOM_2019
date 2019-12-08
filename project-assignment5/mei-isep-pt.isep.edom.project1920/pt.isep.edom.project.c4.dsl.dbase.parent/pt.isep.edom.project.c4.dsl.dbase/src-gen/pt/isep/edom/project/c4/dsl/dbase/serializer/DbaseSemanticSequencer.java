@@ -14,8 +14,10 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import pt.isep.edom.project.c4.dsl.dbase.services.DbaseGrammarAccess;
 import pt.isep.edom.project.c4.mm.dbase.Column;
+import pt.isep.edom.project.c4.mm.dbase.Constraint;
 import pt.isep.edom.project.c4.mm.dbase.DbaseModel;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
+import pt.isep.edom.project.c4.mm.dbase.Relationship;
 import pt.isep.edom.project.c4.mm.dbase.Table;
 
 @SuppressWarnings("all")
@@ -35,8 +37,14 @@ public class DbaseSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case DbasePackage.COLUMN:
 				sequence_Column(context, (Column) semanticObject); 
 				return; 
+			case DbasePackage.CONSTRAINT:
+				sequence_Constraint(context, (Constraint) semanticObject); 
+				return; 
 			case DbasePackage.DBASE_MODEL:
 				sequence_DbaseModel(context, (DbaseModel) semanticObject); 
+				return; 
+			case DbasePackage.RELATIONSHIP:
+				sequence_Relationship(context, (Relationship) semanticObject); 
 				return; 
 			case DbasePackage.TABLE:
 				sequence_Table(context, (Table) semanticObject); 
@@ -51,9 +59,21 @@ public class DbaseSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Column returns Column
 	 *
 	 * Constraint:
-	 *     (key?='key'? name=EString type=ColumnType? (foreignKey+=Column foreignKey+=Column*)?)
+	 *     (name=EString type=ColumnType?)
 	 */
 	protected void sequence_Column(ISerializationContext context, Column semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Constraint returns Constraint
+	 *
+	 * Constraint:
+	 *     (name=EString constraintType=ConstraintType? column=Column relationship=Relationship)
+	 */
+	protected void sequence_Constraint(ISerializationContext context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -72,10 +92,22 @@ public class DbaseSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     Relationship returns Relationship
+	 *
+	 * Constraint:
+	 *     (cardinalityType=CardinalityType? table=Table)
+	 */
+	protected void sequence_Relationship(ISerializationContext context, Relationship semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Table returns Table
 	 *
 	 * Constraint:
-	 *     (name=EString entity=EString? (columns+=Column columns+=Column*)?)
+	 *     (name=EString entity=EString? (columns+=Column columns+=Column*)? (constraint+=Constraint constraint+=Constraint*)?)
 	 */
 	protected void sequence_Table(ISerializationContext context, Table semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

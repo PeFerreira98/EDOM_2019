@@ -10,6 +10,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -21,17 +23,18 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import pt.isep.edom.project.c4.mm.dbase.BoundsType;
-import pt.isep.edom.project.c4.mm.dbase.Cardinality;
+import pt.isep.edom.project.c4.mm.dbase.CardinalityType;
+import pt.isep.edom.project.c4.mm.dbase.DbaseFactory;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
+import pt.isep.edom.project.c4.mm.dbase.Relationship;
 
 /**
- * This is the item provider adapter for a {@link pt.isep.edom.project.c4.mm.dbase.Cardinality} object.
+ * This is the item provider adapter for a {@link pt.isep.edom.project.c4.mm.dbase.Relationship} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CardinalityItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class RelationshipItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -39,7 +42,7 @@ public class CardinalityItemProvider extends ItemProviderAdapter implements IEdi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CardinalityItemProvider(AdapterFactory adapterFactory) {
+	public RelationshipItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -54,36 +57,66 @@ public class CardinalityItemProvider extends ItemProviderAdapter implements IEdi
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBoundsTypePropertyDescriptor(object);
+			addCardinalityTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Bounds Type feature.
+	 * This adds a property descriptor for the Cardinality Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBoundsTypePropertyDescriptor(Object object) {
+	protected void addCardinalityTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Cardinality_boundsType_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Cardinality_boundsType_feature",
-								"_UI_Cardinality_type"),
-						DbasePackage.Literals.CARDINALITY__BOUNDS_TYPE, true, false, false,
+						getResourceLocator(), getString("_UI_Relationship_cardinalityType_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Relationship_cardinalityType_feature",
+								"_UI_Relationship_type"),
+						DbasePackage.Literals.RELATIONSHIP__CARDINALITY_TYPE, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns Cardinality.gif.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(DbasePackage.Literals.RELATIONSHIP__TABLE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns Relationship.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Cardinality"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Relationship"));
 	}
 
 	/**
@@ -104,10 +137,10 @@ public class CardinalityItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public String getText(Object object) {
-		BoundsType labelValue = ((Cardinality) object).getBoundsType();
+		CardinalityType labelValue = ((Relationship) object).getCardinalityType();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_Cardinality_type")
-				: getString("_UI_Cardinality_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_Relationship_type")
+				: getString("_UI_Relationship_type") + " " + label;
 	}
 
 	/**
@@ -121,9 +154,12 @@ public class CardinalityItemProvider extends ItemProviderAdapter implements IEdi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Cardinality.class)) {
-		case DbasePackage.CARDINALITY__BOUNDS_TYPE:
+		switch (notification.getFeatureID(Relationship.class)) {
+		case DbasePackage.RELATIONSHIP__CARDINALITY_TYPE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case DbasePackage.RELATIONSHIP__TABLE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -139,6 +175,9 @@ public class CardinalityItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(
+				createChildParameter(DbasePackage.Literals.RELATIONSHIP__TABLE, DbaseFactory.eINSTANCE.createTable()));
 	}
 
 	/**

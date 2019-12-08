@@ -25,7 +25,7 @@ Workflow {
 		}
 		language = StandardLanguage {
 			name = "pt.isep.edom.project.c4.dsl.dbase.Dbase"
-			fileExtensions = "dbase"
+			fileExtensions = "Dbase"
 			referencedResource = "platform:/resource/pt.isep.edom.project.c4.mm.dbase/model/dbase.genmodel"
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}

@@ -58,13 +58,13 @@ public interface DbaseFactory extends EFactory {
 	Constraint createConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Cardinality</em>'.
+	 * Returns a new object of class '<em>Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Cardinality</em>'.
+	 * @return a new object of class '<em>Relationship</em>'.
 	 * @generated
 	 */
-	Cardinality createCardinality();
+	Relationship createRelationship();
 
 	/**
 	 * Returns the package supported by this factory.

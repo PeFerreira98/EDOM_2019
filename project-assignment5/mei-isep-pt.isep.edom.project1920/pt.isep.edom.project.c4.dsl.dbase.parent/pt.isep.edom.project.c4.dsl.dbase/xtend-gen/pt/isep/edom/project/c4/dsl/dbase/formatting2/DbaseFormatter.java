@@ -13,6 +13,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import pt.isep.edom.project.c4.dsl.dbase.services.DbaseGrammarAccess;
 import pt.isep.edom.project.c4.mm.dbase.Column;
+import pt.isep.edom.project.c4.mm.dbase.Constraint;
 import pt.isep.edom.project.c4.mm.dbase.DbaseModel;
 import pt.isep.edom.project.c4.mm.dbase.Table;
 
@@ -33,6 +34,10 @@ public class DbaseFormatter extends AbstractFormatter2 {
     EList<Column> _columns = table.getColumns();
     for (final Column column : _columns) {
       document.<Column>format(column);
+    }
+    EList<Constraint> _constraint = table.getConstraint();
+    for (final Constraint constraint : _constraint) {
+      document.<Constraint>format(constraint);
     }
   }
   

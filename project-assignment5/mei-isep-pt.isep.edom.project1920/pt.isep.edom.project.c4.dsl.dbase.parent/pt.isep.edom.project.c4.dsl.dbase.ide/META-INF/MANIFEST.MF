@@ -13,4 +13,3 @@ Require-Bundle: pt.isep.edom.project.c4.dsl.dbase,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: pt.isep.edom.project.c4.dsl.dbase.ide.contentassist.antlr,
  pt.isep.edom.project.c4.dsl.dbase.ide.contentassist.antlr.internal
-

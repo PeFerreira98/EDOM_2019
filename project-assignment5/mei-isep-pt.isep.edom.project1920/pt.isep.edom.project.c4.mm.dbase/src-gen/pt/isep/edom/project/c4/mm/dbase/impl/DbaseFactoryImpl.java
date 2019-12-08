@@ -64,8 +64,8 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 			return createColumn();
 		case DbasePackage.CONSTRAINT:
 			return createConstraint();
-		case DbasePackage.CARDINALITY:
-			return createCardinality();
+		case DbasePackage.RELATIONSHIP:
+			return createRelationship();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,8 +81,8 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 		switch (eDataType.getClassifierID()) {
 		case DbasePackage.COLUMN_TYPE:
 			return createColumnTypeFromString(eDataType, initialValue);
-		case DbasePackage.BOUNDS_TYPE:
-			return createBoundsTypeFromString(eDataType, initialValue);
+		case DbasePackage.CARDINALITY_TYPE:
+			return createCardinalityTypeFromString(eDataType, initialValue);
 		case DbasePackage.CONSTRAINT_TYPE:
 			return createConstraintTypeFromString(eDataType, initialValue);
 		default:
@@ -100,8 +100,8 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 		switch (eDataType.getClassifierID()) {
 		case DbasePackage.COLUMN_TYPE:
 			return convertColumnTypeToString(eDataType, instanceValue);
-		case DbasePackage.BOUNDS_TYPE:
-			return convertBoundsTypeToString(eDataType, instanceValue);
+		case DbasePackage.CARDINALITY_TYPE:
+			return convertCardinalityTypeToString(eDataType, instanceValue);
 		case DbasePackage.CONSTRAINT_TYPE:
 			return convertConstraintTypeToString(eDataType, instanceValue);
 		default:
@@ -154,9 +154,9 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Cardinality createCardinality() {
-		CardinalityImpl cardinality = new CardinalityImpl();
-		return cardinality;
+	public Relationship createRelationship() {
+		RelationshipImpl relationship = new RelationshipImpl();
+		return relationship;
 	}
 
 	/**
@@ -186,8 +186,8 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BoundsType createBoundsTypeFromString(EDataType eDataType, String initialValue) {
-		BoundsType result = BoundsType.get(initialValue);
+	public CardinalityType createCardinalityTypeFromString(EDataType eDataType, String initialValue) {
+		CardinalityType result = CardinalityType.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -199,7 +199,7 @@ public class DbaseFactoryImpl extends EFactoryImpl implements DbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertBoundsTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertCardinalityTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

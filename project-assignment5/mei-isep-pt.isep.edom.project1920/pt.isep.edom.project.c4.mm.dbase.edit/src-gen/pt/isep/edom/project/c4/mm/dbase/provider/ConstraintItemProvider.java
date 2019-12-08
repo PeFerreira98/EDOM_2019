@@ -107,7 +107,7 @@ public class ConstraintItemProvider extends ItemProviderAdapter implements IEdit
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DbasePackage.Literals.CONSTRAINT__COLUMN);
-			childrenFeatures.add(DbasePackage.Literals.CONSTRAINT__CARDINALITY);
+			childrenFeatures.add(DbasePackage.Literals.CONSTRAINT__RELATIONSHIP);
 		}
 		return childrenFeatures;
 	}
@@ -176,7 +176,7 @@ public class ConstraintItemProvider extends ItemProviderAdapter implements IEdit
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case DbasePackage.CONSTRAINT__COLUMN:
-		case DbasePackage.CONSTRAINT__CARDINALITY:
+		case DbasePackage.CONSTRAINT__RELATIONSHIP:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -197,8 +197,8 @@ public class ConstraintItemProvider extends ItemProviderAdapter implements IEdit
 		newChildDescriptors.add(
 				createChildParameter(DbasePackage.Literals.CONSTRAINT__COLUMN, DbaseFactory.eINSTANCE.createColumn()));
 
-		newChildDescriptors.add(createChildParameter(DbasePackage.Literals.CONSTRAINT__CARDINALITY,
-				DbaseFactory.eINSTANCE.createCardinality()));
+		newChildDescriptors.add(createChildParameter(DbasePackage.Literals.CONSTRAINT__RELATIONSHIP,
+				DbaseFactory.eINSTANCE.createRelationship()));
 	}
 
 	/**

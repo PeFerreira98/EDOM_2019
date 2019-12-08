@@ -87,8 +87,8 @@ public class DbaseAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseCardinality(Cardinality object) {
-			return createCardinalityAdapter();
+		public Adapter caseRelationship(Relationship object) {
+			return createRelationshipAdapter();
 		}
 
 		@Override
@@ -167,16 +167,16 @@ public class DbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link pt.isep.edom.project.c4.mm.dbase.Cardinality <em>Cardinality</em>}'.
+	 * Creates a new adapter for an object of class '{@link pt.isep.edom.project.c4.mm.dbase.Relationship <em>Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see pt.isep.edom.project.c4.mm.dbase.Cardinality
+	 * @see pt.isep.edom.project.c4.mm.dbase.Relationship
 	 * @generated
 	 */
-	public Adapter createCardinalityAdapter() {
+	public Adapter createRelationshipAdapter() {
 		return null;
 	}
 

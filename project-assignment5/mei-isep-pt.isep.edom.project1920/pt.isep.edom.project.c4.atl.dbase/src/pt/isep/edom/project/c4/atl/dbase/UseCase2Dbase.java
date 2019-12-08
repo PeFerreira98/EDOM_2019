@@ -10,15 +10,13 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.m2m.atl.emftvm.EmftvmPackage;
 import org.eclipse.m2m.atl.emftvm.EmftvmFactory;
+import org.eclipse.m2m.atl.emftvm.EmftvmPackage;
 import org.eclipse.m2m.atl.emftvm.ExecEnv;
 import org.eclipse.m2m.atl.emftvm.Metamodel;
 import org.eclipse.m2m.atl.emftvm.Model;
 import org.eclipse.m2m.atl.emftvm.impl.resource.EMFTVMResourceFactoryImpl;
 import org.eclipse.m2m.atl.emftvm.util.ClassModuleResolver;
-import org.eclipse.m2m.atl.emftvm.util.DefaultModuleResolver;
 import org.eclipse.m2m.atl.emftvm.util.ModuleResolver;
 import org.eclipse.m2m.atl.emftvm.util.TimingData;
 import org.eclipse.ocl.common.OCLConstants;
@@ -27,8 +25,8 @@ import org.eclipse.ocl.pivot.internal.delegate.OCLInvocationDelegateFactory;
 import org.eclipse.ocl.pivot.internal.delegate.OCLSettingDelegateFactory;
 import org.eclipse.ocl.pivot.internal.delegate.OCLValidationDelegateFactory;
 import org.eclipse.ocl.pivot.model.OCLstdlib;
-import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.ocl.xtext.essentialocl.EssentialOCLStandaloneSetup;
+import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 

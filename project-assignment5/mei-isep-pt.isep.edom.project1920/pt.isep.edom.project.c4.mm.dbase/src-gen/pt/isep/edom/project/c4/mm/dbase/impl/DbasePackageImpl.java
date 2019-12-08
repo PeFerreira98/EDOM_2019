@@ -10,9 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import pt.isep.edom.project.c4.mm.dbase.BoundsType;
-import pt.isep.edom.project.c4.mm.dbase.Cardinality;
+import pt.isep.edom.project.c4.mm.dbase.CardinalityType;
 import pt.isep.edom.project.c4.mm.dbase.Column;
 import pt.isep.edom.project.c4.mm.dbase.ColumnType;
 import pt.isep.edom.project.c4.mm.dbase.Constraint;
@@ -20,6 +18,7 @@ import pt.isep.edom.project.c4.mm.dbase.ConstraintType;
 import pt.isep.edom.project.c4.mm.dbase.DbaseFactory;
 import pt.isep.edom.project.c4.mm.dbase.DbaseModel;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
+import pt.isep.edom.project.c4.mm.dbase.Relationship;
 import pt.isep.edom.project.c4.mm.dbase.Table;
 import pt.isep.edom.project.c4.mm.dbase.util.DbaseValidator;
 
@@ -61,7 +60,7 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass cardinalityEClass = null;
+	private EClass relationshipEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -75,7 +74,7 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum boundsTypeEEnum = null;
+	private EEnum cardinalityTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -294,7 +293,7 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConstraint_Cardinality() {
+	public EReference getConstraint_Relationship() {
 		return (EReference) constraintEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -303,8 +302,8 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCardinality() {
-		return cardinalityEClass;
+	public EClass getRelationship() {
+		return relationshipEClass;
 	}
 
 	/**
@@ -312,8 +311,17 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCardinality_BoundsType() {
-		return (EAttribute) cardinalityEClass.getEStructuralFeatures().get(0);
+	public EAttribute getRelationship_CardinalityType() {
+		return (EAttribute) relationshipEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRelationship_Table() {
+		return (EReference) relationshipEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -330,8 +338,8 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getBoundsType() {
-		return boundsTypeEEnum;
+	public EEnum getCardinalityType() {
+		return cardinalityTypeEEnum;
 	}
 
 	/**
@@ -390,14 +398,15 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 		createEAttribute(constraintEClass, CONSTRAINT__NAME);
 		createEAttribute(constraintEClass, CONSTRAINT__CONSTRAINT_TYPE);
 		createEReference(constraintEClass, CONSTRAINT__COLUMN);
-		createEReference(constraintEClass, CONSTRAINT__CARDINALITY);
+		createEReference(constraintEClass, CONSTRAINT__RELATIONSHIP);
 
-		cardinalityEClass = createEClass(CARDINALITY);
-		createEAttribute(cardinalityEClass, CARDINALITY__BOUNDS_TYPE);
+		relationshipEClass = createEClass(RELATIONSHIP);
+		createEAttribute(relationshipEClass, RELATIONSHIP__CARDINALITY_TYPE);
+		createEReference(relationshipEClass, RELATIONSHIP__TABLE);
 
 		// Create enums
 		columnTypeEEnum = createEEnum(COLUMN_TYPE);
-		boundsTypeEEnum = createEEnum(BOUNDS_TYPE);
+		cardinalityTypeEEnum = createEEnum(CARDINALITY_TYPE);
 		constraintTypeEEnum = createEEnum(CONSTRAINT_TYPE);
 	}
 
@@ -465,17 +474,21 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 		initEAttribute(getConstraint_ConstraintType(), this.getConstraintType(), "constraintType", null, 0, 1,
 				Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getConstraint_Column(), this.getColumn(), null, "column", null, 1, -1, Constraint.class,
+		initEReference(getConstraint_Column(), this.getColumn(), null, "column", null, 1, 1, Constraint.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConstraint_Cardinality(), this.getCardinality(), null, "cardinality", null, 0, -1,
+		initEReference(getConstraint_Relationship(), this.getRelationship(), null, "relationship", null, 1, 1,
 				Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(cardinalityEClass, Cardinality.class, "Cardinality", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(relationshipEClass, Relationship.class, "Relationship", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCardinality_BoundsType(), this.getBoundsType(), "boundsType", null, 0, 1, Cardinality.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRelationship_CardinalityType(), this.getCardinalityType(), "cardinalityType", null, 0, 1,
+				Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationship_Table(), this.getTable(), null, "table", null, 1, 1, Relationship.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(columnTypeEEnum, ColumnType.class, "ColumnType");
@@ -484,10 +497,10 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 		addEEnumLiteral(columnTypeEEnum, ColumnType.REAL);
 		addEEnumLiteral(columnTypeEEnum, ColumnType.BOOL);
 
-		initEEnum(boundsTypeEEnum, BoundsType.class, "BoundsType");
-		addEEnumLiteral(boundsTypeEEnum, BoundsType.ONE_TO_ONE);
-		addEEnumLiteral(boundsTypeEEnum, BoundsType.ONE_TO_MANY);
-		addEEnumLiteral(boundsTypeEEnum, BoundsType.MANY_TO_MANY);
+		initEEnum(cardinalityTypeEEnum, CardinalityType.class, "CardinalityType");
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ONE_TO_ONE);
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ONE_TO_MANY);
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.MANY_TO_MANY);
 
 		initEEnum(constraintTypeEEnum, ConstraintType.class, "ConstraintType");
 		addEEnumLiteral(constraintTypeEEnum, ConstraintType.PKFK);
@@ -516,10 +529,14 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
 						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
 						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
-		addAnnotation(dbaseModelEClass, source,
-				new String[] { "constraints", "haveDBModelName validDBModelName containTables uniqueTableName" });
+		addAnnotation(dbaseModelEClass, source, new String[] { "constraints",
+				"haveDBModelName validDBModelName containTables uniqueTableName uniqueEntitieName" });
 		addAnnotation(tableEClass, source,
-				new String[] { "constraints", "haveTableName validTableName containColumns" });
+				new String[] { "constraints", "haveTableName validTableName containColumns uniqueTableColumnsName" });
+		addAnnotation(columnEClass, source,
+				new String[] { "constraints", "haveColumnName validColumnName containType" });
+		addAnnotation(constraintEClass, source, new String[] { "constraints", "constraintPKIsIntegerType" });
+		addAnnotation(relationshipEClass, source, new String[] { "constraints", "validRelationTable" });
 	}
 
 	/**
@@ -533,9 +550,16 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 		addAnnotation(dbaseModelEClass, source,
 				new String[] { "haveDBModelName", "not name.oclIsUndefined()", "validDBModelName",
 						"name.matches(\'[a-zA-Z]*\')", "containTables", "self.tables->notEmpty()", "uniqueTableName",
-						"tables->isUnique(name)" });
-		addAnnotation(tableEClass, source, new String[] { "haveTableName", "not name.oclIsUndefined()",
-				"validTableName", "name.matches(\'[a-zA-Z]*\')", "containColumns", "self.columns->notEmpty()" });
+						"self.tables->isUnique(name)", "uniqueEntitieName", "self.tables->isUnique(entity)" });
+		addAnnotation(tableEClass, source,
+				new String[] { "haveTableName", "not name.oclIsUndefined()", "validTableName",
+						"name.matches(\'[a-zA-Z]*\')", "containColumns", "self.columns->notEmpty()",
+						"uniqueTableColumnsName", "self.columns->isUnique(Column.name)" });
+		addAnnotation(columnEClass, source, new String[] { "haveColumnName", "not name.oclIsUndefined()",
+				"validColumnName", "name.matches(\'[a-zA-Z]*\')", "containType", "self.type->notEmpty()" });
+		addAnnotation(constraintEClass, source,
+				new String[] { "constraintPKIsIntegerType", "self.constraintType = 0 implies self.column.type = 1" });
+		addAnnotation(relationshipEClass, source, new String[] { "validRelationTable", "self.table->notEmpty()" });
 	}
 
 } //DbasePackageImpl

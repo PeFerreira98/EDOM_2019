@@ -8,6 +8,7 @@ import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import pt.isep.edom.project.c4.dsl.dbase.services.DbaseGrammarAccess
 import pt.isep.edom.project.c4.mm.dbase.Column
+import pt.isep.edom.project.c4.mm.dbase.Constraint
 import pt.isep.edom.project.c4.mm.dbase.DbaseModel
 import pt.isep.edom.project.c4.mm.dbase.Table
 
@@ -27,7 +28,10 @@ class DbaseFormatter extends AbstractFormatter2 {
 		for (Column column : table.getColumns()) {
 			column.format;
 		}
+		for (Constraint constraint : table.getConstraint()) {
+			constraint.format;
+		}
 	}
 	
-	// TODO: implement for Column
+	// TODO: implement for Constraint, Relationship
 }

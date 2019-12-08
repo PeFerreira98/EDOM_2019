@@ -95,12 +95,12 @@ public class DbaseValidator extends EObjectValidator {
 			return validateColumn((Column) value, diagnostics, context);
 		case DbasePackage.CONSTRAINT:
 			return validateConstraint((Constraint) value, diagnostics, context);
-		case DbasePackage.CARDINALITY:
-			return validateCardinality((Cardinality) value, diagnostics, context);
+		case DbasePackage.RELATIONSHIP:
+			return validateRelationship((Relationship) value, diagnostics, context);
 		case DbasePackage.COLUMN_TYPE:
 			return validateColumnType((ColumnType) value, diagnostics, context);
-		case DbasePackage.BOUNDS_TYPE:
-			return validateBoundsType((BoundsType) value, diagnostics, context);
+		case DbasePackage.CARDINALITY_TYPE:
+			return validateCardinalityType((CardinalityType) value, diagnostics, context);
 		case DbasePackage.CONSTRAINT_TYPE:
 			return validateConstraintType((ConstraintType) value, diagnostics, context);
 		default:
@@ -139,6 +139,8 @@ public class DbaseValidator extends EObjectValidator {
 			result &= validateDbaseModel_containTables(dbaseModel, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateDbaseModel_uniqueTableName(dbaseModel, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDbaseModel_uniqueEntitieName(dbaseModel, diagnostics, context);
 		return result;
 	}
 
@@ -211,7 +213,7 @@ public class DbaseValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String DBASE_MODEL__UNIQUE_TABLE_NAME__EEXPRESSION = "tables->isUnique(name)";
+	protected static final String DBASE_MODEL__UNIQUE_TABLE_NAME__EEXPRESSION = "self.tables->isUnique(name)";
 
 	/**
 	 * Validates the uniqueTableName constraint of '<em>Model</em>'.
@@ -224,6 +226,27 @@ public class DbaseValidator extends EObjectValidator {
 		return validate(DbasePackage.Literals.DBASE_MODEL, dbaseModel, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "uniqueTableName",
 				DBASE_MODEL__UNIQUE_TABLE_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the uniqueEntitieName constraint of '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String DBASE_MODEL__UNIQUE_ENTITIE_NAME__EEXPRESSION = "self.tables->isUnique(entity)";
+
+	/**
+	 * Validates the uniqueEntitieName constraint of '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDbaseModel_uniqueEntitieName(DbaseModel dbaseModel, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DbasePackage.Literals.DBASE_MODEL, dbaseModel, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "uniqueEntitieName",
+				DBASE_MODEL__UNIQUE_ENTITIE_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -255,6 +278,8 @@ public class DbaseValidator extends EObjectValidator {
 			result &= validateTable_validTableName(table, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateTable_containColumns(table, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTable_uniqueTableColumnsName(table, diagnostics, context);
 		return result;
 	}
 
@@ -319,12 +344,118 @@ public class DbaseValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the uniqueTableColumnsName constraint of '<em>Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TABLE__UNIQUE_TABLE_COLUMNS_NAME__EEXPRESSION = "self.columns->isUnique(Column.name)";
+
+	/**
+	 * Validates the uniqueTableColumnsName constraint of '<em>Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTable_uniqueTableColumnsName(Table table, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DbasePackage.Literals.TABLE, table, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "uniqueTableColumnsName",
+				TABLE__UNIQUE_TABLE_COLUMNS_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateColumn(Column column, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(column, diagnostics, context);
+		if (!validate_NoCircularContainment(column, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateColumn_haveColumnName(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateColumn_validColumnName(column, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateColumn_containType(column, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the haveColumnName constraint of '<em>Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COLUMN__HAVE_COLUMN_NAME__EEXPRESSION = "not name.oclIsUndefined()";
+
+	/**
+	 * Validates the haveColumnName constraint of '<em>Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateColumn_haveColumnName(Column column, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DbasePackage.Literals.COLUMN, column, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "haveColumnName",
+				COLUMN__HAVE_COLUMN_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the validColumnName constraint of '<em>Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COLUMN__VALID_COLUMN_NAME__EEXPRESSION = "name.matches('[a-zA-Z]*')";
+
+	/**
+	 * Validates the validColumnName constraint of '<em>Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateColumn_validColumnName(Column column, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DbasePackage.Literals.COLUMN, column, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validColumnName",
+				COLUMN__VALID_COLUMN_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the containType constraint of '<em>Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COLUMN__CONTAIN_TYPE__EEXPRESSION = "self.type->notEmpty()";
+
+	/**
+	 * Validates the containType constraint of '<em>Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateColumn_containType(Column column, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(DbasePackage.Literals.COLUMN, column, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "containType", COLUMN__CONTAIN_TYPE__EEXPRESSION,
+				Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -333,7 +464,47 @@ public class DbaseValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateConstraint(Constraint constraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(constraint, diagnostics, context);
+		if (!validate_NoCircularContainment(constraint, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConstraint_constraintPKIsIntegerType(constraint, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the constraintPKIsIntegerType constraint of '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String CONSTRAINT__CONSTRAINT_PK_IS_INTEGER_TYPE__EEXPRESSION = "self.constraintType = 0 implies self.column.type = 1";
+
+	/**
+	 * Validates the constraintPKIsIntegerType constraint of '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConstraint_constraintPKIsIntegerType(Constraint constraint, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DbasePackage.Literals.CONSTRAINT, constraint, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "constraintPKIsIntegerType",
+				CONSTRAINT__CONSTRAINT_PK_IS_INTEGER_TYPE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -341,9 +512,49 @@ public class DbaseValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCardinality(Cardinality cardinality, DiagnosticChain diagnostics,
+	public boolean validateRelationship(Relationship relationship, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(cardinality, diagnostics, context);
+		if (!validate_NoCircularContainment(relationship, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRelationship_validRelationTable(relationship, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the validRelationTable constraint of '<em>Relationship</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String RELATIONSHIP__VALID_RELATION_TABLE__EEXPRESSION = "self.table->notEmpty()";
+
+	/**
+	 * Validates the validRelationTable constraint of '<em>Relationship</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRelationship_validRelationTable(Relationship relationship, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DbasePackage.Literals.RELATIONSHIP, relationship, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validRelationTable",
+				RELATIONSHIP__VALID_RELATION_TABLE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -360,7 +571,8 @@ public class DbaseValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBoundsType(BoundsType boundsType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateCardinalityType(CardinalityType cardinalityType, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
