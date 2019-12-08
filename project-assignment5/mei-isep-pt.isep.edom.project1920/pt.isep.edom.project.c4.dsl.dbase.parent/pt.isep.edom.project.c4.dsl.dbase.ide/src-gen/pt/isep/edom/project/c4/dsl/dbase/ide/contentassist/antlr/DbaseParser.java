@@ -48,6 +48,8 @@ public class DbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getColumnAccess().getGroup_4(), "rule__Column__Group_4__0");
 					put(grammarAccess.getConstraintAccess().getGroup(), "rule__Constraint__Group__0");
 					put(grammarAccess.getConstraintAccess().getGroup_3(), "rule__Constraint__Group_3__0");
+					put(grammarAccess.getConstraintAccess().getGroup_6(), "rule__Constraint__Group_6__0");
+					put(grammarAccess.getConstraintAccess().getGroup_6_3(), "rule__Constraint__Group_6_3__0");
 					put(grammarAccess.getRelationshipAccess().getGroup(), "rule__Relationship__Group__0");
 					put(grammarAccess.getRelationshipAccess().getGroup_2(), "rule__Relationship__Group_2__0");
 					put(grammarAccess.getDbaseModelAccess().getNameAssignment_2(), "rule__DbaseModel__NameAssignment_2");
@@ -64,7 +66,8 @@ public class DbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstraintAccess().getNameAssignment_1(), "rule__Constraint__NameAssignment_1");
 					put(grammarAccess.getConstraintAccess().getConstraintTypeAssignment_3_1(), "rule__Constraint__ConstraintTypeAssignment_3_1");
 					put(grammarAccess.getConstraintAccess().getColumnAssignment_5(), "rule__Constraint__ColumnAssignment_5");
-					put(grammarAccess.getConstraintAccess().getRelationshipAssignment_7(), "rule__Constraint__RelationshipAssignment_7");
+					put(grammarAccess.getConstraintAccess().getRelationshipAssignment_6_2(), "rule__Constraint__RelationshipAssignment_6_2");
+					put(grammarAccess.getConstraintAccess().getRelationshipAssignment_6_3_1(), "rule__Constraint__RelationshipAssignment_6_3_1");
 					put(grammarAccess.getRelationshipAccess().getCardinalityTypeAssignment_2_1(), "rule__Relationship__CardinalityTypeAssignment_2_1");
 					put(grammarAccess.getRelationshipAccess().getTableAssignment_4(), "rule__Relationship__TableAssignment_4");
 				}

@@ -67,8 +67,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintType" eType="#//ConstraintType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" lowerBound="1"
         eType="#//Column" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" lowerBound="1"
-        eType="#//Relationship" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" ordered="false"
+        upperBound="-1" eType="#//Relationship" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Relationship">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -87,8 +87,9 @@
     <eLiterals name="ManyToMany" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConstraintType">
-    <eLiterals name="PKFK"/>
+    <eLiterals name="PK"/>
     <eLiterals name="UNIQUE" value="1"/>
     <eLiterals name="NOTNULL" value="2"/>
+    <eLiterals name="FK" value="3"/>
   </eClassifiers>
 </ecore:EPackage>

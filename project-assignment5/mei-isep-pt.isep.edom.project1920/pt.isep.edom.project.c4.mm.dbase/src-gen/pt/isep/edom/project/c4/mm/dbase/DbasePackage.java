@@ -252,7 +252,7 @@ public interface DbasePackage extends EPackage {
 	int CONSTRAINT__COLUMN = 2;
 
 	/**
-	 * The feature id for the '<em><b>Relationship</b></em>' containment reference.
+	 * The feature id for the '<em><b>Relationship</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -516,10 +516,10 @@ public interface DbasePackage extends EPackage {
 	EReference getConstraint_Column();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link pt.isep.edom.project.c4.mm.dbase.Constraint#getRelationship <em>Relationship</em>}'.
+	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c4.mm.dbase.Constraint#getRelationship <em>Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Relationship</em>'.
+	 * @return the meta object for the containment reference list '<em>Relationship</em>'.
 	 * @see pt.isep.edom.project.c4.mm.dbase.Constraint#getRelationship()
 	 * @see #getConstraint()
 	 * @generated
@@ -740,7 +740,7 @@ public interface DbasePackage extends EPackage {
 		EReference CONSTRAINT__COLUMN = eINSTANCE.getConstraint_Column();
 
 		/**
-		 * The meta object literal for the '<em><b>Relationship</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Relationship</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

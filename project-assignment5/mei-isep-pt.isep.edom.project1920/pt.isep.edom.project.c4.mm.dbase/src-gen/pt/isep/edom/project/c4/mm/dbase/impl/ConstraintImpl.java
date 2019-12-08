@@ -2,13 +2,17 @@
  */
 package pt.isep.edom.project.c4.mm.dbase.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import pt.isep.edom.project.c4.mm.dbase.Column;
 import pt.isep.edom.project.c4.mm.dbase.Constraint;
 import pt.isep.edom.project.c4.mm.dbase.ConstraintType;
@@ -60,7 +64,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ConstraintType CONSTRAINT_TYPE_EDEFAULT = ConstraintType.PKFK;
+	protected static final ConstraintType CONSTRAINT_TYPE_EDEFAULT = ConstraintType.PK;
 
 	/**
 	 * The cached value of the '{@link #getConstraintType() <em>Constraint Type</em>}' attribute.
@@ -83,14 +87,14 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	protected Column column;
 
 	/**
-	 * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' containment reference.
+	 * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRelationship()
 	 * @generated
 	 * @ordered
 	 */
-	protected Relationship relationship;
+	protected EList<Relationship> relationship;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,49 +213,12 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Relationship getRelationship() {
-		return relationship;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRelationship(Relationship newRelationship, NotificationChain msgs) {
-		Relationship oldRelationship = relationship;
-		relationship = newRelationship;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					DbasePackage.CONSTRAINT__RELATIONSHIP, oldRelationship, newRelationship);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+	public EList<Relationship> getRelationship() {
+		if (relationship == null) {
+			relationship = new EObjectContainmentEList<Relationship>(Relationship.class, this,
+					DbasePackage.CONSTRAINT__RELATIONSHIP);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRelationship(Relationship newRelationship) {
-		if (newRelationship != relationship) {
-			NotificationChain msgs = null;
-			if (relationship != null)
-				msgs = ((InternalEObject) relationship).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - DbasePackage.CONSTRAINT__RELATIONSHIP, null, msgs);
-			if (newRelationship != null)
-				msgs = ((InternalEObject) newRelationship).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - DbasePackage.CONSTRAINT__RELATIONSHIP, null, msgs);
-			msgs = basicSetRelationship(newRelationship, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DbasePackage.CONSTRAINT__RELATIONSHIP,
-					newRelationship, newRelationship));
+		return relationship;
 	}
 
 	/**
@@ -265,7 +232,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 		case DbasePackage.CONSTRAINT__COLUMN:
 			return basicSetColumn(null, msgs);
 		case DbasePackage.CONSTRAINT__RELATIONSHIP:
-			return basicSetRelationship(null, msgs);
+			return ((InternalEList<?>) getRelationship()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -309,7 +276,8 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			setColumn((Column) newValue);
 			return;
 		case DbasePackage.CONSTRAINT__RELATIONSHIP:
-			setRelationship((Relationship) newValue);
+			getRelationship().clear();
+			getRelationship().addAll((Collection<? extends Relationship>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -333,7 +301,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			setColumn((Column) null);
 			return;
 		case DbasePackage.CONSTRAINT__RELATIONSHIP:
-			setRelationship((Relationship) null);
+			getRelationship().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -354,7 +322,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 		case DbasePackage.CONSTRAINT__COLUMN:
 			return column != null;
 		case DbasePackage.CONSTRAINT__RELATIONSHIP:
-			return relationship != null;
+			return relationship != null && !relationship.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

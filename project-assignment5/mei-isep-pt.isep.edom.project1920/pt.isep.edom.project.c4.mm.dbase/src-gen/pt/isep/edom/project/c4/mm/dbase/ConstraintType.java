@@ -19,23 +19,22 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ConstraintType implements Enumerator {
 	/**
-	 * The '<em><b>PKFK</b></em>' literal object.
+	 * The '<em><b>PK</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PKFK_VALUE
+	 * @see #PK_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PKFK(0, "PKFK", "PKFK"),
-
+	PK(0, "PK", "PK"),
 	/**
-	 * The '<em><b>UNIQUE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #UNIQUE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+	* The '<em><b>UNIQUE</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #UNIQUE_VALUE
+	* @generated
+	* @ordered
+	*/
 	UNIQUE(1, "UNIQUE", "UNIQUE"),
 
 	/**
@@ -46,22 +45,31 @@ public enum ConstraintType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NOTNULL(2, "NOTNULL", "NOTNULL");
+	NOTNULL(2, "NOTNULL", "NOTNULL"),
+	/**
+	* The '<em><b>FK</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #FK_VALUE
+	* @generated
+	* @ordered
+	*/
+	FK(3, "FK", "FK");
 
 	/**
-	 * The '<em><b>PKFK</b></em>' literal value.
+	 * The '<em><b>PK</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>PKFK</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>PK</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PKFK
+	 * @see #PK
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PKFK_VALUE = 0;
+	public static final int PK_VALUE = 0;
 
 	/**
 	 * The '<em><b>UNIQUE</b></em>' literal value.
@@ -94,12 +102,27 @@ public enum ConstraintType implements Enumerator {
 	public static final int NOTNULL_VALUE = 2;
 
 	/**
+	 * The '<em><b>FK</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>FK</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #FK
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FK_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>Constraint Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ConstraintType[] VALUES_ARRAY = new ConstraintType[] { PKFK, UNIQUE, NOTNULL, };
+	private static final ConstraintType[] VALUES_ARRAY = new ConstraintType[] { PK, UNIQUE, NOTNULL, FK, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Constraint Type</b></em>' enumerators.
@@ -155,12 +178,14 @@ public enum ConstraintType implements Enumerator {
 	 */
 	public static ConstraintType get(int value) {
 		switch (value) {
-		case PKFK_VALUE:
-			return PKFK;
+		case PK_VALUE:
+			return PK;
 		case UNIQUE_VALUE:
 			return UNIQUE;
 		case NOTNULL_VALUE:
 			return NOTNULL;
+		case FK_VALUE:
+			return FK;
 		}
 		return null;
 	}

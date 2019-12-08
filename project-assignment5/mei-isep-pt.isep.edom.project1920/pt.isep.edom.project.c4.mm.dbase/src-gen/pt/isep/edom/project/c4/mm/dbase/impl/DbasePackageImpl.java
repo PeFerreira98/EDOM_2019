@@ -477,9 +477,9 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 		initEReference(getConstraint_Column(), this.getColumn(), null, "column", null, 1, 1, Constraint.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConstraint_Relationship(), this.getRelationship(), null, "relationship", null, 1, 1,
+		initEReference(getConstraint_Relationship(), this.getRelationship(), null, "relationship", null, 0, -1,
 				Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(relationshipEClass, Relationship.class, "Relationship", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -503,9 +503,10 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.MANY_TO_MANY);
 
 		initEEnum(constraintTypeEEnum, ConstraintType.class, "ConstraintType");
-		addEEnumLiteral(constraintTypeEEnum, ConstraintType.PKFK);
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.PK);
 		addEEnumLiteral(constraintTypeEEnum, ConstraintType.UNIQUE);
 		addEEnumLiteral(constraintTypeEEnum, ConstraintType.NOTNULL);
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.FK);
 
 		// Create resource
 		createResource(eNS_URI);

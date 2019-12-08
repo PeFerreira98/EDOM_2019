@@ -71,7 +71,7 @@ public class DbaseSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Constraint returns Constraint
 	 *
 	 * Constraint:
-	 *     (name=EString constraintType=ConstraintType? column=Column relationship=Relationship)
+	 *     (name=EString constraintType=ConstraintType? column=Column (relationship+=Relationship relationship+=Relationship*)?)
 	 */
 	protected void sequence_Constraint(ISerializationContext context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

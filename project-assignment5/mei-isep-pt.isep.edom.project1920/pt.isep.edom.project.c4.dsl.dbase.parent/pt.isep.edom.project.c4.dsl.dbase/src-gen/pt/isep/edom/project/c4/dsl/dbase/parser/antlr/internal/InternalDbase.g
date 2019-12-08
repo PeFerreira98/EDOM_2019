@@ -581,32 +581,67 @@ ruleConstraint returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_7='relationship'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getConstraintAccess().getRelationshipKeyword_6());
-		}
 		(
+			otherlv_7='relationship'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getConstraintAccess().getRelationshipKeyword_6_0());
+			}
+			otherlv_8='{'
+			{
+				newLeafNode(otherlv_8, grammarAccess.getConstraintAccess().getLeftCurlyBracketKeyword_6_1());
+			}
 			(
-				{
-					newCompositeNode(grammarAccess.getConstraintAccess().getRelationshipRelationshipParserRuleCall_7_0());
-				}
-				lv_relationship_8_0=ruleRelationship
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getConstraintRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getConstraintAccess().getRelationshipRelationshipParserRuleCall_6_2_0());
 					}
-					set(
-						$current,
-						"relationship",
-						lv_relationship_8_0,
-						"pt.isep.edom.project.c4.dsl.dbase.Dbase.Relationship");
-					afterParserOrEnumRuleCall();
-				}
+					lv_relationship_9_0=ruleRelationship
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getConstraintRule());
+						}
+						add(
+							$current,
+							"relationship",
+							lv_relationship_9_0,
+							"pt.isep.edom.project.c4.dsl.dbase.Dbase.Relationship");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
-		)
-		otherlv_9='}'
+			(
+				otherlv_10=','
+				{
+					newLeafNode(otherlv_10, grammarAccess.getConstraintAccess().getCommaKeyword_6_3_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getConstraintAccess().getRelationshipRelationshipParserRuleCall_6_3_1_0());
+						}
+						lv_relationship_11_0=ruleRelationship
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getConstraintRule());
+							}
+							add(
+								$current,
+								"relationship",
+								lv_relationship_11_0,
+								"pt.isep.edom.project.c4.dsl.dbase.Dbase.Relationship");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
+			otherlv_12='}'
+			{
+				newLeafNode(otherlv_12, grammarAccess.getConstraintAccess().getRightCurlyBracketKeyword_6_4());
+			}
+		)?
+		otherlv_13='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getConstraintAccess().getRightCurlyBracketKeyword_8());
+			newLeafNode(otherlv_13, grammarAccess.getConstraintAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -743,10 +778,10 @@ ruleConstraintType returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='PKFK'
+			enumLiteral_0='PK'
 			{
-				$current = grammarAccess.getConstraintTypeAccess().getPKFKEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getConstraintTypeAccess().getPKFKEnumLiteralDeclaration_0());
+				$current = grammarAccess.getConstraintTypeAccess().getPKEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getConstraintTypeAccess().getPKEnumLiteralDeclaration_0());
 			}
 		)
 		    |
@@ -763,6 +798,14 @@ ruleConstraintType returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getConstraintTypeAccess().getNOTNULLEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_2, grammarAccess.getConstraintTypeAccess().getNOTNULLEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='FK'
+			{
+				$current = grammarAccess.getConstraintTypeAccess().getFKEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getConstraintTypeAccess().getFKEnumLiteralDeclaration_3());
 			}
 		)
 	)

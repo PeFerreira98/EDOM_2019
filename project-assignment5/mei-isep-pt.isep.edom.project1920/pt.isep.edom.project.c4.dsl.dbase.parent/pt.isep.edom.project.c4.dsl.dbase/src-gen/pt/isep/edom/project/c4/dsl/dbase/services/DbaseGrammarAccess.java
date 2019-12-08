@@ -330,22 +330,28 @@ public class DbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColumnKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cColumnAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cColumnColumnParserRuleCall_5_0 = (RuleCall)cColumnAssignment_5.eContents().get(0);
-		private final Keyword cRelationshipKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cRelationshipAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cRelationshipRelationshipParserRuleCall_7_0 = (RuleCall)cRelationshipAssignment_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cRelationshipKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cRelationshipAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cRelationshipRelationshipParserRuleCall_6_2_0 = (RuleCall)cRelationshipAssignment_6_2.eContents().get(0);
+		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
+		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
+		private final Assignment cRelationshipAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
+		private final RuleCall cRelationshipRelationshipParserRuleCall_6_3_1_0 = (RuleCall)cRelationshipAssignment_6_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Constraint:
 		//	'Constraint'
 		//	name=EString
 		//	'{' ('constraintType' constraintType=ConstraintType)?
-		//	'column' column=Column
-		//	'relationship' relationship=Relationship
+		//	'column' column=Column ('relationship' '{' relationship+=Relationship ("," relationship+=Relationship)* '}')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Constraint' name=EString '{' ('constraintType' constraintType=ConstraintType)? 'column' column=Column 'relationship'
-		//relationship=Relationship '}'
+		//'Constraint' name=EString '{' ('constraintType' constraintType=ConstraintType)? 'column' column=Column ('relationship'
+		//'{' relationship+=Relationship ("," relationship+=Relationship)* '}')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'Constraint'
@@ -381,17 +387,38 @@ public class DbaseGrammarAccess extends AbstractGrammarElementFinder {
 		//Column
 		public RuleCall getColumnColumnParserRuleCall_5_0() { return cColumnColumnParserRuleCall_5_0; }
 		
-		//'relationship'
-		public Keyword getRelationshipKeyword_6() { return cRelationshipKeyword_6; }
+		//('relationship' '{' relationship+=Relationship ("," relationship+=Relationship)* '}')?
+		public Group getGroup_6() { return cGroup_6; }
 		
-		//relationship=Relationship
-		public Assignment getRelationshipAssignment_7() { return cRelationshipAssignment_7; }
+		//'relationship'
+		public Keyword getRelationshipKeyword_6_0() { return cRelationshipKeyword_6_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
+		
+		//relationship+=Relationship
+		public Assignment getRelationshipAssignment_6_2() { return cRelationshipAssignment_6_2; }
 		
 		//Relationship
-		public RuleCall getRelationshipRelationshipParserRuleCall_7_0() { return cRelationshipRelationshipParserRuleCall_7_0; }
+		public RuleCall getRelationshipRelationshipParserRuleCall_6_2_0() { return cRelationshipRelationshipParserRuleCall_6_2_0; }
+		
+		//("," relationship+=Relationship)*
+		public Group getGroup_6_3() { return cGroup_6_3; }
+		
+		//","
+		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
+		
+		//relationship+=Relationship
+		public Assignment getRelationshipAssignment_6_3_1() { return cRelationshipAssignment_6_3_1; }
+		
+		//Relationship
+		public RuleCall getRelationshipRelationshipParserRuleCall_6_3_1_0() { return cRelationshipRelationshipParserRuleCall_6_3_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class RelationshipElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "pt.isep.edom.project.c4.dsl.dbase.Dbase.Relationship");
@@ -494,25 +521,27 @@ public class DbaseGrammarAccess extends AbstractGrammarElementFinder {
 	public class ConstraintTypeElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "pt.isep.edom.project.c4.dsl.dbase.Dbase.ConstraintType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cPKFKEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cPKFKPKFKKeyword_0_0 = (Keyword)cPKFKEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cPKEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cPKPKKeyword_0_0 = (Keyword)cPKEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cUNIQUEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
 		private final Keyword cUNIQUEUNIQUEKeyword_1_0 = (Keyword)cUNIQUEEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cNOTNULLEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cNOTNULLNOTNULLKeyword_2_0 = (Keyword)cNOTNULLEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cFKEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cFKFKKeyword_3_0 = (Keyword)cFKEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum ConstraintType:
-		//	PKFK | UNIQUE | NOTNULL;
+		//	PK | UNIQUE | NOTNULL | FK;
 		public EnumRule getRule() { return rule; }
 		
-		//PKFK | UNIQUE | NOTNULL
+		//PK | UNIQUE | NOTNULL | FK
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//PKFK
-		public EnumLiteralDeclaration getPKFKEnumLiteralDeclaration_0() { return cPKFKEnumLiteralDeclaration_0; }
+		//PK
+		public EnumLiteralDeclaration getPKEnumLiteralDeclaration_0() { return cPKEnumLiteralDeclaration_0; }
 		
-		//'PKFK'
-		public Keyword getPKFKPKFKKeyword_0_0() { return cPKFKPKFKKeyword_0_0; }
+		//'PK'
+		public Keyword getPKPKKeyword_0_0() { return cPKPKKeyword_0_0; }
 		
 		//UNIQUE
 		public EnumLiteralDeclaration getUNIQUEEnumLiteralDeclaration_1() { return cUNIQUEEnumLiteralDeclaration_1; }
@@ -525,6 +554,12 @@ public class DbaseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'NOTNULL'
 		public Keyword getNOTNULLNOTNULLKeyword_2_0() { return cNOTNULLNOTNULLKeyword_2_0; }
+		
+		//FK
+		public EnumLiteralDeclaration getFKEnumLiteralDeclaration_3() { return cFKEnumLiteralDeclaration_3; }
+		
+		//'FK'
+		public Keyword getFKFKKeyword_3_0() { return cFKFKKeyword_3_0; }
 	}
 	public class CardinalityTypeElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "pt.isep.edom.project.c4.dsl.dbase.Dbase.CardinalityType");
@@ -676,8 +711,7 @@ public class DbaseGrammarAccess extends AbstractGrammarElementFinder {
 	//	'Constraint'
 	//	name=EString
 	//	'{' ('constraintType' constraintType=ConstraintType)?
-	//	'column' column=Column
-	//	'relationship' relationship=Relationship
+	//	'column' column=Column ('relationship' '{' relationship+=Relationship ("," relationship+=Relationship)* '}')?
 	//	'}';
 	public ConstraintElements getConstraintAccess() {
 		return pConstraint;
@@ -698,7 +732,7 @@ public class DbaseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//enum ConstraintType:
-	//	PKFK | UNIQUE | NOTNULL;
+	//	PK | UNIQUE | NOTNULL | FK;
 	public ConstraintTypeElements getConstraintTypeAccess() {
 		return eConstraintType;
 	}

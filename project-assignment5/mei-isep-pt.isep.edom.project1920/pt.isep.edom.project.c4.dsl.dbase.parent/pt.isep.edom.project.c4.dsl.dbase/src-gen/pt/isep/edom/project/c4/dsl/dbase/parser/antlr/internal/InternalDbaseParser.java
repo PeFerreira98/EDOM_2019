@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDbaseParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'DbaseModel'", "'{'", "'tables'", "','", "'}'", "'Table'", "'entity'", "'columns'", "'constraint'", "'Column'", "'type'", "'Constraint'", "'constraintType'", "'column'", "'relationship'", "'Relationship'", "'cardinalityType'", "'table'", "'VARCHAR'", "'INTEGER'", "'REAL'", "'BOOL'", "'PKFK'", "'UNIQUE'", "'NOTNULL'", "'OneToOne'", "'OneToMany'", "'ManyToMany'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'DbaseModel'", "'{'", "'tables'", "','", "'}'", "'Table'", "'entity'", "'columns'", "'constraint'", "'Column'", "'type'", "'Constraint'", "'constraintType'", "'column'", "'relationship'", "'Relationship'", "'cardinalityType'", "'table'", "'VARCHAR'", "'INTEGER'", "'REAL'", "'BOOL'", "'PK'", "'UNIQUE'", "'NOTNULL'", "'FK'", "'OneToOne'", "'OneToMany'", "'ManyToMany'"
     };
     public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=8;
@@ -32,6 +32,7 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
     public static final int T__16=16;
     public static final int T__38=38;
     public static final int T__17=17;
+    public static final int T__39=39;
     public static final int T__18=18;
     public static final int T__11=11;
     public static final int T__33=33;
@@ -1143,7 +1144,7 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstraint"
-    // InternalDbase.g:501:1: ruleConstraint returns [EObject current=null] : (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) otherlv_7= 'relationship' ( (lv_relationship_8_0= ruleRelationship ) ) otherlv_9= '}' ) ;
+    // InternalDbase.g:501:1: ruleConstraint returns [EObject current=null] : (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) (otherlv_7= 'relationship' otherlv_8= '{' ( (lv_relationship_9_0= ruleRelationship ) ) (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )* otherlv_12= '}' )? otherlv_13= '}' ) ;
     public final EObject ruleConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -1152,25 +1153,30 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
         Token otherlv_3=null;
         Token otherlv_5=null;
         Token otherlv_7=null;
-        Token otherlv_9=null;
+        Token otherlv_8=null;
+        Token otherlv_10=null;
+        Token otherlv_12=null;
+        Token otherlv_13=null;
         AntlrDatatypeRuleToken lv_name_1_0 = null;
 
         Enumerator lv_constraintType_4_0 = null;
 
         EObject lv_column_6_0 = null;
 
-        EObject lv_relationship_8_0 = null;
+        EObject lv_relationship_9_0 = null;
+
+        EObject lv_relationship_11_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDbase.g:507:2: ( (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) otherlv_7= 'relationship' ( (lv_relationship_8_0= ruleRelationship ) ) otherlv_9= '}' ) )
-            // InternalDbase.g:508:2: (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) otherlv_7= 'relationship' ( (lv_relationship_8_0= ruleRelationship ) ) otherlv_9= '}' )
+            // InternalDbase.g:507:2: ( (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) (otherlv_7= 'relationship' otherlv_8= '{' ( (lv_relationship_9_0= ruleRelationship ) ) (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )* otherlv_12= '}' )? otherlv_13= '}' ) )
+            // InternalDbase.g:508:2: (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) (otherlv_7= 'relationship' otherlv_8= '{' ( (lv_relationship_9_0= ruleRelationship ) ) (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )* otherlv_12= '}' )? otherlv_13= '}' )
             {
-            // InternalDbase.g:508:2: (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) otherlv_7= 'relationship' ( (lv_relationship_8_0= ruleRelationship ) ) otherlv_9= '}' )
-            // InternalDbase.g:509:3: otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) otherlv_7= 'relationship' ( (lv_relationship_8_0= ruleRelationship ) ) otherlv_9= '}'
+            // InternalDbase.g:508:2: (otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) (otherlv_7= 'relationship' otherlv_8= '{' ( (lv_relationship_9_0= ruleRelationship ) ) (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )* otherlv_12= '}' )? otherlv_13= '}' )
+            // InternalDbase.g:509:3: otherlv_0= 'Constraint' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' (otherlv_3= 'constraintType' ( (lv_constraintType_4_0= ruleConstraintType ) ) )? otherlv_5= 'column' ( (lv_column_6_0= ruleColumn ) ) (otherlv_7= 'relationship' otherlv_8= '{' ( (lv_relationship_9_0= ruleRelationship ) ) (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )* otherlv_12= '}' )? otherlv_13= '}'
             {
             otherlv_0=(Token)match(input,22,FOLLOW_3); 
 
@@ -1298,44 +1304,128 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,25,FOLLOW_20); 
+            // InternalDbase.g:584:3: (otherlv_7= 'relationship' otherlv_8= '{' ( (lv_relationship_9_0= ruleRelationship ) ) (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )* otherlv_12= '}' )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            			newLeafNode(otherlv_7, grammarAccess.getConstraintAccess().getRelationshipKeyword_6());
-            		
-            // InternalDbase.g:588:3: ( (lv_relationship_8_0= ruleRelationship ) )
-            // InternalDbase.g:589:4: (lv_relationship_8_0= ruleRelationship )
-            {
-            // InternalDbase.g:589:4: (lv_relationship_8_0= ruleRelationship )
-            // InternalDbase.g:590:5: lv_relationship_8_0= ruleRelationship
-            {
+            if ( (LA12_0==25) ) {
+                alt12=1;
+            }
+            switch (alt12) {
+                case 1 :
+                    // InternalDbase.g:585:4: otherlv_7= 'relationship' otherlv_8= '{' ( (lv_relationship_9_0= ruleRelationship ) ) (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )* otherlv_12= '}'
+                    {
+                    otherlv_7=(Token)match(input,25,FOLLOW_4); 
 
-            					newCompositeNode(grammarAccess.getConstraintAccess().getRelationshipRelationshipParserRuleCall_7_0());
-            				
-            pushFollow(FOLLOW_8);
-            lv_relationship_8_0=ruleRelationship();
+                    				newLeafNode(otherlv_7, grammarAccess.getConstraintAccess().getRelationshipKeyword_6_0());
+                    			
+                    otherlv_8=(Token)match(input,12,FOLLOW_20); 
 
-            state._fsp--;
+                    				newLeafNode(otherlv_8, grammarAccess.getConstraintAccess().getLeftCurlyBracketKeyword_6_1());
+                    			
+                    // InternalDbase.g:593:4: ( (lv_relationship_9_0= ruleRelationship ) )
+                    // InternalDbase.g:594:5: (lv_relationship_9_0= ruleRelationship )
+                    {
+                    // InternalDbase.g:594:5: (lv_relationship_9_0= ruleRelationship )
+                    // InternalDbase.g:595:6: lv_relationship_9_0= ruleRelationship
+                    {
+
+                    						newCompositeNode(grammarAccess.getConstraintAccess().getRelationshipRelationshipParserRuleCall_6_2_0());
+                    					
+                    pushFollow(FOLLOW_7);
+                    lv_relationship_9_0=ruleRelationship();
+
+                    state._fsp--;
 
 
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getConstraintRule());
-            					}
-            					set(
-            						current,
-            						"relationship",
-            						lv_relationship_8_0,
-            						"pt.isep.edom.project.c4.dsl.dbase.Dbase.Relationship");
-            					afterParserOrEnumRuleCall();
-            				
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getConstraintRule());
+                    						}
+                    						add(
+                    							current,
+                    							"relationship",
+                    							lv_relationship_9_0,
+                    							"pt.isep.edom.project.c4.dsl.dbase.Dbase.Relationship");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+                    // InternalDbase.g:612:4: (otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) ) )*
+                    loop11:
+                    do {
+                        int alt11=2;
+                        int LA11_0 = input.LA(1);
+
+                        if ( (LA11_0==14) ) {
+                            alt11=1;
+                        }
+
+
+                        switch (alt11) {
+                    	case 1 :
+                    	    // InternalDbase.g:613:5: otherlv_10= ',' ( (lv_relationship_11_0= ruleRelationship ) )
+                    	    {
+                    	    otherlv_10=(Token)match(input,14,FOLLOW_20); 
+
+                    	    					newLeafNode(otherlv_10, grammarAccess.getConstraintAccess().getCommaKeyword_6_3_0());
+                    	    				
+                    	    // InternalDbase.g:617:5: ( (lv_relationship_11_0= ruleRelationship ) )
+                    	    // InternalDbase.g:618:6: (lv_relationship_11_0= ruleRelationship )
+                    	    {
+                    	    // InternalDbase.g:618:6: (lv_relationship_11_0= ruleRelationship )
+                    	    // InternalDbase.g:619:7: lv_relationship_11_0= ruleRelationship
+                    	    {
+
+                    	    							newCompositeNode(grammarAccess.getConstraintAccess().getRelationshipRelationshipParserRuleCall_6_3_1_0());
+                    	    						
+                    	    pushFollow(FOLLOW_7);
+                    	    lv_relationship_11_0=ruleRelationship();
+
+                    	    state._fsp--;
+
+
+                    	    							if (current==null) {
+                    	    								current = createModelElementForParent(grammarAccess.getConstraintRule());
+                    	    							}
+                    	    							add(
+                    	    								current,
+                    	    								"relationship",
+                    	    								lv_relationship_11_0,
+                    	    								"pt.isep.edom.project.c4.dsl.dbase.Dbase.Relationship");
+                    	    							afterParserOrEnumRuleCall();
+                    	    						
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop11;
+                        }
+                    } while (true);
+
+                    otherlv_12=(Token)match(input,15,FOLLOW_8); 
+
+                    				newLeafNode(otherlv_12, grammarAccess.getConstraintAccess().getRightCurlyBracketKeyword_6_4());
+                    			
+
+                    }
+                    break;
 
             }
 
+            otherlv_13=(Token)match(input,15,FOLLOW_2); 
 
-            }
-
-            otherlv_9=(Token)match(input,15,FOLLOW_2); 
-
-            			newLeafNode(otherlv_9, grammarAccess.getConstraintAccess().getRightCurlyBracketKeyword_8());
+            			newLeafNode(otherlv_13, grammarAccess.getConstraintAccess().getRightCurlyBracketKeyword_7());
             		
 
             }
@@ -1360,7 +1450,7 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRelationship"
-    // InternalDbase.g:615:1: entryRuleRelationship returns [EObject current=null] : iv_ruleRelationship= ruleRelationship EOF ;
+    // InternalDbase.g:650:1: entryRuleRelationship returns [EObject current=null] : iv_ruleRelationship= ruleRelationship EOF ;
     public final EObject entryRuleRelationship() throws RecognitionException {
         EObject current = null;
 
@@ -1368,8 +1458,8 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDbase.g:615:53: (iv_ruleRelationship= ruleRelationship EOF )
-            // InternalDbase.g:616:2: iv_ruleRelationship= ruleRelationship EOF
+            // InternalDbase.g:650:53: (iv_ruleRelationship= ruleRelationship EOF )
+            // InternalDbase.g:651:2: iv_ruleRelationship= ruleRelationship EOF
             {
              newCompositeNode(grammarAccess.getRelationshipRule()); 
             pushFollow(FOLLOW_1);
@@ -1396,7 +1486,7 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRelationship"
-    // InternalDbase.g:622:1: ruleRelationship returns [EObject current=null] : (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' ) ;
+    // InternalDbase.g:657:1: ruleRelationship returns [EObject current=null] : (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' ) ;
     public final EObject ruleRelationship() throws RecognitionException {
         EObject current = null;
 
@@ -1414,11 +1504,11 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDbase.g:628:2: ( (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' ) )
-            // InternalDbase.g:629:2: (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' )
+            // InternalDbase.g:663:2: ( (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' ) )
+            // InternalDbase.g:664:2: (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' )
             {
-            // InternalDbase.g:629:2: (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' )
-            // InternalDbase.g:630:3: otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}'
+            // InternalDbase.g:664:2: (otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}' )
+            // InternalDbase.g:665:3: otherlv_0= 'Relationship' otherlv_1= '{' (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )? otherlv_4= 'table' ( (lv_table_5_0= ruleTable ) ) otherlv_6= '}'
             {
             otherlv_0=(Token)match(input,26,FOLLOW_4); 
 
@@ -1428,26 +1518,26 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getRelationshipAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalDbase.g:638:3: (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )?
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // InternalDbase.g:673:3: (otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) ) )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA11_0==27) ) {
-                alt11=1;
+            if ( (LA13_0==27) ) {
+                alt13=1;
             }
-            switch (alt11) {
+            switch (alt13) {
                 case 1 :
-                    // InternalDbase.g:639:4: otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) )
+                    // InternalDbase.g:674:4: otherlv_2= 'cardinalityType' ( (lv_cardinalityType_3_0= ruleCardinalityType ) )
                     {
                     otherlv_2=(Token)match(input,27,FOLLOW_22); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getRelationshipAccess().getCardinalityTypeKeyword_2_0());
                     			
-                    // InternalDbase.g:643:4: ( (lv_cardinalityType_3_0= ruleCardinalityType ) )
-                    // InternalDbase.g:644:5: (lv_cardinalityType_3_0= ruleCardinalityType )
+                    // InternalDbase.g:678:4: ( (lv_cardinalityType_3_0= ruleCardinalityType ) )
+                    // InternalDbase.g:679:5: (lv_cardinalityType_3_0= ruleCardinalityType )
                     {
-                    // InternalDbase.g:644:5: (lv_cardinalityType_3_0= ruleCardinalityType )
-                    // InternalDbase.g:645:6: lv_cardinalityType_3_0= ruleCardinalityType
+                    // InternalDbase.g:679:5: (lv_cardinalityType_3_0= ruleCardinalityType )
+                    // InternalDbase.g:680:6: lv_cardinalityType_3_0= ruleCardinalityType
                     {
 
                     						newCompositeNode(grammarAccess.getRelationshipAccess().getCardinalityTypeCardinalityTypeEnumRuleCall_2_1_0());
@@ -1484,11 +1574,11 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_4, grammarAccess.getRelationshipAccess().getTableKeyword_3());
             		
-            // InternalDbase.g:667:3: ( (lv_table_5_0= ruleTable ) )
-            // InternalDbase.g:668:4: (lv_table_5_0= ruleTable )
+            // InternalDbase.g:702:3: ( (lv_table_5_0= ruleTable ) )
+            // InternalDbase.g:703:4: (lv_table_5_0= ruleTable )
             {
-            // InternalDbase.g:668:4: (lv_table_5_0= ruleTable )
-            // InternalDbase.g:669:5: lv_table_5_0= ruleTable
+            // InternalDbase.g:703:4: (lv_table_5_0= ruleTable )
+            // InternalDbase.g:704:5: lv_table_5_0= ruleTable
             {
 
             					newCompositeNode(grammarAccess.getRelationshipAccess().getTableTableParserRuleCall_4_0());
@@ -1542,7 +1632,7 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleColumnType"
-    // InternalDbase.g:694:1: ruleColumnType returns [Enumerator current=null] : ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) ) ;
+    // InternalDbase.g:729:1: ruleColumnType returns [Enumerator current=null] : ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) ) ;
     public final Enumerator ruleColumnType() throws RecognitionException {
         Enumerator current = null;
 
@@ -1555,45 +1645,45 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDbase.g:700:2: ( ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) ) )
-            // InternalDbase.g:701:2: ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) )
+            // InternalDbase.g:735:2: ( ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) ) )
+            // InternalDbase.g:736:2: ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) )
             {
-            // InternalDbase.g:701:2: ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) )
-            int alt12=4;
+            // InternalDbase.g:736:2: ( (enumLiteral_0= 'VARCHAR' ) | (enumLiteral_1= 'INTEGER' ) | (enumLiteral_2= 'REAL' ) | (enumLiteral_3= 'BOOL' ) )
+            int alt14=4;
             switch ( input.LA(1) ) {
             case 29:
                 {
-                alt12=1;
+                alt14=1;
                 }
                 break;
             case 30:
                 {
-                alt12=2;
+                alt14=2;
                 }
                 break;
             case 31:
                 {
-                alt12=3;
+                alt14=3;
                 }
                 break;
             case 32:
                 {
-                alt12=4;
+                alt14=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt12) {
+            switch (alt14) {
                 case 1 :
-                    // InternalDbase.g:702:3: (enumLiteral_0= 'VARCHAR' )
+                    // InternalDbase.g:737:3: (enumLiteral_0= 'VARCHAR' )
                     {
-                    // InternalDbase.g:702:3: (enumLiteral_0= 'VARCHAR' )
-                    // InternalDbase.g:703:4: enumLiteral_0= 'VARCHAR'
+                    // InternalDbase.g:737:3: (enumLiteral_0= 'VARCHAR' )
+                    // InternalDbase.g:738:4: enumLiteral_0= 'VARCHAR'
                     {
                     enumLiteral_0=(Token)match(input,29,FOLLOW_2); 
 
@@ -1607,10 +1697,10 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDbase.g:710:3: (enumLiteral_1= 'INTEGER' )
+                    // InternalDbase.g:745:3: (enumLiteral_1= 'INTEGER' )
                     {
-                    // InternalDbase.g:710:3: (enumLiteral_1= 'INTEGER' )
-                    // InternalDbase.g:711:4: enumLiteral_1= 'INTEGER'
+                    // InternalDbase.g:745:3: (enumLiteral_1= 'INTEGER' )
+                    // InternalDbase.g:746:4: enumLiteral_1= 'INTEGER'
                     {
                     enumLiteral_1=(Token)match(input,30,FOLLOW_2); 
 
@@ -1624,10 +1714,10 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDbase.g:718:3: (enumLiteral_2= 'REAL' )
+                    // InternalDbase.g:753:3: (enumLiteral_2= 'REAL' )
                     {
-                    // InternalDbase.g:718:3: (enumLiteral_2= 'REAL' )
-                    // InternalDbase.g:719:4: enumLiteral_2= 'REAL'
+                    // InternalDbase.g:753:3: (enumLiteral_2= 'REAL' )
+                    // InternalDbase.g:754:4: enumLiteral_2= 'REAL'
                     {
                     enumLiteral_2=(Token)match(input,31,FOLLOW_2); 
 
@@ -1641,10 +1731,10 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalDbase.g:726:3: (enumLiteral_3= 'BOOL' )
+                    // InternalDbase.g:761:3: (enumLiteral_3= 'BOOL' )
                     {
-                    // InternalDbase.g:726:3: (enumLiteral_3= 'BOOL' )
-                    // InternalDbase.g:727:4: enumLiteral_3= 'BOOL'
+                    // InternalDbase.g:761:3: (enumLiteral_3= 'BOOL' )
+                    // InternalDbase.g:762:4: enumLiteral_3= 'BOOL'
                     {
                     enumLiteral_3=(Token)match(input,32,FOLLOW_2); 
 
@@ -1680,57 +1770,63 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstraintType"
-    // InternalDbase.g:737:1: ruleConstraintType returns [Enumerator current=null] : ( (enumLiteral_0= 'PKFK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) ) ;
+    // InternalDbase.g:772:1: ruleConstraintType returns [Enumerator current=null] : ( (enumLiteral_0= 'PK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) | (enumLiteral_3= 'FK' ) ) ;
     public final Enumerator ruleConstraintType() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
         Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
 
 
         	enterRule();
 
         try {
-            // InternalDbase.g:743:2: ( ( (enumLiteral_0= 'PKFK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) ) )
-            // InternalDbase.g:744:2: ( (enumLiteral_0= 'PKFK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) )
+            // InternalDbase.g:778:2: ( ( (enumLiteral_0= 'PK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) | (enumLiteral_3= 'FK' ) ) )
+            // InternalDbase.g:779:2: ( (enumLiteral_0= 'PK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) | (enumLiteral_3= 'FK' ) )
             {
-            // InternalDbase.g:744:2: ( (enumLiteral_0= 'PKFK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) )
-            int alt13=3;
+            // InternalDbase.g:779:2: ( (enumLiteral_0= 'PK' ) | (enumLiteral_1= 'UNIQUE' ) | (enumLiteral_2= 'NOTNULL' ) | (enumLiteral_3= 'FK' ) )
+            int alt15=4;
             switch ( input.LA(1) ) {
             case 33:
                 {
-                alt13=1;
+                alt15=1;
                 }
                 break;
             case 34:
                 {
-                alt13=2;
+                alt15=2;
                 }
                 break;
             case 35:
                 {
-                alt13=3;
+                alt15=3;
+                }
+                break;
+            case 36:
+                {
+                alt15=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt13) {
+            switch (alt15) {
                 case 1 :
-                    // InternalDbase.g:745:3: (enumLiteral_0= 'PKFK' )
+                    // InternalDbase.g:780:3: (enumLiteral_0= 'PK' )
                     {
-                    // InternalDbase.g:745:3: (enumLiteral_0= 'PKFK' )
-                    // InternalDbase.g:746:4: enumLiteral_0= 'PKFK'
+                    // InternalDbase.g:780:3: (enumLiteral_0= 'PK' )
+                    // InternalDbase.g:781:4: enumLiteral_0= 'PK'
                     {
                     enumLiteral_0=(Token)match(input,33,FOLLOW_2); 
 
-                    				current = grammarAccess.getConstraintTypeAccess().getPKFKEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getConstraintTypeAccess().getPKFKEnumLiteralDeclaration_0());
+                    				current = grammarAccess.getConstraintTypeAccess().getPKEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getConstraintTypeAccess().getPKEnumLiteralDeclaration_0());
                     			
 
                     }
@@ -1739,10 +1835,10 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDbase.g:753:3: (enumLiteral_1= 'UNIQUE' )
+                    // InternalDbase.g:788:3: (enumLiteral_1= 'UNIQUE' )
                     {
-                    // InternalDbase.g:753:3: (enumLiteral_1= 'UNIQUE' )
-                    // InternalDbase.g:754:4: enumLiteral_1= 'UNIQUE'
+                    // InternalDbase.g:788:3: (enumLiteral_1= 'UNIQUE' )
+                    // InternalDbase.g:789:4: enumLiteral_1= 'UNIQUE'
                     {
                     enumLiteral_1=(Token)match(input,34,FOLLOW_2); 
 
@@ -1756,15 +1852,32 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDbase.g:761:3: (enumLiteral_2= 'NOTNULL' )
+                    // InternalDbase.g:796:3: (enumLiteral_2= 'NOTNULL' )
                     {
-                    // InternalDbase.g:761:3: (enumLiteral_2= 'NOTNULL' )
-                    // InternalDbase.g:762:4: enumLiteral_2= 'NOTNULL'
+                    // InternalDbase.g:796:3: (enumLiteral_2= 'NOTNULL' )
+                    // InternalDbase.g:797:4: enumLiteral_2= 'NOTNULL'
                     {
                     enumLiteral_2=(Token)match(input,35,FOLLOW_2); 
 
                     				current = grammarAccess.getConstraintTypeAccess().getNOTNULLEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getConstraintTypeAccess().getNOTNULLEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDbase.g:804:3: (enumLiteral_3= 'FK' )
+                    {
+                    // InternalDbase.g:804:3: (enumLiteral_3= 'FK' )
+                    // InternalDbase.g:805:4: enumLiteral_3= 'FK'
+                    {
+                    enumLiteral_3=(Token)match(input,36,FOLLOW_2); 
+
+                    				current = grammarAccess.getConstraintTypeAccess().getFKEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_3, grammarAccess.getConstraintTypeAccess().getFKEnumLiteralDeclaration_3());
                     			
 
                     }
@@ -1795,7 +1908,7 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCardinalityType"
-    // InternalDbase.g:772:1: ruleCardinalityType returns [Enumerator current=null] : ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) ) ;
+    // InternalDbase.g:815:1: ruleCardinalityType returns [Enumerator current=null] : ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) ) ;
     public final Enumerator ruleCardinalityType() throws RecognitionException {
         Enumerator current = null;
 
@@ -1807,42 +1920,42 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDbase.g:778:2: ( ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) ) )
-            // InternalDbase.g:779:2: ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) )
+            // InternalDbase.g:821:2: ( ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) ) )
+            // InternalDbase.g:822:2: ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) )
             {
-            // InternalDbase.g:779:2: ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) )
-            int alt14=3;
+            // InternalDbase.g:822:2: ( (enumLiteral_0= 'OneToOne' ) | (enumLiteral_1= 'OneToMany' ) | (enumLiteral_2= 'ManyToMany' ) )
+            int alt16=3;
             switch ( input.LA(1) ) {
-            case 36:
-                {
-                alt14=1;
-                }
-                break;
             case 37:
                 {
-                alt14=2;
+                alt16=1;
                 }
                 break;
             case 38:
                 {
-                alt14=3;
+                alt16=2;
+                }
+                break;
+            case 39:
+                {
+                alt16=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt14) {
+            switch (alt16) {
                 case 1 :
-                    // InternalDbase.g:780:3: (enumLiteral_0= 'OneToOne' )
+                    // InternalDbase.g:823:3: (enumLiteral_0= 'OneToOne' )
                     {
-                    // InternalDbase.g:780:3: (enumLiteral_0= 'OneToOne' )
-                    // InternalDbase.g:781:4: enumLiteral_0= 'OneToOne'
+                    // InternalDbase.g:823:3: (enumLiteral_0= 'OneToOne' )
+                    // InternalDbase.g:824:4: enumLiteral_0= 'OneToOne'
                     {
-                    enumLiteral_0=(Token)match(input,36,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,37,FOLLOW_2); 
 
                     				current = grammarAccess.getCardinalityTypeAccess().getOneToOneEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getCardinalityTypeAccess().getOneToOneEnumLiteralDeclaration_0());
@@ -1854,12 +1967,12 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDbase.g:788:3: (enumLiteral_1= 'OneToMany' )
+                    // InternalDbase.g:831:3: (enumLiteral_1= 'OneToMany' )
                     {
-                    // InternalDbase.g:788:3: (enumLiteral_1= 'OneToMany' )
-                    // InternalDbase.g:789:4: enumLiteral_1= 'OneToMany'
+                    // InternalDbase.g:831:3: (enumLiteral_1= 'OneToMany' )
+                    // InternalDbase.g:832:4: enumLiteral_1= 'OneToMany'
                     {
-                    enumLiteral_1=(Token)match(input,37,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,38,FOLLOW_2); 
 
                     				current = grammarAccess.getCardinalityTypeAccess().getOneToManyEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getCardinalityTypeAccess().getOneToManyEnumLiteralDeclaration_1());
@@ -1871,12 +1984,12 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDbase.g:796:3: (enumLiteral_2= 'ManyToMany' )
+                    // InternalDbase.g:839:3: (enumLiteral_2= 'ManyToMany' )
                     {
-                    // InternalDbase.g:796:3: (enumLiteral_2= 'ManyToMany' )
-                    // InternalDbase.g:797:4: enumLiteral_2= 'ManyToMany'
+                    // InternalDbase.g:839:3: (enumLiteral_2= 'ManyToMany' )
+                    // InternalDbase.g:840:4: enumLiteral_2= 'ManyToMany'
                     {
-                    enumLiteral_2=(Token)match(input,38,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,39,FOLLOW_2); 
 
                     				current = grammarAccess.getCardinalityTypeAccess().getManyToManyEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getCardinalityTypeAccess().getManyToManyEnumLiteralDeclaration_2());
@@ -1929,12 +2042,12 @@ public class InternalDbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000208000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x00000001E0000000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000E00000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000001E00000000L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000002008000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000018000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000007000000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x000000E000000000L});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000010000000L});
 
 }

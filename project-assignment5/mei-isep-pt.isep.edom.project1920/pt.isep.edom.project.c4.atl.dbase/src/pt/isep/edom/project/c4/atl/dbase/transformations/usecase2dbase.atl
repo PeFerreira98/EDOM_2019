@@ -7,10 +7,138 @@ create OUT : MMDbase from IN : MMUseCase;
  
 rule UseCaseModel2DbaseModel {
 	from
-		m1: MMUseCase!UseCaseModel
+		m1: MMUseCase!UseCaseMode
 	to 
 		m2: MMDbase!DbaseModel (
-			name <- m1.name
+			name <- m1.name + 'DB',	
+			tables <- m1.usecase->iterate(u; usecase: Set(MMUseCase!UseCase) = Set{} |
+				if(usecase.comment.asSet()->select(c | c.name='CRUD'))
+					then usecase.including(thisModule.UsecaseToTable(u))
+				else
+					usecase
+				endif
+				)
 		)
 }
+
+--Each UseCase with comments CRUD and entity or local entity shoudl result in a Table with one column for its key
+rule UsecaseToTable(uc: MMUseCase!UseCase) {
+	to
+		table: MMDbase!Table	(
+			name <- if(uc.comment->select(c| c.name='entity' or c.name='local entity')) 
+						then uc.comment->select(c| not c.name='CRUD' and not c.name='entity' and not c.name='local entity').first().name
+					else
+						''
+					endif,		
+			entity <- table.name,
+			constraint <-  thisModule.tableConstraintColumnKey(table.name, uc)
+		)
+	do {
+		table;
+	}
+}
+
+rule tableConstraintColumnKey(tableName: String, uc: MMUseCase!UseCase){
+	to 
+		constraint: MMDbase!Constraint(
+			name <- 'PrimaryKey_of_table:' + tableName,
+			constraintType <- 'PK',
+			column <- thisModule.newTableColumnKey(tableName)
+		)
+	do {
+		constraint;
+		
+		for(incRelationship in uc.include){
+			constraint.relationship <- thisModule.newIncludeRelationship(incRelationship);
+		}
+		
+		for(extRelationship in uc.extend){
+			constraint.relationship <- thisModule.newExtendRelationship(extRelationship);
+		}
+	}
+}
+
+rule newTableColumnKey(tableName: String){
+	to
+		column: MMDbase!Column(
+	 		name <- tableName + 'ID',
+			type <- 'INTEGER'
+	 	)
+	do {
+		column;
+	}
+}
+
+
+--Each UseCase with comment CRUD and extend relationship with other CRUD UseCase should result in a foreign key
+--between Tables/Columns
+rule newExtendRelationship(relExtend: MMUseCase!Extend){
+	to 
+		rel: MMDbase!Relationship(	
+			cardinalityType <- 1,
+			table <- thisModule.relationshipExtendTable(relExtend)
+		)
+	do {
+		rel;
+	}
+}
+
+rule relationshipExtendTable(rel: MMUseCase!Extend){
+ 	to 
+ 		table: MMDbase!Table(
+ 			name <- rel.usecase.comment->select(c| not c.name='CRUD' and not c.name='entity' and not c.name='local entity').first().name,
+			constraint <- thisModule.newFKConstraint(table.name)
+ 		)
+	do {
+		table;
+	}
+}
+
+--Each UseCase with comment CRUD and include relationship with other CRUD UseCase should result in a foreign key
+--between Tables/Columns
+rule newIncludeRelationship(relInclude: MMUseCase!Include){
+	to 
+		rel: MMDbase!Relationship(	
+			cardinalityType <- 2,
+			table <- thisModule.relationshipIncludeTable(relInclude)
+		)
+	do {
+		rel;
+	}
+}
+
+rule relationshipIncludeTable(rel: MMUseCase!Include){
+ 	to 
+ 		table: MMDbase!Table(
+ 			name <- rel.usecase.comment->select(c| not c.name='CRUD' and not c.name='entity' and not c.name='local entity').first().name,
+			constraint <- thisModule.newFKConstraint(table.name)
+ 		)
+	do {
+		table;
+	}
+}
+
+rule newFKConstraint(tableName: String){
+	to
+		cons: MMDbase!Constraint(
+			name <- 'ConstraintFK_with_' + tableName,
+			constraintType <- 'FK',
+			column <- thisModule.newFKColumn(tableName)
+	 	)
+	do {
+		cons;
+	}
+}
+
+rule newFKColumn(tableName: String){
+	to 
+		column: MMDbase!Column(
+	 		name <- tableName + 'ID',
+			type <- 'INTEGER'
+		)
+	do {
+		column;
+	}
+}
+
 

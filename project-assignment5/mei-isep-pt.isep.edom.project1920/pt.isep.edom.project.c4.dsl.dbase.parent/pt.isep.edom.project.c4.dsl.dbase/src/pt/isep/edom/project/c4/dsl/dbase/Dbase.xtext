@@ -43,14 +43,14 @@ Constraint returns Constraint:
 	'{'
 		('constraintType' constraintType=ConstraintType)?
 		'column' column=Column
-		'relationship' relationship=Relationship
+		('relationship' '{' relationship+=Relationship ( "," relationship+=Relationship)* '}' )?
 	'}';
 
 enum ColumnType returns ColumnType:
 				VARCHAR = 'VARCHAR' | INTEGER = 'INTEGER' | REAL = 'REAL' | BOOL = 'BOOL';
 
 enum ConstraintType returns ConstraintType:
-				PKFK = 'PKFK' | UNIQUE = 'UNIQUE' | NOTNULL = 'NOTNULL';
+				PK = 'PK' | UNIQUE = 'UNIQUE' | NOTNULL = 'NOTNULL' | FK = 'FK';
 
 Relationship returns Relationship:
 	'Relationship'

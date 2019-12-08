@@ -2,6 +2,7 @@
  */
 package pt.isep.edom.project.c4.mm.dbase;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -107,29 +108,19 @@ public interface Constraint extends EObject {
 	void setColumn(Column value);
 
 	/**
-	 * Returns the value of the '<em><b>Relationship</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Relationship</b></em>' containment reference list.
+	 * The list contents are of type {@link pt.isep.edom.project.c4.mm.dbase.Relationship}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relationship</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Relationship</em>' containment reference.
-	 * @see #setRelationship(Relationship)
+	 * @return the value of the '<em>Relationship</em>' containment reference list.
 	 * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getConstraint_Relationship()
-	 * @model containment="true" required="true"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
-	Relationship getRelationship();
-
-	/**
-	 * Sets the value of the '{@link pt.isep.edom.project.c4.mm.dbase.Constraint#getRelationship <em>Relationship</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Relationship</em>' containment reference.
-	 * @see #getRelationship()
-	 * @generated
-	 */
-	void setRelationship(Relationship value);
+	EList<Relationship> getRelationship();
 
 } // Constraint
