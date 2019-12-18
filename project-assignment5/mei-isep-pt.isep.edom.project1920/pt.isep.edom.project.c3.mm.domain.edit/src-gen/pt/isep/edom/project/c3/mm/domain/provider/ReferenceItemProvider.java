@@ -63,22 +63,6 @@ public class ReferenceItemProvider extends ItemProviderAdapter implements IEditi
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Reference_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Reference_name_feature",
-								"_UI_Reference_type"),
-						DomainPackage.Literals.REFERENCE__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Entity feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,6 +122,22 @@ public class ReferenceItemProvider extends ItemProviderAdapter implements IEditi
 								"_UI_Reference_type"),
 						DomainPackage.Literals.REFERENCE__LOWER_BOUND, true, false, false,
 						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Reference_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Reference_name_feature",
+								"_UI_Reference_type"),
+						DomainPackage.Literals.REFERENCE__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

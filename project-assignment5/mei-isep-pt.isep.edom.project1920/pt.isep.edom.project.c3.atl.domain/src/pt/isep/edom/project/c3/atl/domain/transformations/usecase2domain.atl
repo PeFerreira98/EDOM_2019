@@ -14,3 +14,43 @@ rule UseCaseModel2DomainModel {
 		)
 }
 
+helper context MMUseCase!UseCase def: isCRUD(): Boolean =
+	if not self.comment.oclIsUndefined() then
+		self.comment->collect(c|c.name).asSet().indexOf('CRUD') != -1
+	endif;
+	
+helper context MMUseCase!UseCase def: isEntity(): Boolean = 
+	if not self.comment.oclIsUndefined() then
+		self.comment->collect(c|c.name).asSet().indexOf('entity') != -1
+	endif;
+	
+helper context MMUseCase!UseCase def: isLocalEntity(): Boolean = 
+	if not self.comment.oclIsUndefined() then
+		self.comment->collect(c|c.name).asSet().indexOf('local entity') != -1
+	endif;
+	
+helper context MMUseCase!UseCase def: hasExtend(): Boolean = 
+	if not self.extend.oclIsUndefined() then
+		self.extend->collect(e|e.usecase.oclIsUndefined())->
+	endif;
+
+	
+rule CRUDEntity2Entity {
+	from
+		u: MMUseCase!UseCase (u.isCrud() and u.isEntity())
+	to
+		d: MMDomain!Entity (
+			name <- s.name
+			root <- true
+		)
+}
+
+rule CRUDLocalEntity2ChildEntity {
+	from
+		u: MMUseCase!UseCase (u.isCrud() and u.isLocalEntity())
+	to
+		d: MMDomain!Entity (
+			name <- s.name
+			root <- true
+		)
+}

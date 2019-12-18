@@ -1,0 +1,65 @@
+-- @atlcompiler emftvm
+-- @path UC=/pt.isep.edom.usecases2/model/usecases2.ecore
+-- @path REQ=/pt.isep.edom.requirements/model/requirements.ecore
+
+module increment;
+create OUT : UC from IN : REQ;
+
+helper context Sequence(REQ!Comment) def: actComment(): REQ!Comment = self->select(x| x.subject ='Actor').asSequence().first();
+
+helper context Sequence(REQ!Comment) def: useCaseComment(): REQ!Comment = self->select(x| x.subject ='UseCase').asSequence().first();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- All dependencies in mindmap instance
+helper def: requirements: Set(UC!Actor) = Set{};
+helper def: usecase: Set(UC!UseCase) = Set{};
+helper def: commentsActor: Set(REQ!Comment) = Set {};
+helper def: commentsUC: Set(REQ!Comment) = Set {};
+helper def: associations: Set(UC!Association) = Set{};
+
+helper def: allRequirements(): Set(REQ!Requirement) = 
+
+helper def: allRequirements(): Set(MM!Requirement) =
+		MM!Requirement.allInstances()->select(x| x.type = #FUNCTIONAL)->asSet();
+
+helper def: allActors(): Set(MM!Comment) =
+		MM!Comment.allInstances()->select(x| x.subject = 'Actor')->asSet();
+
+helper def: allUcs(): Set(MM!Comment) =
+		MM!Comment.allInstances()->select(x| x.subject = 'UseCase')->asSet();
+
+
+rule Map2Model {
+	from
+		m1: MM!"Model"
+	to
+		m2: MM1!UseCaseModel (
+			name <- m1.title
+		)
+
+}
+
+rule Req2UseCase {
+	from
+		m1: MM!Requirement
+	to
+		m2: MM1!UseCase (
+			 <- m1.comments->select(x | x.subject= 'UseCase')
+		)
+
+}
+
