@@ -35,27 +35,5 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Ingredient/IngredientID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Ingredient/Description"/>
     </genClasses>
-    <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Meal/Description"/>
-    <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousfood.ecore#//Meal/descriptor"/>
-    <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousfood.ecore#//Meal/ingredient"/>
   </genPackages>
-  <genClasses ecoreClass="gorgeousfood.ecore#//MealItem">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//MealItem/MealItemID"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//MealItem/ExpDate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//MealItem/PrdDate"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousfood.ecore#//MealItem/meal"/>
-    </genClasses>
-  <genClasses ecoreClass="gorgeousfood.ecore#//Sale">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Sale/SaleID"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Sale/Date"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousfood.ecore#//Sale/mealitem"/>
-    </genClasses>
-  <genClasses ecoreClass="gorgeousfood.ecore#//Descriptor">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Descriptor/DescriptorID"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Descriptor/Description"/>
-    </genClasses>
-  <genClasses ecoreClass="gorgeousfood.ecore#//Ingredient">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Ingredient/IngredientID"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousfood.ecore#//Ingredient/Description"/>
-    </genClasses>
 </genmodel:GenModel>

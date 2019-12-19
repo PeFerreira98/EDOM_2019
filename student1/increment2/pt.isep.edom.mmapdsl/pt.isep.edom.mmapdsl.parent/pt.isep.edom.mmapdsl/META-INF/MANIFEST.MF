@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pt.isep.edom.mmapdsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pt.isep.edom.mmapdsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.ecore.xmi.source;bundle-version="2.13.0",
+ org.apache.log4j;bundle-version="1.2.15",
+ org.eclipse.ocl.xtext.oclinecore;bundle-version="1.1.0",
+ org.eclipse.ocl.ecore;bundle-version="3.6.0",
+ org.eclipse.emf.mwe.core,
+ pt.isep.edom.mindmap;bundle-version="1.0.0.qualifier"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: pt.isep.edom.mmapdsl,
+ pt.isep.edom.mmapdsl.formatting2,
+ pt.isep.edom.mmapdsl.generator,
+ pt.isep.edom.mmapdsl.validation,
+ pt.isep.edom.mmapdsl.scoping,
+ pt.isep.edom.mmapdsl.parser.antlr.internal,
+ pt.isep.edom.mmapdsl.serializer,
+ pt.isep.edom.mmapdsl.parser.antlr,
+ pt.isep.edom.mmapdsl.services
+Import-Package: org.apache.log4j
