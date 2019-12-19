@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated gorgeousfood -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="edom.gorgeousfood.presentation.GorgeousfoodModelWizardID"
+            name="%_UI_GorgeousfoodModelWizard_label"
+            class="edom.gorgeousfood.presentation.GorgeousfoodModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GorgeousfoodModelFile.gif">
+         <description>%_UI_GorgeousfoodModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated gorgeousfood -->
+      <editor
+            id="edom.gorgeousfood.presentation.GorgeousfoodEditorID"
+            name="%_UI_GorgeousfoodEditor_label"
+            icon="icons/full/obj16/GorgeousfoodModelFile.gif"
+            extensions="gorgeousfood"
+            class="edom.gorgeousfood.presentation.GorgeousfoodEditor"
+            contributorClass="edom.gorgeousfood.presentation.GorgeousfoodActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
